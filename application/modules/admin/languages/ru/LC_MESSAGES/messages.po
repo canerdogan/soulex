@@ -1,0 +1,22 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Soulex\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-21 17:46+0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Олег <nigel@tatar-inform.ru>\n"
+"Language-Team: miholeus <me@miholeus.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-SearchPath-0: /var/www/danaya-clk.ru/application/modules/admin\n"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:14
+msgid "User Name"
+msgstr "Имя пользователя"
+
