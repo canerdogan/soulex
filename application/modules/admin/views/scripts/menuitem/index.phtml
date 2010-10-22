@@ -1,23 +1,19 @@
 <?php $this->placeholder('toolbar-list')->captureStart();?>
-<ul>
-    <li id="toolbar-new" class="button">
-        <a class="toolbar" href="/admin/menuitem/create">
-        <span class="icon-32-new"> </span>
-        New
-        </a>
-    </li>
-    <li id="toolbar-delete" class="button">
-        <a class="toolbar" onclick="javascript:if (document.adminForm.boxchecked.value==0){alert('Please first make a selection from the list');}else{ submitbutton({'action':'delete'})}" href="#">
-        <span class="icon-32-delete"> </span>
-        Delete
-        </a>
-    </li>
-</ul>
+
+<?php
+echo $this->partial('partials/toolbar-list-buttons.phtml', array(
+    'options' => array(
+        'buttons' => array('new', 'delete'),
+        'new' => array('uri' => '/admin/menuitem/create')
+    )
+));
+?>
+
 <?php $this->placeholder('toolbar-list')->captureEnd();?>
 
 <?php $this->placeholder('pagetitle')->captureStart();?>
 <div class="pagetitle icon-48-menumgr">
-    <h2> Menu Manager: Menu Items </h2>
+    <h2> <?=$this->translate('Menu Manager')?>: <?=$this->translate('Menu Items')?> </h2>
 </div>
 <?php $this->placeholder('pagetitle')->captureEnd();?>
 
@@ -27,7 +23,7 @@
         <a href="/admin/menu">Menus</a>
     </li>
     <li>
-        <a class="active" href="/admin/menuitem">Menu Items</a>
+        <a class="active" href="/admin/menuitem"><?=$this->translate('Menu Items')?></a>
     </li>
 </ul>
 <?php $this->placeholder('submenu')->captureEnd();?>
@@ -37,12 +33,9 @@
 <form name="adminForm" method="post" action="/admin/menuitem">
 
     <fieldset id="filter-bar">
-        <div class="filter-search fltlft">
-            <label class="filter-search-lbl" for="filter_search">Filter:</label>
-            <input id="filter_search" type="text" title="Search title or alias. Prefix with id: to search for a menu id." value="" name="filter_search"/>
-            <button type="submit">Search</button>
-            <button onclick="$('#filter_search').attr('value', '');this.form.submit();" type="button">Clear</button>
-        </div>
+        <?php
+        echo $this->partial('partials/search-filter.phtml');
+        ?>
         <div class="filter-select fltrt">
             <select class="inputbox" onchange="this.form.submit()" name="filter_state">
                 <?php

@@ -1,0 +1,7 @@
+<li id="toolbar-delete" class="button">
+    <a class="toolbar" 
+       onclick='javascript:if (document.adminForm.boxchecked.value==0){alert("<?=$this->translate("Please first make a selection from the list")?>");}else{ submitbutton(<?=$this->options['json']?>)}' href="#">
+    <span class="icon-32-delete"> </span>
+    <?=$this->translate('Delete')?>
+    </a>
+</li>

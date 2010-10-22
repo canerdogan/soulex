@@ -1,11 +1,11 @@
 <?php $this->placeholder('pagetitle')->captureStart();?>
 <div class="pagetitle icon-48-user">
-    <h2> User Manager: Delete </h2>
+    <h2> <?=$this->translate('User Manager')?>: <?=$this->translate('Delete')?> </h2>
 </div>
 <?php $this->placeholder('pagetitle')->captureEnd();?>
 
 <?php $this->placeholder('element-box')->captureStart();?>
 
-Return back to <a href="/admin/user/list">Users page</a>
+<?=$this->translate('Return back to')?> <a href="/admin/user/list"><?=$this->translate('Users page')?></a>
 
 <?php $this->placeholder('element-box')->captureEnd();?>

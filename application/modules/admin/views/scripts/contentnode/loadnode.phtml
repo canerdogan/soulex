@@ -3,14 +3,14 @@
     <ul class='adminformlist select-nodes'>
         <li>
             <label id='<?=$this->node->getName()?>[type]-lbl' for='<?=$this->node->getName()?>[type]'>
-            Node type</label>
+            <?=$this->translate('Node type')?></label>
             <fieldset id='<?=$this->node->getName()?>[type]' class="radio">
                 <input id='nodes[<?=$this->node->getName()?>][type][0]' type='radio' onclick='toggleNodeType(this)'
                 name='nodes[<?=$this->node->getName()?>][type]' value='0' <?=$this->node->getIsInvokable() ? '' : "checked='checked'"?> />
-                <label for='nodes[<?=$this->node->getName()?>][type][0]'>Static</label>
+                <label for='nodes[<?=$this->node->getName()?>][type][0]'><?=$this->translate('Static')?></label>
                 <input id='nodes[<?=$this->node->getName()?>][type][1]' type='radio' onclick='toggleNodeType(this)'
                 name='nodes[<?=$this->node->getName()?>][type]' value='1' <?=$this->node->getIsInvokable() ? "checked='checked'" : ''?> />
-                <label for='nodes[<?=$this->node->getName()?>][type][1]'>Dynamic</label>
+                <label for='nodes[<?=$this->node->getName()?>][type][1]'><?=$this->translate('Dynamic')?></label>
             </fieldset>
         </li>
     </ul>
@@ -23,15 +23,15 @@
         </div>
         <div id='node-<?=$this->node->getName()?>-dynamic' <?=$this->node->getIsInvokable() ? '' : 'style="display:none;"'?>>
             <label id='nodes[<?=$this->node->getName()?>][module]-lbl' for='nodes[<?=$this->node->getName()?>][module]' class='required'>
-            Module</label>
+            <?=$this->translate('Module')?></label>
             <input type='text' name='nodes[<?=$this->node->getName()?>][module]'
                 id='nodes[<?=$this->node->getName()?>][module]' value='<?=$this->node->getContentValue('module')?>' />
             <label id='nodes[<?=$this->node->getName()?>][controller]-lbl' for='nodes[<?=$this->node->getName()?>][controller]' class='required'>
-            Controller</label>
+            <?=$this->translate('Controller')?></label>
             <input type='text' name='nodes[<?=$this->node->getName()?>][controller]'
                 id='nodes[<?=$this->node->getName()?>][controller]' value='<?=$this->node->getContentValue('controller')?>' />
             <label id='nodes[<?=$this->node->getName()?>][action]-lbl' for='nodes[<?=$this->node->getName()?>][action]' class='required'>
-            Action</label>
+            <?=$this->translate('Action')?></label>
             <input type='text' name='nodes[<?=$this->node->getName()?>][action]'
                 id='nodes[<?=$this->node->getName()?>][action]' value='<?=$this->node->getContentValue('action')?>' />
 
@@ -39,7 +39,7 @@
         </div>
 
         <div id="node-buttons-control">
-            <button onclick="saveNode('<?=$this->node->getName()?>'); return false;">Save</button>
+            <button onclick="saveNode('<?=$this->node->getName()?>'); return false;"><?=$this->translate('Save')?></button>
         </div>
 
     </div>

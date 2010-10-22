@@ -4,17 +4,17 @@
 
 <?php $this->placeholder('pagetitle')->captureStart();?>
 <div class="pagetitle icon-48-user">
-    <h2> User Manager: My Account </h2>
+    <h2> <?=$this->translate('User Manager')?>: <?=$this->translate('My Account')?> </h2>
 </div>
 <?php $this->placeholder('pagetitle')->captureEnd();?>
 
 <?php $this->placeholder('element-box')->captureStart();?>
 
 <?php if($this->identity == null) { ?>
-    <p>To log in <a href='/admin/user/login'>click here</a></p>
+    <p><?=$this->translate('To log in')?> <a href='/admin/user/login'><?=$this->translate('click here')?></a></p>
 <?php }else{ ?>
-    <p>Welcome back, <b><?php echo $this->identity->firstname;?></b></p>
-    <p>To log out <a href='/admin/user/logout'>click here</a></p>
+    <p><?=$this->translate('Welcome back')?>, <b><?php echo $this->identity->firstname;?></b></p>
+    <p><?=$this->translate('To log out')?> <a href='/admin/user/logout'><?=$this->translate('click here')?></a></p>
 <?php } ?>
 
 <?php $this->placeholder('element-box')->captureEnd();?>

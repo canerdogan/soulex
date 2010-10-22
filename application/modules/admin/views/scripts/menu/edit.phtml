@@ -1,23 +1,18 @@
 <?php $this->placeholder('toolbar-list')->captureStart();?>
-<ul>
-    <li id="toolbar-apply" class="button">
-        <a class="toolbar" onclick="javascript:submitbutton({'action' : 'save'})" href="#">
-            <span class="icon-32-apply"> </span>
-            Save
-        </a>
-    </li>
-    <li id="toolbar-cancel" class="button">
-        <a class="toolbar" onclick="javascript:submitbutton({'action' : 'cancel', 'uri' : '/admin/news'})" href="#">
-            <span class="icon-32-cancel"> </span>
-            Close
-        </a>
-    </li>
-</ul>
+
+<?php
+echo $this->partial('partials/toolbar-list-buttons.phtml', array(
+    'options' => array(
+        'cancel' => array('uri' => '/admin/menu')
+    )
+));
+?>
+
 <?php $this->placeholder('toolbar-list')->captureEnd();?>
 
 <?php $this->placeholder('pagetitle')->captureStart();?>
 <div class="pagetitle icon-48-menu">
-    <h2> Menu Manager: Edit Menu </h2>
+    <h2> <?=$this->translate('Menu Manager')?>: <?=$this->translate('Edit Menu')?> </h2>
 </div>
 <?php $this->placeholder('pagetitle')->captureEnd();?>
 

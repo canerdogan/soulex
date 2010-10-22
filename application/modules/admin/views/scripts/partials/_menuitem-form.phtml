@@ -6,32 +6,36 @@
       >
     <div class="width-60 fltlft">
         <fieldset class="adminform">
-            <legend>Details</legend>
+            <legend><?=$this->translate('Details')?></legend>
             <ul class="adminformlist">
                 <li>
-                    <label id="label-lb" for="label" class="required">Label</label>
+                    <label id="label-lb" for="label" class="required">
+                        <?=$this->translate('Label')?>
+                    </label>
                     <?=$this->form->label?>
                 </li>
                 <li>
                     <label id="uri-lbl" for="uri" class="required">
-                        Uri
+                        <?=$this->translate('Uri')?>
                     </label>
                     <?=$this->form->uri?>
                 </li>
                 <li>
                     <label id="position-lbl" for="position">
-                        Position
+                        <?=$this->translate('Position')?>
                     </label>
                     <?=$this->form->position?>
                 </li>
                 <li>
                     <label id="parentId-lbl" for="parentId">
-                        Parent Menu Item
+                        <?=$this->translate('Parent Menu Item')?>
                     </label>
                     <?=$this->form->parentId?>
                 </li>
                 <li>
-                    <label id="published-lbl" for="published">Published</label>
+                    <label id="published-lbl" for="published">
+                        <?=$this->translate('Published')?>
+                    </label>
                     <fieldset id="published" class="radio">
                     <?php
                     echo $this->partial('partials/radiobutton-control.phtml', array(
@@ -43,7 +47,9 @@
                     </fieldset>
                 </li>
                 <li>
-                    <label id="menuId-lbl" for="menuId" class="required">Menu Location</label>
+                    <label id="menuId-lbl" for="menuId" class="required">
+                        <?=$this->translate('Menu Location')?>
+                    </label>
                     <?=$this->form->menuId?>
                 </li>
             </ul>

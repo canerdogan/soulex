@@ -1,6 +1,6 @@
 <?php $this->placeholder('pagetitle')->captureStart();?>
 <div class="pagetitle icon-48-systeminfo">
-    <h2> System Information </h2>
+    <h2> <?=$this->translate('System Information')?> </h2>
 </div>
 <?php $this->placeholder('pagetitle')->captureEnd();?>
 
@@ -8,16 +8,16 @@
 <div class="submenu-pad">
     <ul id="submenu" class="information">
         <li>
-            <a id="site" class="active" onclick="return false;" href="#"> System Info</a>
+            <a id="site" class="active" onclick="return false;" href="#"> <?=$this->translate('System Info')?></a>
         </li>
         <li>
-            <a id="phpsettings" class="" onclick="return false;" href="#"> PHP Settings</a>
+            <a id="phpsettings" class="" onclick="return false;" href="#"> <?=$this->translate('PHP Settings')?></a>
         </li>
         <li>
-            <a id="config" class="" onclick="return false;" href="#"> Configuration File</a>
+            <a id="config" class="" onclick="return false;" href="#"> <?=$this->translate('Configuration File')?></a>
         </li>
         <li>
-            <a id="phpinfo" class="" onclick="return false;" href="#"> PHP Information</a>
+            <a id="phpinfo" class="" onclick="return false;" href="#"> <?=$this->translate('PHP Information')?></a>
         </li>
     </ul>
 <div class="clr"></div>

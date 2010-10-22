@@ -17,7 +17,8 @@
         <?=$this->role?>
     </td>
     <td class="center"> <?=$this->email?> </td>
-    <td class="center"> <?=intval($this->lastvisitDate) == 0 ? 'Never' : $this->lastvisitDate?> </td>
+    <td class="center"> <?=intval($this->lastvisitDate) == 0 ?
+            $this->translate('Never') : $this->lastvisitDate?> </td>
     <td class="center"> <?=$this->registerDate?> </td>
     <td class="center"> <?=$this->id?> </td>
 </tr>

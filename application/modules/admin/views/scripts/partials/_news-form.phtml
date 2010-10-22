@@ -6,20 +6,24 @@
       >
     <div class="width-60 fltlft">
         <fieldset class="adminform">
-            <legend>Edit News</legend>
+            <legend><?=$this->translate('Edit News')?></legend>
             <ul class="adminformlist">
                 <li>
-                    <label id="title-lbl" for="title" class="required">Title</label>
+                    <label id="title-lbl" for="title" class="required">
+                        <?=$this->translate('Title')?>
+                    </label>
                     <?=$this->form->title?>
                 </li>
                 <li>
                     <label id="short_description-lbl" for="short_description">
-                        Short Description
+                        <?=$this->translate('Short Description')?>
                     </label>
                     <?=$this->form->short_description?>
                 </li>
                 <li>
-                    <label id="published-lbl" for="published">Published</label>
+                    <label id="published-lbl" for="published">
+                        <?=$this->translate('Published')?>
+                    </label>
                     <fieldset id="published" class="radio">
                     <?php
                     echo $this->partial('partials/radiobutton-control.phtml', array(
@@ -32,14 +36,16 @@
                 </li>
             </ul>
             <div class="clr"></div>
-            <label id="detail_description-lbl" for="detail_description">Detail Description</label>
+            <label id="detail_description-lbl" for="detail_description">
+                <?=$this->translate('Detail Description')?>
+            </label>
             <div class="clr"></div>
             <?=$this->form->detail_description?>
 
             <div class="toggle-editor">
                 <div class="button2-left">
                     <div class="blank">
-                        <a title="Toggle editor" onclick="javascript:tinyMCE.execCommand('mceToggleEditor', false, 'detail_description');return false;" href="#">Toggle editor</a>
+                        <a title="Toggle editor" onclick="javascript:tinyMCE.execCommand('mceToggleEditor', false, 'detail_description');return false;" href="#"><?=$this->translate('Toggle editor')?></a>
                     </div>
                 </div>
             </div>
@@ -50,14 +56,16 @@
             <div class="panel">
                 <h3 id="publishing-details" class="title pane-toggler-down">
                     <a href="#">
-                        <span>Publishing Options</span>
+                        <span><?=$this->translate('Publishing Options')?></span>
                     </a>
                 </h3>
                 <div class="pane-slider content" style="border-top: medium none; border-bottom: medium none; overflow: hidden; padding-top: 0px; padding-bottom: 0px; height: 274px;">
                     <fieldset class="panelform">
                         <ul class="adminformlist">
                             <li>
-                                <label id="published_at-lbl" for="published_at">Published At</label>
+                                <label id="published_at-lbl" for="published_at">
+                                    <?=$this->translate('Published At')?>
+                                </label>
                                 <?=$this->form->published_at?>
                                 <img src="/skins/<?=$this->skin?>/images/system/calendar.png" alt="Calendar" />
                             </li>
@@ -68,18 +76,22 @@
             <div class="panel">
                 <h3 id="meta-options" class="title pane-toggler">
                     <a href="#">
-                        <span>Metadata Options</span>
+                        <span><?=$this->translate('Metadata Options')?></span>
                     </a>
                 </h3>
                 <div class="pane-slider content" style="border-top: medium none; border-bottom: medium none; overflow: hidden; padding-top: 0px; padding-bottom: 0px; height: 0px;">
                     <fieldset class="panelform">
                         <ul class="adminformlist">
                             <li>
-                                <label id="metakey-lbl" for="metakey">Meta Keywords</label>
+                                <label id="metakey-lbl" for="metakey">
+                                    <?=$this->translate('Meta Keywords')?>
+                                </label>
                                 <?=$this->form->metakey?>
                             </li>
                             <li>
-                                <label id="metadesc-lbl" for="metadesc">Meta Description</label>
+                                <label id="metadesc-lbl" for="metadesc">
+                                    <?=$this->translate('Meta Description')?>
+                                </label>
                                 <?=$this->form->metadesc?>
                             </li>
                         </ul>

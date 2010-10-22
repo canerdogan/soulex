@@ -1,0 +1,6 @@
+<div class="filter-search fltlft">
+    <label class="filter-search-lbl" for="filter_search"><?=$this->translate('Filter')?>:</label>
+    <input id="filter_search" type="text" title="Search title or alias. Prefix with id: to search for an article id." value="" name="filter_search"/>
+    <button class="btn" type="submit"><?=$this->translate('Search')?></button>
+    <button onclick="$('#filter_search').attr('value', '');this.form.submit();" type="button"><?=$this->translate('Clear')?></button>
+</div>

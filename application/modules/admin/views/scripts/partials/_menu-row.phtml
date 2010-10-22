@@ -3,11 +3,11 @@
         <input id="cb0" type="checkbox" title="Checkbox for row 1" onclick="isChecked(this.checked);" value="2" name="cid[]"/>
     </td>
     <td>
-        <a href="/admin/menuitem"><?=$this->title?></a>
+        <a href="/admin/menuitem/index/menuid/<?=$this->id?>"><?=$this->title?></a>
         <p class="smallsub">
             (
-            <span>Menu Type:</span>
-            <a href="/admin/menu/edit/id/<?=$this->menutype?>"><?=$this->menutype?></a>
+            <span><?=$this->translate('Menu Type')?>:</span>
+            <a href="/admin/menu/edit/id/<?=$this->id?>"><?=$this->menutype?></a>
             )
         </p>
     </td>

@@ -6,21 +6,23 @@
       >
     <div class="width-40 fltlft">
         <fieldset class="adminform">
-            <legend>Menu Details</legend>
+            <legend><?=$this->translate('Menu Details')?></legend>
             <ul class="adminformlist">
                 <li>
-                    <label id="title-lb" for="title" class="required">Title</label>
+                    <label id="title-lb" for="title" class="required">
+                        <?=$this->translate('Title')?>
+                    </label>
                     <?=$this->form->title?>
                 </li>
                 <li>
                     <label id="menutype-lbl" for="menutype" class="required">
-                        Menu Type
+                        <?=$this->translate('Menu Type')?>
                     </label>
                     <?=$this->form->menutype?>
                 </li>
                 <li>
                     <label id="description-lbl" for="description">
-                        Description
+                        <?=$this->translate('Description')?>
                     </label>
                     <?=$this->form->description?>
                 </li>

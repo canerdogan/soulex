@@ -1,0 +1,55 @@
+<?php
+$saveDefault = array('action' => 'save');// default params for save button
+$cancelDefault = array('action' => 'cancel');// default params for cancel button
+$deleteDefault = array('action' => 'delete');// default params for delete button
+
+$defaultButtons = array('save', 'cancel'); //default button to display
+$buttons = $defaultButtons;
+
+if(isset($this->options['buttons'])) {
+    $buttons = $this->options['buttons'];
+}
+
+if(isset($this->options['save'])) {
+    $saveBtnOptions = array_merge($saveDefault, $this->options['save']);
+} else {
+    $saveBtnOptions = $saveDefault;
+}
+
+if(isset($this->options['cancel'])) {
+    $cancelBtnOptions = array_merge($cancelDefault, $this->options['cancel']);
+} else {
+    $cancelBtnOptions = $cancelDefault;
+}
+
+if(isset($this->options['delete'])) {
+    $deleteBtnOptions = array_merge($deleteDefault, $this->options['delete']);
+} else {
+    $deleteBtnOptions = $deleteDefault;
+}
+
+/**
+ * Json strings for button options
+ */
+$cancelJson = Zend_Json::encode($cancelBtnOptions);
+$cancelJson = preg_replace('/\\\/', '', $cancelJson);
+$saveJson = Zend_Json::encode($saveBtnOptions);
+$saveJson = preg_replace('/\\\/', '', $saveJson);
+$deleteJson = Zend_Json::encode($deleteBtnOptions);
+$deleteJson = preg_replace('/\\\/', '', $deleteJson);
+?>
+
+<ul>
+    <?php
+    foreach($buttons as $btn) {
+        $jsonOption = isset(${$btn . 'Json'}) ? ${$btn . 'Json'} : '';
+        $btnOptions = isset($this->options[$btn]) ? $this->options[$btn] : '';
+        echo $this->partial('partials/buttons/' . $btn . '.phtml', array(
+            'options' => array(
+                'json' => $jsonOption,
+                'data' => $btnOptions
+            )
+        ));
+    }
+    ?>
+</ul>

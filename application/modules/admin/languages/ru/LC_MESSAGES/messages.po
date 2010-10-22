@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Soulex\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-21 17:46+0300\n"
+"POT-Creation-Date: 2010-10-22 16:59+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Олег <nigel@tatar-inform.ru>\n"
 "Language-Team: miholeus <me@miholeus.com>\n"
@@ -16,7 +16,595 @@ msgstr ""
 "X-Poedit-KeywordsList: translate\n"
 "X-Poedit-SearchPath-0: /var/www/danaya-clk.ru/application/modules/admin\n"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:14
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/edit.phtml:15
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/create.phtml:15
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/index.phtml:16
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:34
+msgid "Menu Manager"
+msgstr "Менеджер меню"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/edit.phtml:15
+msgid "Edit Menu"
+msgstr "Редактировать меню"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/create.phtml:15
+msgid "Add New Menu"
+msgstr "Добавить новое меню"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/index.phtml:16
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/index.phtml:23
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:32
+msgid "Menus"
+msgstr "Меню"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/index.phtml:26
+msgid "Menu Items"
+msgstr "Элементы меню"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:3
+msgid "View Site"
+msgstr "Открыть сайт"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:3
+msgid "Logged-in backend"
+msgstr "авторизовался в бэкэнде"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:10
+msgid "Site"
+msgstr "Сайт"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:12
+msgid "Control Panel"
+msgstr "Панель управления"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:14
+msgid "Global Configuration"
+msgstr "Глобальная конфигурация"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:16
+msgid "System Information"
+msgstr "Системная информация"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:18
+msgid "Logout"
+msgstr "Выход"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:22
+msgid "Users"
+msgstr "Пользователи"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:24
+msgid "User Manager"
+msgstr "Менеджер пользователей"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:26
+msgid "Add New User"
+msgstr "Добавить нового пользователя"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:27
+msgid "Add New Group"
+msgstr "Добавить новую группу"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:39
+msgid "Content"
+msgstr "Контент"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:41
+msgid "Page Manager"
+msgstr "Менеджер страниц"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:43
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/edit.phtml:16
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/create.phtml:16
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/index.phtml:16
+msgid "News Manager"
+msgstr "Менеджер новостей"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:44
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/edit.phtml:16
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/create.phtml:16
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/index.phtml:16
+msgid "Events Manager"
+msgstr "Менеджер событий"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/edit.phtml:16
+msgid "Edit Events"
+msgstr "Редактирование событий"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/create.phtml:16
+msgid "Add Events"
+msgstr "Добавить событие"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/index.phtml:16
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/index.phtml:23
+msgid "Events"
+msgstr "События"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/edit.phtml:16
+msgid "Edit News"
+msgstr "Редактирование новости"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/create.phtml:16
+msgid "Add News"
+msgstr "Добавить новость"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/index.phtml:16
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/index.phtml:23
+msgid "News"
+msgstr "Новости"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menuitem/edit.phtml:15
+msgid "Edit Menu Item"
+msgstr "Редактировать элемент меню"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menuitem/create.phtml:15
+msgid "Add New Menu Item"
+msgstr "Добавить новый элемент меню"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:11
+msgid "Administration Login"
+msgstr "Авторизация пользователя"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:31
 msgid "User Name"
-msgstr "Имя пользователя"
+msgstr "Логин"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:34
+msgid "Password"
+msgstr "Пароль"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:41
+msgid "Log in"
+msgstr "Войти"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:62
+msgid "Use a valid username and password to gain access to the administrator backend"
+msgstr "Используйте правильные логин и пароль, чтобы получить доступ к бэкэнду администратора"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:64
+msgid "Go to site home page"
+msgstr "Вернуться на главную"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:76
+msgid "Warning! JavaScript must be enabled for proper operation of the Administrator backend"
+msgstr "Внимание! JavaScript должен быть включен для корректного входа в бэкэнд Администратора"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/update.phtml:16
+msgid "Update User"
+msgstr "Обновить пользователя"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/logout.phtml:1
+msgid "User Logout"
+msgstr "Выход пользователя"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/logout.phtml:2
+msgid "You have successfully logged out"
+msgstr "Вы успешно вышли"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/index.phtml:7
+msgid "My Account"
+msgstr "Мой аккаунт"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/index.phtml:14
+msgid "To log in"
+msgstr "Чтобы войти"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/index.phtml:14
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/index.phtml:17
+msgid "click here"
+msgstr "щелкните здесь"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/index.phtml:16
+msgid "Welcome back"
+msgstr "Добро пожаловать"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/index.phtml:17
+msgid "To log out"
+msgstr "Чтобы выйти"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/delete.phtml:3
+msgid "Delete"
+msgstr "Удалить"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/delete.phtml:9
+msgid "Return back to"
+msgstr "Вернитесь назад"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/delete.phtml:9
+msgid "Users page"
+msgstr "Страница пользователя"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/index/index.phtml:9
+msgid "Manage Pages"
+msgstr "Управление страницами"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/index/index.phtml:17
+msgid "Manage Users"
+msgstr "Управление пользователями"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/index/index.phtml:25
+msgid "Manage News"
+msgstr "Управление новостями"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/page/edit.phtml:16
+msgid "Edit Page"
+msgstr "Редактирование страницы"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/page/create.phtml:16
+msgid "Add New Page"
+msgstr "Добавить новую страницу"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/page/index.phtml:16
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/page/index.phtml:23
+msgid "Pages"
+msgstr "Страницы"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:17
+msgid "Display"
+msgstr "Отображать"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:42
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:49
+msgid "Start"
+msgstr "Начало"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:68
+msgid "Prev"
+msgstr "Пред"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:94
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:101
+msgid "Next"
+msgstr "След"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:111
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:118
+msgid "End"
+msgstr "Конец"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:123
+msgid "Page"
+msgstr "Страница"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:10
+msgid "Account Details"
+msgstr "Настройка учетной записи"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:20
+msgid "First Name"
+msgstr "Имя"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:26
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:38
+msgid "Confirm Password"
+msgstr "Подтверждение пароля"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:48
+msgid "Block this User"
+msgstr "Блокировать этого пользователя"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:62
+msgid "Registration Date"
+msgstr "Дата регистрации"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:68
+msgid "Last visit Date"
+msgstr "Дата последнего посещения"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:76
+msgid "Assigned Groups"
+msgstr "Назначен к группе"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-phpsettings.phtml:4
+msgid "Relevant PHP Settings"
+msgstr "Соответствующие настройки PHP"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-phpsettings.phtml:8
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:8
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:8
+msgid "Setting"
+msgstr "Параметр"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-phpsettings.phtml:9
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:9
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:9
+msgid "Value"
+msgstr "Значение"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:20
+msgid "PHP Built On"
+msgstr "PHP собран на"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:26
+msgid "Database Version"
+msgstr "Версия базы данных"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:32
+msgid "Database Collation"
+msgstr "Кодировка базы данных"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:38
+msgid "Connection Collation"
+msgstr "Кодировка соединения"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:44
+msgid "Server Collation"
+msgstr "Кодировка сервера"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:50
+msgid "PHP Version"
+msgstr "Версия PHP"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:56
+msgid "Web Server"
+msgstr "Веб-сервер"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:62
+msgid "WebServer to PHP Interface"
+msgstr "PHP интерфейс к веб-серверу"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:68
+msgid "Version"
+msgstr "Версия"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:74
+msgid "User Agent"
+msgstr "Браузер пользователя"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:13
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:13
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:13
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menu-form.phtml:13
+msgid "Title"
+msgstr "Заголовок"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:19
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:19
+msgid "Short Description"
+msgstr "Короткое описание"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:25
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:37
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:25
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:25
+msgid "Published"
+msgstr "Опубликован"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:40
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:46
+msgid "Detail Description"
+msgstr "Детальное описание"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:48
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:77
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:54
+msgid "Toggle editor"
+msgstr "Переключить редактор"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:59
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:65
+msgid "Publishing Options"
+msgstr "Настройки размещения"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:67
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:73
+msgid "Published At"
+msgstr "Опубликован"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:79
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:158
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:85
+msgid "Metadata Options"
+msgstr "Настройки метаданных"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:87
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:166
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:93
+msgid "Meta Keywords"
+msgstr "Meta ключевики"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:93
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:172
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:99
+msgid "Meta Description"
+msgstr "Meta описание"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:9
+msgid "Details"
+msgstr "Настройки"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:13
+msgid "Label"
+msgstr "Метка"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:19
+msgid "Uri"
+msgstr "Урл"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:25
+msgid "Position"
+msgstr "Позиция"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:31
+msgid "Parent Menu Item"
+msgstr "Родительский элемент меню"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:51
+msgid "Menu Location"
+msgstr "Расположение меню"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:19
+msgid "Page Uri"
+msgstr "Uri страницы"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:42
+msgid "Node Type"
+msgstr "Тип узла"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:87
+msgid "Module"
+msgstr "Модуль"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:93
+msgid "Controller"
+msgstr "Контроллер"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:99
+msgid "Action"
+msgstr "Действие"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:113
+msgid "Content Nodes"
+msgstr "Узлы контента"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:130
+msgid "Node Name"
+msgstr "Имя узла"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:131
+msgid "Copy"
+msgstr "Копировать"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-row.phtml:21
+msgid "Never"
+msgstr "Никогда"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:39
+msgid "Image Preview"
+msgstr "Предпросмотр изображения"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menu-form.phtml:9
+msgid "Menu Details"
+msgstr "Настройки меню"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menu-form.phtml:19
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menu-row.phtml:9
+msgid "Menu Type"
+msgstr "Тип меню"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menu-form.phtml:25
+msgid "Description"
+msgstr "Описание"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:4
+msgid "Configuration File"
+msgstr "Файл конфигурации"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:19
+msgid "db adapter"
+msgstr "адаптер бд"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:23
+msgid "host"
+msgstr "хост"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:27
+msgid "user"
+msgstr "пользователь"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:31
+msgid "password"
+msgstr "пароль"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:35
+msgid "db"
+msgstr "бд"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:39
+msgid "Include paths library"
+msgstr "расположение библиотеки"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:43
+msgid "Bootstrap path"
+msgstr "Путь автозагрузчика"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:47
+msgid "Bootstrap class"
+msgstr "Класс автозагрузчика"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:51
+msgid "Controller Directory"
+msgstr "Папка контроллера"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:55
+msgid "Layout path"
+msgstr "Путь для размещения слоев"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:59
+msgid "Layout"
+msgstr "Слой"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:63
+msgid "Modules directory"
+msgstr "Папка для размещения модулей"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:67
+msgid "Front controller plugins"
+msgstr "Плагины front controller"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form-nodeslist.phtml:8
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form-nodeslist.phtml:9
+msgid "Copy Node To All Pages"
+msgstr "Копировать узлы на все страницы"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form-nodeslist.phtml:14
+msgid "Delete Node"
+msgstr "Удалить узел"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-phpinfo.phtml:4
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/sysinfo/index.phtml:20
+msgid "PHP Information"
+msgstr "Информация PHP"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/search-filter.phtml:2
+msgid "Filter"
+msgstr "Фильтр"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/search-filter.phtml:4
+msgid "Search"
+msgstr "Поиск"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/search-filter.phtml:5
+msgid "Clear"
+msgstr "Очистить"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/buttons/save.phtml:4
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/contentnode/loadnode.phtml:42
+msgid "Save"
+msgstr "Сохранить"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/buttons/cancel.phtml:4
+msgid "Close"
+msgstr "Закрыть"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/buttons/delete.phtml:3
+msgid "Please first make a selection from the list"
+msgstr "Пожалуйста, сначала выделите элемент из списка"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/buttons/new.phtml:4
+msgid "New"
+msgstr "Новый"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/contentnode/loadnode.phtml:6
+msgid "Node type"
+msgstr "Тип узла"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/contentnode/loadnode.phtml:10
+msgid "Static"
+msgstr "Статич."
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/contentnode/loadnode.phtml:13
+msgid "Dynamic"
+msgstr "Динамический"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/sysinfo/index.phtml:11
+msgid "System Info"
+msgstr "Системная информация"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/sysinfo/index.phtml:14
+msgid "PHP Settings"
+msgstr "Настройки PHP"
 

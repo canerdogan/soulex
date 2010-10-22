@@ -14,7 +14,7 @@ $display_options = array(
 <div class="container">
     <div class="pagination">
         <div class="limit">
-            Display #
+            <?=$this->translate('Display')?> #
             <select id="limit" class="inputbox" onchange="submitform();" size="1" name="limit">
                 <?php
                 foreach($display_options as $key => $value) {
@@ -39,14 +39,14 @@ $display_options = array(
     <div class="button2-right">
         <div class="start">
           <a href="<?php echo $this->url(array('page' => $this->first)); ?>">
-            Start
+            <?=$this->translate('Start')?>
           </a>
         </div>
     </div>
     <?php else: ?>
     <div class="button2-right off">
         <div class="start">
-            <span>Start</span>
+            <span><?=$this->translate('Start')?></span>
         </div>
     </div>
     <?php endif; ?>
@@ -65,7 +65,7 @@ $display_options = array(
     <?php } else { ?>
     <div class="button2-right off">
         <div class="prev">
-            <span>Prev</span>
+            <span><?=$this->translate('Prev')?></span>
         </div>
     </div>
     <?php } ?>
@@ -91,14 +91,14 @@ $display_options = array(
         <div class="next">
           <a href="<?php echo $this->url(
                array_merge($params, array('page' => $this->next))); ?>">
-            Next
+            <?=$this->translate('Next')?>
           </a>
         </div>
     </div>
     <?php } else { ?>
     <div class="button2-left off">
         <div class="next">
-            <span>Next</span>
+            <span><?=$this->translate('Next')?></span>
         </div>
     </div>
     <?php } ?>
@@ -108,19 +108,19 @@ $display_options = array(
     <div class="button2-left">
         <div class="end">
           <a href="<?php echo $this->url(array('page' => $this->last)); ?>">
-            End
+            <?=$this->translate('End')?>
           </a>
         </div>
     </div>
     <?php else: ?>
     <div class="button2-left off">
         <div class="end">
-            <span>End</span>
+            <span><?=$this->translate('End')?></span>
         </div>
     </div>
     <?php endif; ?>
 
-    <div class="limit">Page <?=$this->current?> of <?=$this->last?></div>
+    <div class="limit"><?=$this->translate('Page')?> <?=$this->current?> of <?=$this->last?></div>
 
 
 <?php } ?>

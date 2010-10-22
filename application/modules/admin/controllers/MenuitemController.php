@@ -50,7 +50,9 @@ class Admin_MenuitemController extends Soulex_Controller_Abstract
                 }
             }
         } else {
-            $paginator = $mdlMenuItem->order($order)->paginate();
+            $paginator = $mdlMenuItem->selectMenuId($this->_getParam('menuid'))
+                    ->order($order)->paginate();
+            $this->view->filter['menuid'] = $this->_getParam('menuid');
         }
 
 
