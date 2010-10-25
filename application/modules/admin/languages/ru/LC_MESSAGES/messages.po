@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Soulex\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-22 16:59+0300\n"
+"POT-Creation-Date: 2010-10-25 12:06+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Олег <nigel@tatar-inform.ru>\n"
 "Language-Team: miholeus <me@miholeus.com>\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/index.phtml:16
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:34
 msgid "Menu Manager"
-msgstr "Менеджер меню"
+msgstr "Управление меню"
 
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/edit.phtml:15
 msgid "Edit Menu"
@@ -44,6 +44,10 @@ msgstr "Элементы меню"
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:3
 msgid "View Site"
 msgstr "Открыть сайт"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:3
+msgid "Log out"
+msgstr "Выход"
 
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:3
 msgid "Logged-in backend"
@@ -75,7 +79,7 @@ msgstr "Пользователи"
 
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:24
 msgid "User Manager"
-msgstr "Менеджер пользователей"
+msgstr "Управление пользователями"
 
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:26
 msgid "Add New User"
@@ -91,21 +95,21 @@ msgstr "Контент"
 
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:41
 msgid "Page Manager"
-msgstr "Менеджер страниц"
+msgstr "Управление страницами"
 
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:43
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/edit.phtml:16
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/create.phtml:16
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/index.phtml:16
 msgid "News Manager"
-msgstr "Менеджер новостей"
+msgstr "Управление новостями"
 
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:44
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/edit.phtml:16
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/create.phtml:16
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/index.phtml:16
 msgid "Events Manager"
-msgstr "Менеджер событий"
+msgstr "Управление событиями"
 
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/edit.phtml:16
 msgid "Edit Events"
@@ -169,9 +173,13 @@ msgstr "Вернуться на главную"
 msgid "Warning! JavaScript must be enabled for proper operation of the Administrator backend"
 msgstr "Внимание! JavaScript должен быть включен для корректного входа в бэкэнд Администратора"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/update.phtml:16
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/update.phtml:15
 msgid "Update User"
 msgstr "Обновить пользователя"
+
+#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/list.phtml:183
+msgid "You do not have any users"
+msgstr "Нет пользователей для отображения"
 
 #: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/logout.phtml:1
 msgid "User Logout"

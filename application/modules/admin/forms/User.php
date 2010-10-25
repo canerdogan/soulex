@@ -102,6 +102,16 @@ class Admin_Form_User extends Admin_Form_Template_Simple
         ));
         $this->addElement($lastvisitDate);
 
+        // language
+        $language = $this->createElement('select', 'lang');
+        $language->setLabel('Language');
+        $language->setAttrib('class', 'inputbox');
+        $language->addMultiOptions(array(
+            'en' => 'English',
+            'ru' => 'Russian'
+        ));
+        $this->addElement($language);
+
         // return path
         $retpath = $this->createElement('hidden', 'retpath');
         $this->addElement($retpath);
@@ -124,7 +134,7 @@ class Admin_Form_User extends Admin_Form_Template_Simple
         // remove unneccessary elements
         foreach($this->getElements() as $element) {
             if(!in_array($element->getName(), array(
-                'username', 'password', 'retpath'
+                'username', 'password', 'lang','retpath'
             ))) {
                 $this->removeElement($element->getName());
             }

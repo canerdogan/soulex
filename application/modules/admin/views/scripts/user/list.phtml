@@ -180,7 +180,7 @@ echo $this->partial('partials/toolbar-list-buttons.phtml', array(
     <input type="hidden" name="direction" value="<?php echo $this->orderParams['direction']?>" />
 
     <?else:?>
-        You do not have any users
+        <?=$this->translate('You do not have any users')?>
     <?endif;?>
     
 </form>

@@ -18,6 +18,7 @@ class Admin_UserController extends Soulex_Controller_Abstract
     public function indexAction()
     {
         $auth = Zend_Auth::getInstance();
+
         if($auth->hasIdentity()) {
             $this->view->identity = $auth->getIdentity();
         }
@@ -47,6 +48,7 @@ class Admin_UserController extends Soulex_Controller_Abstract
 
             $mdlUser = new Admin_Model_User();
             $data = $userForm->getValues();
+
             //set up the auth adapter
             // get the default db adapter
             $db = Zend_Db_Table::getDefaultAdapter();
@@ -60,11 +62,34 @@ class Admin_UserController extends Soulex_Controller_Abstract
             //authenticate
             $result = $authAdapter->authenticate();
             if ($result->isValid()) {
+                $translate = $this->getInvokeArg('bootstrap')
+                        ->getResource('modules')
+                        ->offsetGet('admin')
+                        ->getResource('translate');
+                $translateOptions = $translate->getOptions();
+
+                if(isset($data['lang'])) {
+                    $lang = (string)$data['lang'];
+                } else {
+                    // default language
+                    $lang = !empty($translateOptions['defaultLanguage']) ?
+                        $translateOptions['defaultLanguage'] : 'en';
+                }
+
+                if($translate->isAvailable($lang)) {
+                    $translate->setLocale($lang);
+                } else {
+                    $translate->setOptions(array('clear' => true));
+                }
+
+                $rowObj = $authAdapter->getResultRowObject(
+                            array('id', 'username', 'firstname', 'lastname', 'role')
+                        );
+                $rowObj->lang = $lang;
+
                 // store the username, first and last names of the user
                 $storage = $auth->getStorage();
-                $storage->write($authAdapter->getResultRowObject(
-                  array('id', 'username', 'firstname', 'lastname', 'role')));
-
+                $storage->write($rowObj);
                 $row = $authAdapter->getResultRowObject('id');
                 $mdlUser->updateLastVisitDate($row->id);
                 
