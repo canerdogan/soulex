@@ -24,6 +24,10 @@ class ControllerTestCase extends Zend_Test_PHPUnit_ControllerTestCase
     {
         $this->bootstrap = array($this, 'appBootstrap');
         parent::setUp();
+        /**
+         * set bootstrap parameter as it is not loaded by default
+         */
+        $this->getFrontController()->setParam('bootstrap', $this->_application->getBootstrap());
     }
 
     protected function appBootstrap()

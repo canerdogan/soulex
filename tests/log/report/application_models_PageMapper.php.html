@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
+    <title>Project Tests</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="container.css">
     <script type="text/javascript" src="yahoo-dom-event.js"></script>
@@ -12,7 +12,7 @@
 
   <body class="yui-skin-sam">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr><td class="title"></td></tr>
+      <tr><td class="title">Project Tests</td></tr>
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
 
       <tr>
@@ -554,24 +554,24 @@
 <span class="lineNum" id="container178"><a name="178"></a><a href="#178" id="line178">     178</a> </span>                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span>                                                                                                                    
 <span class="lineNum" id="container179"><a name="179"></a><a href="#179" id="line179">     179</a> </span>                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">findPage</span><span class="keyword">(</span><span class="default">$id</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">$where</span><span class="keyword">)</span>                                                                           
 <span class="lineNum" id="container180"><a name="180"></a><a href="#180" id="line180">     180</a> </span>                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">{</span>                                                                                                               
-<span class="lineNum" id="container181"><a name="181"></a><a href="#181" id="line181">     181</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$row</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">find</span><span class="keyword">(</span><span class="default">$id</span><span class="keyword">)</span><span class="keyword">-&gt;</span><span class="default">current</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span>                                                                         </span>
+<span class="lineNum" id="container181"><a name="181"></a><a href="#181" id="line181">     181</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$row</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">find</span><span class="keyword">(</span><span class="default">$id</span><span class="keyword">)</span><span class="keyword">-&gt;</span><span class="default">current</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span>                                                                         </span>
 <span class="lineNum" id="container182"><a name="182"></a><a href="#182" id="line182">     182</a> </span>                :                                                                                                                     
-<span class="lineNum" id="container183"><a name="183"></a><a href="#183" id="line183">     183</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">if</span><span class="keyword">(</span><span class="default">$row</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span>                                                                                                  </span>
-<span class="lineNum" id="container184"><a name="184"></a><a href="#184" id="line184">     184</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$pageFields</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$row</span><span class="keyword">-&gt;</span><span class="default">toArray</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span>                                                                          </span>
-<span class="lineNum" id="container185"><a name="185"></a><a href="#185" id="line185">     185</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$mdlContentNode</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="keyword">new</span><span class="default">&nbsp;</span><span class="default">Model_ContentNode</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span>                                                              </span>
-<span class="lineNum" id="container186"><a name="186"></a><a href="#186" id="line186">     186</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$contentNodes</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$row</span><span class="keyword">-&gt;</span><span class="default">findDependentRowset</span><span class="keyword">(</span><span class="default">$mdlContentNode</span><span class="keyword">)</span><span class="keyword">;</span>                                             </span>
-<span class="lineNum" id="container187"><a name="187"></a><a href="#187" id="line187">     187</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$pageContent</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="keyword">array</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span>                                                                                 </span>
-<span class="lineNum" id="container188"><a name="188"></a><a href="#188" id="line188">     188</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">if</span><span class="keyword">(</span><span class="default">count</span><span class="keyword">(</span><span class="default">$contentNodes</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">&gt;</span><span class="default">&nbsp;</span><span class="default">0</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span>                                                                          </span>
-<span class="lineNum" id="container189"><a name="189"></a><a href="#189" id="line189">     189</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">foreach</span><span class="keyword">(</span><span class="default">$contentNodes</span><span class="default">&nbsp;</span><span class="keyword">as</span><span class="default">&nbsp;</span><span class="default">$node</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span><span class="default">&nbsp;</span><span class="comment">//looking&nbsp;for&nbsp;content&nbsp;fields</span>                                      </span>
-<span class="lineNum" id="container190"><a name="190"></a><a href="#190" id="line190">     190</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$pageContent</span><span class="keyword">[</span><span class="default">$node</span><span class="keyword">[</span><span class="default">'name'</span><span class="keyword">]</span><span class="keyword">]</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="keyword">array</span><span class="keyword">(</span>                                                            </span>
-<span class="lineNum" id="container191"><a name="191"></a><a href="#191" id="line191">     191</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">'id'</span><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">=&gt;</span><span class="default">&nbsp;</span><span class="default">$node</span><span class="keyword">[</span><span class="default">'id'</span><span class="keyword">]</span><span class="keyword">,</span>                                                             </span>
-<span class="lineNum" id="container192"><a name="192"></a><a href="#192" id="line192">     192</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">'value'</span><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">=&gt;</span><span class="default">&nbsp;</span><span class="default">$node</span><span class="keyword">[</span><span class="default">'value'</span><span class="keyword">]</span><span class="keyword">,</span>                                                          </span>
-<span class="lineNum" id="container193"><a name="193"></a><a href="#193" id="line193">     193</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">'isInvokable'</span><span class="default">&nbsp;&nbsp;&nbsp;</span><span class="keyword">=&gt;</span><span class="default">&nbsp;</span><span class="default">$node</span><span class="keyword">[</span><span class="default">'isInvokable'</span><span class="keyword">]</span><span class="keyword">,</span>                                                    </span>
-<span class="lineNum" id="container194"><a name="194"></a><a href="#194" id="line194">     194</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">'params'</span><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">=&gt;</span><span class="default">&nbsp;</span><span class="default">$node</span><span class="keyword">[</span><span class="default">'params'</span><span class="keyword">]</span>                                                          </span>
-<span class="lineNum" id="container195"><a name="195"></a><a href="#195" id="line195">     195</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">)</span><span class="keyword">;</span>                                                                                              </span>
-<span class="lineNum" id="container196"><a name="196"></a><a href="#196" id="line196">     196</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span>                                                                                                   </span>
-<span class="lineNum" id="container197"><a name="197"></a><a href="#197" id="line197">     197</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span>                                                                                                       </span>
-<span class="lineNum" id="container198"><a name="198"></a><a href="#198" id="line198">     198</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">return</span><span class="default">&nbsp;</span><span class="default">array_merge</span><span class="keyword">(</span><span class="default">$pageFields</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="keyword">array</span><span class="keyword">(</span><span class="default">'_data'</span><span class="default">&nbsp;</span><span class="keyword">=&gt;</span><span class="default">&nbsp;</span><span class="default">$pageContent</span><span class="keyword">)</span><span class="keyword">)</span><span class="keyword">;</span>                                        </span>
+<span class="lineNum" id="container183"><a name="183"></a><a href="#183" id="line183">     183</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">if</span><span class="keyword">(</span><span class="default">$row</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span>                                                                                                  </span>
+<span class="lineNum" id="container184"><a name="184"></a><a href="#184" id="line184">     184</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$pageFields</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$row</span><span class="keyword">-&gt;</span><span class="default">toArray</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span>                                                                          </span>
+<span class="lineNum" id="container185"><a name="185"></a><a href="#185" id="line185">     185</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$mdlContentNode</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="keyword">new</span><span class="default">&nbsp;</span><span class="default">Model_ContentNode</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span>                                                              </span>
+<span class="lineNum" id="container186"><a name="186"></a><a href="#186" id="line186">     186</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$contentNodes</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$row</span><span class="keyword">-&gt;</span><span class="default">findDependentRowset</span><span class="keyword">(</span><span class="default">$mdlContentNode</span><span class="keyword">)</span><span class="keyword">;</span>                                             </span>
+<span class="lineNum" id="container187"><a name="187"></a><a href="#187" id="line187">     187</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$pageContent</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="keyword">array</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span>                                                                                 </span>
+<span class="lineNum" id="container188"><a name="188"></a><a href="#188" id="line188">     188</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">if</span><span class="keyword">(</span><span class="default">count</span><span class="keyword">(</span><span class="default">$contentNodes</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">&gt;</span><span class="default">&nbsp;</span><span class="default">0</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span>                                                                          </span>
+<span class="lineNum" id="container189"><a name="189"></a><a href="#189" id="line189">     189</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">foreach</span><span class="keyword">(</span><span class="default">$contentNodes</span><span class="default">&nbsp;</span><span class="keyword">as</span><span class="default">&nbsp;</span><span class="default">$node</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span><span class="default">&nbsp;</span><span class="comment">//looking&nbsp;for&nbsp;content&nbsp;fields</span>                                      </span>
+<span class="lineNum" id="container190"><a name="190"></a><a href="#190" id="line190">     190</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$pageContent</span><span class="keyword">[</span><span class="default">$node</span><span class="keyword">[</span><span class="default">'name'</span><span class="keyword">]</span><span class="keyword">]</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="keyword">array</span><span class="keyword">(</span>                                                            </span>
+<span class="lineNum" id="container191"><a name="191"></a><a href="#191" id="line191">     191</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">'id'</span><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">=&gt;</span><span class="default">&nbsp;</span><span class="default">$node</span><span class="keyword">[</span><span class="default">'id'</span><span class="keyword">]</span><span class="keyword">,</span>                                                             </span>
+<span class="lineNum" id="container192"><a name="192"></a><a href="#192" id="line192">     192</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">'value'</span><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">=&gt;</span><span class="default">&nbsp;</span><span class="default">$node</span><span class="keyword">[</span><span class="default">'value'</span><span class="keyword">]</span><span class="keyword">,</span>                                                          </span>
+<span class="lineNum" id="container193"><a name="193"></a><a href="#193" id="line193">     193</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">'isInvokable'</span><span class="default">&nbsp;&nbsp;&nbsp;</span><span class="keyword">=&gt;</span><span class="default">&nbsp;</span><span class="default">$node</span><span class="keyword">[</span><span class="default">'isInvokable'</span><span class="keyword">]</span><span class="keyword">,</span>                                                    </span>
+<span class="lineNum" id="container194"><a name="194"></a><a href="#194" id="line194">     194</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">'params'</span><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">=&gt;</span><span class="default">&nbsp;</span><span class="default">$node</span><span class="keyword">[</span><span class="default">'params'</span><span class="keyword">]</span>                                                          </span>
+<span class="lineNum" id="container195"><a name="195"></a><a href="#195" id="line195">     195</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">)</span><span class="keyword">;</span>                                                                                              </span>
+<span class="lineNum" id="container196"><a name="196"></a><a href="#196" id="line196">     196</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span>                                                                                                   </span>
+<span class="lineNum" id="container197"><a name="197"></a><a href="#197" id="line197">     197</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span>                                                                                                       </span>
+<span class="lineNum" id="container198"><a name="198"></a><a href="#198" id="line198">     198</a> </span><span class="lineCov">              3 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">return</span><span class="default">&nbsp;</span><span class="default">array_merge</span><span class="keyword">(</span><span class="default">$pageFields</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="keyword">array</span><span class="keyword">(</span><span class="default">'_data'</span><span class="default">&nbsp;</span><span class="keyword">=&gt;</span><span class="default">&nbsp;</span><span class="default">$pageContent</span><span class="keyword">)</span><span class="keyword">)</span><span class="keyword">;</span>                                        </span>
 <span class="lineNum" id="container199"><a name="199"></a><a href="#199" id="line199">     199</a> </span><span class="lineDeadCode">                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span><span class="default">&nbsp;</span><span class="keyword">else</span><span class="default">&nbsp;</span><span class="keyword">{</span>                                                                                                    </span>
 <span class="lineNum" id="container200"><a name="200"></a><a href="#200" id="line200">     200</a> </span><span class="lineNoCov">              0 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">return</span><span class="default">&nbsp;</span><span class="default">null</span><span class="keyword">;</span>                                                                                            </span>
 <span class="lineNum" id="container201"><a name="201"></a><a href="#201" id="line201">     201</a> </span>                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span>                                                                                                           
@@ -659,7 +659,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://www.phpunit.de/" target="_top">PHPUnit 3.4.13</a> and <a href="http://www.xdebug.org/" target="_top">Xdebug 2.0.5</a> using <a href="http://www.php.net/" target="_top">PHP 5.2.10-2ubuntu6.4</a> at Tue Oct 19 14:03:14 MSD 2010.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://www.phpunit.de/" target="_top">PHPUnit 3.4.13</a> and <a href="http://www.xdebug.org/" target="_top">Xdebug 2.0.5</a> using <a href="http://www.php.net/" target="_top">PHP 5.2.10-2ubuntu6.4</a> at Wed Oct 27 17:29:26 MSD 2010.</td></tr>
     </table>
 
     <br />
@@ -850,88 +850,88 @@
           "footer": ""
         },
         "panel181": {
-          "header": "2 tests cover line 181",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 181",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel183": {
-          "header": "2 tests cover line 183",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 183",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel184": {
-          "header": "2 tests cover line 184",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 184",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel185": {
-          "header": "2 tests cover line 185",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 185",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel186": {
-          "header": "2 tests cover line 186",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 186",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel187": {
-          "header": "2 tests cover line 187",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 187",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel188": {
-          "header": "2 tests cover line 188",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 188",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel189": {
-          "header": "2 tests cover line 189",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 189",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel190": {
-          "header": "2 tests cover line 190",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 190",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel191": {
-          "header": "2 tests cover line 191",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 191",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel192": {
-          "header": "2 tests cover line 192",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 192",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel193": {
-          "header": "2 tests cover line 193",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 193",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel194": {
-          "header": "2 tests cover line 194",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 194",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel195": {
-          "header": "2 tests cover line 195",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 195",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel196": {
-          "header": "2 tests cover line 196",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 196",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel197": {
-          "header": "2 tests cover line 197",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 197",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel198": {
-          "header": "2 tests cover line 198",
-          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
+          "header": "3 tests cover line 198",
+          "body": "<ul><li class=\"testPassed\">Controller_PageControllerTest::testOpenAction</li><li class=\"testPassed\">ZFBugsTest::testGetInvokeArgReturnsCorrectly</li><li class=\"testPassed\">Admin_Controller_PageControllerTest::testUserCanSeeEditPageForm</li></ul>",
           "footer": ""
         },
         "panel217": {
