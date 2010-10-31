@@ -78,8 +78,6 @@ class Admin_UserController extends Soulex_Controller_Abstract
 
                 if($translate->isAvailable($lang)) {
                     $translate->setLocale($lang);
-                } else {
-                    $translate->setOptions(array('clear' => true));
                 }
 
                 $rowObj = $authAdapter->getResultRowObject(
