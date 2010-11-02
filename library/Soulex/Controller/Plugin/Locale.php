@@ -68,7 +68,13 @@ class Soulex_Controller_Plugin_Locale extends Zend_Controller_Plugin_Abstract
         $translate->setLocale($locale);
 
         Zend_Form::setDefaultTranslator($translate);
-        setcookie('lang', $locale->getLanguage(), null, '/');
+        /**
+         * disable setcookie for testing environment
+         * @fix errors without if clause
+         */
+        if('testing' != APPLICATION_ENV) {
+            setcookie('lang', $locale->getLanguage(), null, '/');
+        }
     }
 
     protected function _getDefaultLanguage(Zend_Translate $translate)
