@@ -13,6 +13,16 @@
  * that uses reflection properties
  *
  * @author miholeus
+ *
+ * @todo delete all implicit set and get methods, use __call instead
+ * @todo shift toArray method to parent class
+ * @todo remove all mapper invocations in class, for example find() method,
+ * shift all database logic to mapper class
+ * @todo use lazy instantiation
+ * @todo set property for modified values in parent class, insert/update
+ * only modified values
+ * @todo set object deletion in destruct method
+ *
  */
 class Admin_Model_User extends Admin_Model_Abstract
 {
@@ -28,180 +38,11 @@ class Admin_Model_User extends Admin_Model_Abstract
     protected $_registerDate;
     protected $_lastvisitDate;
     protected $_role;
-
     /**
      *
      * @var Admin_Model_UserMapper
      */
     protected $_mapperClass = 'Admin_Model_UserMapper';
-
-    public function getId()
-    {
-        return $this->_id;
-    }
-
-    public function setId($id)
-    {
-        $this->_id = $id;
-        return $this;
-    }
-
-    public function getUsername()
-    {
-        return $this->_username;
-    }
-
-    public function setUsername($name)
-    {
-        $this->_username = $name;
-        return $this;
-    }
-
-    public function getEmail()
-    {
-        return $this->_email;
-    }
-
-    public function setEmail($email)
-    {
-        $this->_email = $email;
-    }
-
-    public function getPassword()
-    {
-        return $this->_password;
-    }
-
-    public function setPassword($password)
-    {
-        $this->_password = $password;
-        return $this;
-    }
-
-    public function getFirstname()
-    {
-        return $this->_firstname;
-    }
-
-    public function setFirstname($name)
-    {
-        $this->_firstname = $name;
-        return $this;
-    }
-
-    public function getLastname()
-    {
-        return $this->_lastname;
-    }
-
-    public function setLastname($name)
-    {
-        $this->_lastname = $name;
-        return $this;
-    }
-
-    public function getEnabled()
-    {
-        return $this->_enabled;
-    }
-    /**
-     *
-     * @param bool $isEnabled
-     * @return Admin_Model_User
-     */
-    public function setEnabled($isEnabled)
-    {
-        $this->_enabled = (bool)$isEnabled;
-        return $this;
-    }
-
-    public function getRegisterDate()
-    {
-        return $this->_registerDate;
-    }
-    /**
-     *
-     * @param string $date [YYYY-MM-DD hh:i:s]
-     * @return Admin_Model_User
-     */
-    public function setRegisterDate($date)
-    {
-        $this->_registerDate = $date;
-        return $this;
-    }
-
-    public function getLastvisitDate()
-    {
-        return $this->_lastvisitDate;
-    }
-    /**
-     *
-     * @param string $date [YYYY-MM-DD hh:i:s]
-     * @return Admin_Model_User
-     */
-    public function setLastvisitDate($date)
-    {
-        $this->_lastvisitDate = $date;
-        return $this;
-    }
-
-    public function getRole()
-    {
-        return $this->_role;
-    }
-    /**
-     *
-     * @param string $role
-     * @return Admin_Model_User
-     */
-    public function setRole($role)
-    {
-        $this->_role = $role;
-        return $this;
-    }
-    /**
-     * Returns array of all protected properties that can be
-     * accessed through get*() methods
-     *
-     * @return array
-     */
-    public function toArray()
-    {
-        $arr = array();
-        $reflect = new Zend_Reflection_Class($this);
-        $getters = $reflect->getMethods(Zend_Reflection_Method::IS_PUBLIC);
-
-        $properties = $reflect->getProperties(
-                Zend_Reflection_Property::IS_PROTECTED);
-        $propertiesNames = array();
-        foreach($properties as $property) {
-            if(substr($property->getName(), 0, 1) == "_") {
-                if(substr($property->getName(), 1, 6) != "mapper") {
-                    $propertiesNames[] = substr($property->getName(), 1);
-                }
-            }
-        }
-
-        foreach($getters as $method) {
-            if(substr($method->getName(), 0, 3) == "get") {
-                if(PHP_VERSION_ID > 50302) {
-                    $propName = lcfirst(substr($method->getName(), 3));
-                } else {
-                    $propName = substr($method->getName(), 3);
-                    $propName{0} = strtolower($propName{0});
-                }
-                $methodName = $method->getName();
-
-                // check if there is protected property that
-                // corresponds to method name
-                if(in_array($propName, $propertiesNames)) {
-                    $arr[$propName] = $this->$methodName();
-                }
-            }
-        }
-
-        return $arr;
-    }
 
     public function save()
     {

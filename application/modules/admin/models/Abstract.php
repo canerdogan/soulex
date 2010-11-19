@@ -33,23 +33,81 @@ class Admin_Model_Abstract
         }
     }
 
-    public function __set($name, $value)
+    public function __call($name, $args)
     {
-        $method = 'set' . $name;
-        if(('mapper' == $name) || !method_exists($this, $method)) {
-            throw new Zend_Exception('Setting property error: Invalid property ' . $name . '!');
+        $accessor = substr($name, 0, 3);
+        $property = substr($name, 3);
+        switch($accessor) {
+            case 'get':
+                if('mapper' == strtolower($property) || !$property = $this->validateAttribute($property)) {
+                    throw new BadMethodCallException('Getting property error: Invalid property ' . $name . '!');
+                }
+                return $this->$property;
+            break;
+            case 'set':
+                if('mapper' == strtolower($property) || !$property = $this->validateAttribute($property)) {
+                    throw new BadMethodCallException('Setting property error: Invalid property ' . $name . '!');
+                }
+                $this->$property = $args[0];
+            break;
+            default:
+                throw new BadMethodCallException("Calling to unknown method or property "
+                        . $name);
         }
-        $this->$method($value);
     }
 
-    public function __get($name)
+    protected function validateAttribute($name)
     {
-        $method = 'get' . $name;
-        if(('mapper' == $name) || !method_exists($this, $method)) {
-            throw new Zend_Exception('Getting property error: Invalid property ' . $name . '!');
+        if (in_array("_" . strtolower($name),
+            array_keys(get_class_vars(get_class($this))))) {
+            return strtolower($name);
         }
-        return $this->$method();
+        return false;
     }
+    /**
+     * Returns array of all protected properties that can be
+     * accessed through get*() methods
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $arr = array();
+        $reflect = new Zend_Reflection_Class($this);
+        $getters = $reflect->getMethods(Zend_Reflection_Method::IS_PUBLIC);
+
+        $properties = $reflect->getProperties(
+                Zend_Reflection_Property::IS_PROTECTED);
+        $propertiesNames = array();
+        foreach($properties as $property) {
+            if(substr($property->getName(), 0, 1) == "_") {
+                if(substr($property->getName(), 1, 6) != "mapper") {
+                    $propertiesNames[] = substr($property->getName(), 1);
+                }
+            }
+        }
+
+        foreach($getters as $method) {
+            if(substr($method->getName(), 0, 3) == "get") {
+                if(PHP_VERSION_ID > 50302) {
+                    $propName = lcfirst(substr($method->getName(), 3));
+                } else {
+                    $propName = substr($method->getName(), 3);
+                    $propName{0} = strtolower($propName{0});
+                }
+                $methodName = $method->getName();
+
+                // check if there is protected property that
+                // corresponds to method name
+                if(in_array($propName, $propertiesNames)) {
+                    $arr[$propName] = $this->$methodName();
+                }
+            }
+        }
+
+        return $arr;
+    }
+
     /**
      * Sets new mapper as Admin_Model_DataMapper_Abstract
      *
@@ -88,7 +146,11 @@ class Admin_Model_Abstract
      */
     public function setOptions(array $options)
     {
-        $methods = get_class_methods($this);
+        $reflect = new Zend_Reflection_Class($this);
+        $props = $reflect->getProperties(
+                Zend_Reflection_Property::IS_PRIVATE |
+                Zend_Reflection_Property::IS_PUBLIC  |
+                Zend_Reflection_Property::IS_PROTECTED);
         foreach($options as $key => $value) {
             if(false !== ($pos = strpos($key, '_'))) {
                 $underscore_left = substr($key, 0, $pos);
@@ -96,7 +158,7 @@ class Admin_Model_Abstract
                 $key = $underscore_left . $underscore_right;
             }
             $method = 'set' . ucfirst($key);
-            if(in_array($method, $methods)) {
+            if(in_array($key, $props)) {
                 $this->$method($value);
             }
         }
