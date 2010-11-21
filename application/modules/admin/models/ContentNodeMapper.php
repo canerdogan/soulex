@@ -21,6 +21,10 @@ class Admin_Model_ContentNodeMapper extends Admin_Model_DataMapper_Abstract
      */
     protected $_dbTableClass = 'Admin_Model_DbTable_ContentNode';
 
+    protected function createFromArray(array $array) {
+        ;
+    }
+
     public function loadNodeInfo(Admin_Model_ContentNode $node)
     {
         $result = $this->getDbTable()->select()

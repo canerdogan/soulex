@@ -19,7 +19,9 @@ class Admin_Model_NewsMapper extends Admin_Model_DataMapper_Abstract
      * @var Admin_Model_DbTable_News
      */
     protected $_dbTableClass = 'Admin_Model_DbTable_News';
-
+    protected function createFromArray(array $array) {
+        ;
+    }
     public function save(Admin_Model_News $news)
     {
         $data = array(

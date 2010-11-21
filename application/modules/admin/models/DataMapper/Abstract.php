@@ -13,7 +13,7 @@
  *
  * @author miholeus
  */
-class Admin_Model_DataMapper_Abstract
+abstract class Admin_Model_DataMapper_Abstract
 {
     protected $_dbTable;
     protected $_dbTableClass;
@@ -22,6 +22,22 @@ class Admin_Model_DataMapper_Abstract
      * @var Zend_Db_Table_Select
      */
     protected $_select;
+    /**
+     * Creates object from array
+     * @uses {createFromArray()} method
+     * @param array $array
+     * @return Admin_Model_Abstract
+     */
+    public function createObject($array)
+    {
+        $object = $this->createFromArray($array);
+        return $object;
+    }
+    /**
+     * This method should be realized to create objects
+     */
+    protected abstract function createFromArray(array $array);
+
     /**
      * Set table data gateway
      *
@@ -34,14 +50,14 @@ class Admin_Model_DataMapper_Abstract
             $dbTable = new $dbTable();
         }
         if (!$dbTable instanceof Zend_Db_Table_Abstract) {
-            throw new Zend_Exception('Invalid table data gateway provided');
+            throw new InvalidArgumentException('Invalid table data gateway provided');
         }
         $this->_dbTable = $dbTable;
         return $this;
     }
     /**
      * Get table data gateway
-     * 
+     *
      * @return Zend_Db_Table_Abstract
      */
     public function getDbTable()
@@ -51,7 +67,10 @@ class Admin_Model_DataMapper_Abstract
         }
         return $this->_dbTable;
     }
-
+    /**
+     *
+     * @return Zend_Db_Table_Select
+     */
     public function getSelect()
     {
         if(null === $this->_select) {
@@ -63,21 +82,22 @@ class Admin_Model_DataMapper_Abstract
      * Sets ordering state
      *
      * @param string $spec the column and direction to sort by
-     * @return void
+     * @return Admin_Model_DataMapper_Abstract
      */
     public function order($spec)
     {
         $this->_select = $this->getSelect();
         $this->_select->order($spec);
+        return $this;
     }
     /**
 	 * Fetches paginator
 	 *
-     * @return Zend_Paginator_Adapter_DbSelect
+     * @return Zend_Paginator
 	 */
-    public function fetchPaginator()
+    public function paginate()
     {
         $adapter = new Zend_Paginator_Adapter_DbSelect($this->_select);
-        return $adapter;
+        return new Zend_Paginator($adapter);
     }
 }

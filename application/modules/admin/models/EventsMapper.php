@@ -19,7 +19,9 @@ class Admin_Model_EventsMapper extends Admin_Model_DataMapper_Abstract
      * @var Admin_Model_DbTable_Events
      */
     protected $_dbTableClass = 'Admin_Model_DbTable_Events';
-
+    protected function createFromArray(array $array) {
+        ;
+    }
     public function save(Admin_Model_Events $Events)
     {
         $data = array(

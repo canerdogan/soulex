@@ -10,21 +10,34 @@
 /**
  * Abstract object
  * It has flexible interfaces
- * to set/get mapper objects and class variables
+ * to set/get class variables
+ * ArrayAccess interfaces gives possibility to access protected properties
+ * as array
  *
  * @author miholeus
  */
-class Admin_Model_Abstract
+abstract class Admin_Model_Abstract implements ArrayAccess
 {
-    /**
-     *
-     * @var Admin_Model_DataMapper_Abstract
-     */
-    protected $_mapper = null;
-    /**
-     * Needs to be overrided
-     */
-    protected $_mapperClass;
+
+    public function offsetExists($offset)
+    {
+        return is_callable(array($this, "get" . ucfirst($offset)));
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->{"get" . ucfirst($offset)}();
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        $this->{"set" . ucfirst($offset)}($value);
+    }
+
+    public function offsetUnset($offset)
+    {
+        $this->{"set" . ucfirst($offset)}(null);
+    }
 
     public function __construct(array $options = null)
     {
@@ -49,6 +62,7 @@ class Admin_Model_Abstract
                     throw new BadMethodCallException('Setting property error: Invalid property ' . $name . '!');
                 }
                 $this->$property = $args[0];
+                return $this;
             break;
             default:
                 throw new BadMethodCallException("Calling to unknown method or property "
@@ -58,9 +72,10 @@ class Admin_Model_Abstract
 
     protected function validateAttribute($name)
     {
-        if (in_array("_" . strtolower($name),
+        $name = $this->_lcfirst($name);
+        if (in_array($name,
             array_keys(get_class_vars(get_class($this))))) {
-            return strtolower($name);
+            return $name;
         }
         return false;
     }
@@ -74,61 +89,23 @@ class Admin_Model_Abstract
     {
         $arr = array();
         $reflect = new Zend_Reflection_Class($this);
-        $getters = $reflect->getMethods(Zend_Reflection_Method::IS_PUBLIC);
 
         $properties = $reflect->getProperties(
                 Zend_Reflection_Property::IS_PROTECTED);
         $propertiesNames = array();
         foreach($properties as $property) {
-            if(substr($property->getName(), 0, 1) == "_") {
-                if(substr($property->getName(), 1, 6) != "mapper") {
-                    $propertiesNames[] = substr($property->getName(), 1);
-                }
+            if(substr($property->getName(), 0, 1) != "_" &&
+                    substr($property->getName(), 1, 6) != "mapper") {
+                $propertiesNames[] = $property->getName();
             }
         }
 
-        foreach($getters as $method) {
-            if(substr($method->getName(), 0, 3) == "get") {
-                if(PHP_VERSION_ID > 50302) {
-                    $propName = lcfirst(substr($method->getName(), 3));
-                } else {
-                    $propName = substr($method->getName(), 3);
-                    $propName{0} = strtolower($propName{0});
-                }
-                $methodName = $method->getName();
-
-                // check if there is protected property that
-                // corresponds to method name
-                if(in_array($propName, $propertiesNames)) {
-                    $arr[$propName] = $this->$methodName();
-                }
-            }
+        foreach($propertiesNames as $prop) {
+            $methodName = "get" . ucfirst($prop);
+            $arr[$prop] = $this->$methodName();
         }
 
         return $arr;
-    }
-
-    /**
-     * Sets new mapper as Admin_Model_DataMapper_Abstract
-     *
-     * @param string $mapper
-     * @return Admin_Model_DataMapper_Abstract
-     */
-    public function setMapper($mapper)
-    {
-        $this->_mapper = $mapper;
-        return $this;
-    }
-    /**
-     *
-     * @return Admin_Model_DataMapper_Abstract
-     */
-    public function getMapper()
-    {
-        if (null === $this->_mapper) {
-            $this->setMapper(new $this->_mapperClass);
-        }
-        return $this->_mapper;
     }
     /**
      * Using setXXX() methods to set values
@@ -146,11 +123,7 @@ class Admin_Model_Abstract
      */
     public function setOptions(array $options)
     {
-        $reflect = new Zend_Reflection_Class($this);
-        $props = $reflect->getProperties(
-                Zend_Reflection_Property::IS_PRIVATE |
-                Zend_Reflection_Property::IS_PUBLIC  |
-                Zend_Reflection_Property::IS_PROTECTED);
+        $propNames = array_keys(get_class_vars(get_class($this)));
         foreach($options as $key => $value) {
             if(false !== ($pos = strpos($key, '_'))) {
                 $underscore_left = substr($key, 0, $pos);
@@ -158,29 +131,20 @@ class Admin_Model_Abstract
                 $key = $underscore_left . $underscore_right;
             }
             $method = 'set' . ucfirst($key);
-            if(in_array($key, $props)) {
+            if(in_array($key, $propNames)) {
                 $this->$method($value);
             }
         }
         return $this;
     }
-    /**
-     *
-     * @param string $spec the column and direction to sort by
-     * @return Admin_Model_User
-     */
-    public function order($spec)
+
+    private function _lcfirst($value)
     {
-        $this->getMapper()->order($spec);
-        return $this;
-    }
-    /**
-     *
-     * @return Zend_Paginator
-     */
-    public function paginate()
-    {
-        $adapter = $this->getMapper()->fetchPaginator();
-        return new Zend_Paginator($adapter);
+        if(PHP_VERSION_ID > 50302) {
+            $value = lcfirst($value);
+        } else {
+            $value{0} = strtolower($value{0});
+        }
+        return $value;
     }
 }

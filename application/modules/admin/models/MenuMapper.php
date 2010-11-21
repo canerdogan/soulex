@@ -19,6 +19,9 @@ class Admin_Model_MenuMapper extends Admin_Model_DataMapper_Abstract
      * @var Admin_Model_DbTable_Menu
      */
     protected $_dbTableClass = 'Admin_Model_DbTable_Menu';
+    protected function createFromArray(array $array) {
+        ;
+    }
 	/**
 	 * Fetches menus
 	 *

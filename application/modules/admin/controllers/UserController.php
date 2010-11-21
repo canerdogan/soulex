@@ -47,6 +47,7 @@ class Admin_UserController extends Soulex_Controller_Abstract
             }
 
             $mdlUser = new Admin_Model_User();
+            $userMapper = new Admin_Model_UserMapper();
             $data = $userForm->getValues();
 
             //set up the auth adapter
@@ -89,7 +90,7 @@ class Admin_UserController extends Soulex_Controller_Abstract
                 $storage = $auth->getStorage();
                 $storage->write($rowObj);
                 $row = $authAdapter->getResultRowObject('id');
-                $mdlUser->updateLastVisitDate($row->id);
+                $userMapper->updateLastVisitDate($row->id);
                 
                 return !empty($return_path) ?
                          $this->_redirect($return_path) :
@@ -122,7 +123,8 @@ class Admin_UserController extends Soulex_Controller_Abstract
                 try {
 
                     $userModel = new Admin_Model_User($userForm->getValues());
-                    $userModel->save();
+                    $userMapper = new Admin_Model_UserMapper();
+                    $userMapper->save($userModel);
 
                     $this->disableContentRender();
                     return $this->_forward('list');
@@ -145,7 +147,7 @@ class Admin_UserController extends Soulex_Controller_Abstract
     
     public function listAction ()
     {
-        $userModel = new Admin_Model_User();
+        $userMapper = new Admin_Model_UserMapper();
         $this->view->orderParams = $this->_getOrderParams();
         $order = join(' ', $this->view->orderParams);
         $this->view->filter = array();// view property for where statements
@@ -153,8 +155,8 @@ class Admin_UserController extends Soulex_Controller_Abstract
         if($this->_request->isPost()) {
             $post = $this->_request->getPost();
 
-            $paginator = $userModel->selectEnabled($post['filter_enabled'])
-                                ->selectRole($post['filter_role'])
+            $paginator = $userMapper->enabled($post['filter_enabled'])
+                                ->role($post['filter_role'])
                                 ->search($post['filter_search'])
                                 ->order($order)->paginate();
 
@@ -163,7 +165,7 @@ class Admin_UserController extends Soulex_Controller_Abstract
 
             if(is_array($post['cid'])) {
                 try {
-                    $userModel->deleteBulk($post['cid']);
+                    $userMapper->deleteBulk($post['cid']);
                 } catch (Exception $e) {
                     $this->renderSubmenu(false);
                     $this->renderError("User deletion failed with the following error: "
@@ -171,7 +173,7 @@ class Admin_UserController extends Soulex_Controller_Abstract
                 }
             }
         } else {
-            $paginator = $userModel->order($order)->paginate();
+            $paginator = $userMapper->order($order)->paginate();
         }
         
         // show items per page
@@ -213,7 +215,8 @@ class Admin_UserController extends Soulex_Controller_Abstract
                     $userForm->removeElement('retpath');
 
                     $userModel = new Admin_Model_User($userForm->getValues());
-                    $userModel->save();
+                    $userMapper = new Admin_Model_UserMapper();
+                    $userMapper->save($userModel);
 
                     $this->disableContentRender();
 
@@ -243,8 +246,8 @@ class Admin_UserController extends Soulex_Controller_Abstract
                 $this->renderToolbar(false);
                 return $this->_forward('list');
             }
-            $userModel = new Admin_Model_User();
-            $currentUser = $userModel->find($id);
+            $userMapper = new Admin_Model_UserMapper();
+            $currentUser = $userMapper->findById($id);
             $userForm->populate($currentUser->toArray());
             // disable username field
             $userForm->getElement('username')->setAttrib('disabled', 'disabled');
@@ -261,9 +264,10 @@ class Admin_UserController extends Soulex_Controller_Abstract
     public function deleteAction()
     {
         $id = $this->_request->getParam('id');
-        $userModel = new Admin_Model_User();
+        $userMapper = new Admin_Model_UserMapper();
         try {
-            $userModel->delete($id);
+            $userMapper->delete($id);
+            unset($userMapper); // only here user is deleted
             $this->disableContentRender();
             return $this->_forward('list');
         } catch (Exception $e) {

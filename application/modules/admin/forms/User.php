@@ -36,6 +36,7 @@ class Admin_Form_User extends Admin_Form_Template_Simple
         // password
         $password = $this->createElement('password', 'password');
         $password->setLabel('Password: ');
+        $password->setAttrib('autocomplete', 'off');
         $this->addElement($password);
 
         // confirm password
