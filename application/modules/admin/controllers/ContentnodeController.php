@@ -29,7 +29,8 @@ class Admin_ContentnodeController extends Zend_Controller_Action
             'pageId'    => $pageId,
             'name'      => $node
         ));
-        $mdlContentNode->loadNode();
+        $mdlContentNodeMapper = new Admin_Model_ContentNodeMapper();
+        $mdlContentNodeMapper->loadNodeInfo($mdlContentNode);
         
         $this->view->node = $mdlContentNode;
     }
@@ -53,10 +54,11 @@ class Admin_ContentnodeController extends Zend_Controller_Action
                 'pageId'    => $pageId,
                 'name'      => $node
             ));
+            $mdlContentNodeMapper = new Admin_Model_ContentNodeMapper();
 
             $mdlPage = new Model_Page();
             $allPages = $mdlPage->fetchAll();
-            $isSucceeded = $mdlContentNode->copyToPages($allPages);
+            $isSucceeded = $mdlContentNodeMapper->copyToPages($allPages, $mdlContentNode);
         }
         echo Zend_Json_Encoder::encode(array('success' => $isSucceeded));
     }

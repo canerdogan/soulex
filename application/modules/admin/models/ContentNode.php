@@ -15,44 +15,30 @@
  */
 class Admin_Model_ContentNode extends Admin_Model_Abstract
 {
-    protected $_id;
-    protected $_name;
-    protected $_value;
-    protected $_isInvokable;
-    protected $_params;
-    protected $_page_id;
-
-    /**
-     *
-     * @var Admin_Model_ContentNodeMapper
-     */
-    protected $_mapperClass = 'Admin_Model_ContentNodeMapper';
-
-    public function getId()
-    {
-        return $this->_id;
-    }
+    protected $id;
+    protected $name;
+    protected $value;
+    protected $isInvokable;
+    protected $params;
+    protected $page_id;
 
     public function setId($id)
     {
-        $this->_id = $id;
+        if(!$this->id) {
+            $this->id = $id;
+        }
         return $this;
     }
 
-    public function getName()
+    public function setPageId($id)
     {
-        return $this->_name;
-    }
-
-    public function setName($name)
-    {
-        $this->_name = $name;
+        $this->page_id = $id;
         return $this;
     }
 
-    public function getValue()
+    public function getPageId()
     {
-        return $this->_value;
+        return $this->page_id;
     }
 
     public function getContentValue($param = null)
@@ -67,37 +53,9 @@ class Admin_Model_ContentNode extends Admin_Model_Abstract
         }
     }
 
-    public function setValue($value)
-    {
-        $this->_value = $value;
-        return $this;
-    }
-
-    public function getIsInvokable()
-    {
-        return $this->_isInvokable;
-    }
-
-    public function setIsInvokable($isInvokable)
-    {
-        $this->_isInvokable = $isInvokable;
-        return $this;
-    }
-
-    public function getPageId()
-    {
-        return $this->_page_id;
-    }
-
-    public function setPageId($pageId)
-    {
-        $this->_page_id = $pageId;
-        return $this;
-    }
-
     public function getParams()
     {
-        return unserialize($this->_params);
+        return unserialize($this->params);
     }
     /**
      *
@@ -106,62 +64,7 @@ class Admin_Model_ContentNode extends Admin_Model_Abstract
      */
     public function setParams($params)
     {
-        $this->_page_id = serialize($params);
+        $this->params = serialize($params);
         return $this;
-    }
-    /**
-     *
-     * @return Admin_Model_ContentNode
-     */
-    public function loadNode()
-    {
-        try {
-            $this->getMapper()->loadNodeInfo($this);
-        } catch (Zend_Exception $e) {
-            
-        }
-        return $this;
-    }
-    /**
-     * Copy node to pages $pagesToInsert and update node info
-     * on pages $pagesToUpdate
-     *
-     * @param array $allPages
-     * @return bool succeeded/not succeeded
-     */
-    public function copyToPages(array $allPages)
-    {
-        if(null === $this->getName()) {
-            throw new Zend_Exception('Node name can not be null');
-        }
-
-        $pageIds = array();
-        $currentPage = $this->getPageId();
-
-        foreach($allPages as $page) {
-            $pageIds[] = $page['id'];
-        }
-        // exclude current page id
-        $pageIds = array_diff($pageIds, array($currentPage));
-
-        $pagesToUpdate = $this->getMapper()->findPagesWhereNodeExists(
-                $this->getName());
-        // exclude current page id
-        $pagesToUpdate = array_diff($pagesToUpdate, array($currentPage));
-
-        $pagesToInsert = array_diff($pageIds, $pagesToUpdate);
-        
-        return $this->getMapper()->copyNodeToPages($this,
-                $pagesToInsert, $pagesToUpdate);
-    }
-    /**
-     * Delete node by its id
-     *
-     * @param int $id
-     * @return bool true if node was deleted, false otherwise
-     */
-    public function delete($id)
-    {
-        return (bool)$this->getMapper()->delete($id);
     }
 }

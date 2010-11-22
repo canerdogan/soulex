@@ -73,6 +73,9 @@ abstract class Admin_Model_Abstract implements ArrayAccess
     protected function validateAttribute($name)
     {
         $name = $this->_lcfirst($name);
+
+//        $name = $this->transformName($name);
+
         if (in_array($name,
             array_keys(get_class_vars(get_class($this))))) {
             return $name;
@@ -131,7 +134,7 @@ abstract class Admin_Model_Abstract implements ArrayAccess
                 $key = $underscore_left . $underscore_right;
             }
             $method = 'set' . ucfirst($key);
-            if(in_array($key, $propNames)) {
+            if(in_array($key, $propNames) || is_callable(array($this, $method))) {
                 $this->$method($value);
             }
         }
@@ -146,5 +149,32 @@ abstract class Admin_Model_Abstract implements ArrayAccess
             $value{0} = strtolower($value{0});
         }
         return $value;
+    }
+    /**
+     * Replace capitalized characters to lower case with underscore
+     * before them
+     * Transform string like someContent to some_content
+     * or someContentMayBeHere to some_content_may_be_here
+     *
+     * @param string $name
+     * @return string
+     */
+    private function transformName($name)
+    {
+        $lowered = strtolower($name);
+        $char_buff_name = preg_split('//', $name, -1, PREG_SPLIT_NO_EMPTY);
+        $char_buff_lowered = preg_split('//', $lowered, -1, PREG_SPLIT_NO_EMPTY);
+        $diff = array_diff($char_buff_name, $char_buff_lowered);
+
+        if(count($diff) > 0) {// found difference
+            foreach($diff as $chr) {
+                $pos = strpos($name, $chr);
+                $begin = substr($name, 0, $pos);
+                $end = substr($name, $pos);
+                $end{0} = strtolower($end{0});
+                $name = $begin . '_' . $end;
+            }
+        }
+        return $name;
     }
 }

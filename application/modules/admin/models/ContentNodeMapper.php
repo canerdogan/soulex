@@ -24,7 +24,11 @@ class Admin_Model_ContentNodeMapper extends Admin_Model_DataMapper_Abstract
     protected function createFromArray(array $array) {
         ;
     }
-
+    /**
+     * Loads node information
+     *
+     * @param Admin_Model_ContentNode $node
+     */
     public function loadNodeInfo(Admin_Model_ContentNode $node)
     {
         $result = $this->getDbTable()->select()
@@ -34,7 +38,7 @@ class Admin_Model_ContentNodeMapper extends Admin_Model_DataMapper_Abstract
         $row = $this->getDbTable()->fetchRow($result);
 
         if(!$row) {
-            throw new Zend_Exception("Node with name " . $node->getName()
+            throw new InvalidArgumentException("Node with name " . $node->getName()
                     . " on page " . $node->getPageId() . " was not setted up!");
         }
 
@@ -46,7 +50,41 @@ class Admin_Model_ContentNodeMapper extends Admin_Model_DataMapper_Abstract
              ->setPageId($row->page_id);
     }
 
-    public function copyNodeToPages(Admin_Model_ContentNode $node,
+    /**
+     * Copy node to pages $pagesToInsert and update node info
+     * on pages $pagesToUpdate
+     *
+     * @param array $allPages
+     * @param Admin_Model_ContentNode $node
+     * @return bool succeeded/not succeeded
+     */
+    public function copyToPages(array $allPages, Admin_Model_ContentNode $node)
+    {
+        if(null === $node->getName()) {
+            throw new UnexpectedValueException('Node name can not be null');
+        }
+
+        $pageIds = array();
+        $currentPage = $node->getPageId();
+
+        foreach($allPages as $page) {
+            $pageIds[] = $page['id'];
+        }
+        // exclude current page id
+        $pageIds = array_diff($pageIds, array($currentPage));
+
+        $pagesToUpdate = $this->findPagesWhereNodeExists(
+                $node->getName());
+        // exclude current page id
+        $pagesToUpdate = array_diff($pagesToUpdate, array($currentPage));
+
+        $pagesToInsert = array_diff($pageIds, $pagesToUpdate);
+
+        return $this->copyNodeToPages($node,
+                $pagesToInsert, $pagesToUpdate);
+    }
+
+    private function copyNodeToPages(Admin_Model_ContentNode $node,
             array $pagesToInsert, array $pagesToUpdate)
     {
          $result = $this->getDbTable()->select()
