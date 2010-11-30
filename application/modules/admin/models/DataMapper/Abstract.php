@@ -97,7 +97,7 @@ abstract class Admin_Model_DataMapper_Abstract
 	 */
     public function paginate()
     {
-        $adapter = new Zend_Paginator_Adapter_DbSelect($this->_select);
+        $adapter = new Zend_Paginator_Adapter_DbSelect($this->getSelect());
         return new Zend_Paginator($adapter);
     }
 }
