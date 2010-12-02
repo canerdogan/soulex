@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package   Soulex
  * @copyright Copyright (C) 2010 - Present, miholeus
@@ -12,36 +13,35 @@
  *
  * @author miholeus
  */
-class Admin_NewsController extends Soulex_Controller_Abstract
-{
-    public function indexAction()
-    {
-        $newsService = new Soulex_Components_News_NewsService();
+class Admin_NewsController extends Soulex_Controller_Abstract {
+
+    public function indexAction() {
+        $newsMapper = new Admin_Model_NewsMapper();
 
         $this->view->orderParams = $this->_getOrderParams();
         $order = join(' ', $this->view->orderParams);
-        $this->view->filter = array();// view property for where statements
+        $this->view->filter = array(); // view property for where statements
         $limit = $this->_getParam('limit', 20);
 
-        if($this->_request->isPost()) {
+        if ($this->_request->isPost()) {
             $post = $this->_request->getPost();
 
-            $paginator = $newsService->selectEnabled($post['filter_published'])
-                                ->search($post['filter_search'])
-                                ->order($order)->paginate();
-            $this->view->filter['published'] = $post['filter_published'];
+            $paginator = $newsMapper->published($post['filter_published'])
+                            ->search($post['filter_search'])
+                            ->order($order)->paginate();
+            $this->view->filter['enabled'] = $post['filter_published'];
 
             try {
-                if(is_array($post['cid'])
-                        && count($post['cid']) == $post['boxchecked']) {
+                if (is_array($post['cid'])) {
+                    if(count($post['cid']) != $post['boxchecked']) {
+                        throw new LengthException("Checksum is not correct");
+                    }
                     try {
-                        $newsService->deleteBulk($post['cid']);
+                        $newsMapper->deleteBulk($post['cid']);
                         return $this->_redirect('/admin/news');
                     } catch (Exception $e) {
-                        throw new Exception($e->getMessage(), $e->getCode(), $e);
+                        throw new RuntimeException($e->getMessage(), $e->getCode(), $e);
                     }
-                } else {
-                    throw new Exception("Checksum is not correct");
                 }
             } catch (Exception $e) {
                 $this->renderSubmenu(false);
@@ -49,11 +49,11 @@ class Admin_NewsController extends Soulex_Controller_Abstract
                         . $e->getMessage());
             }
         } else {
-            $paginator = $newsService->order($order)->paginate();
+            $paginator = $newsMapper->order($order)->paginate();
         }
 
         // show items per page
-        if($limit != 0) {
+        if ($limit != 0) {
             $paginator->setItemCountPerPage($limit);
         } else {
             $paginator->setItemCountPerPage(-1);
@@ -69,35 +69,34 @@ class Admin_NewsController extends Soulex_Controller_Abstract
     {
         $frmNews = new Admin_Form_News();
 
+        if ($this->getRequest()->isPost() &&
+                $frmNews->isValid($this->getRequest()->getPost())) {
+            $data = array(
+                'id' => $frmNews->getValue('id'),
+                'title' => $frmNews->getValue('title'),
+                'short_description' => $frmNews->getValue('short_description'),
+                'detail_description' => $frmNews->getValue('detail_description'),
+                'published' => $frmNews->getValue('published'),
+                'updated_at' => date("Y-m-d H:i:s"),
+                'published_at' => $frmNews->getValue('published_at')
+            );
 
-        if($this->getRequest()->isPost() &&
-            $frmNews->isValid($this->getRequest()->getPost())) {
-                $data = array(
-                    'id' => $frmNews->getValue('id'),
-                    'title' => $frmNews->getValue('title'),
-                    'shortDescription' => $frmNews->getValue('short_description'),
-                    'detailDescription' => $frmNews->getValue('detail_description'),
-                    'published' => $frmNews->getValue('published'),
-                    'updatedAt' => date("Y-m-d H:i:s"),
-                    'publishedAt' => $frmNews->getValue('published_at')
-                );
-                $newsService = new Soulex_Components_News_NewsService($data);
-                $newsService->save();
+            try {
+                $news = new Admin_Model_News($data);
+                $newsMapper = new Admin_Model_NewsMapper();
+                $newsMapper->save($news);
 
                 $this->disableContentRender();
-
                 return $this->_forward('index');
+            } catch (Exception $e) {
+                $this->renderSubmenu(false);
+                $this->renderError("News update failed with the following error: "
+                        . $e->getMessage());
+            }
         } else {
-            $newsService = new Soulex_Components_News_NewsService();
-            $currentNews = $newsService->findById($this->getRequest()->getParam('id'));
-            $frmNews->populate(array(
-               'id' => $currentNews->getId(),
-                'title' => $currentNews->getTitle(),
-                'short_description' => $currentNews->getShortDescription(),
-                'detail_description' => $currentNews->getDetailDescription(),
-                'published' => $currentNews->getPublished(),
-                'published_at' => $currentNews->getPublishedAt()
-            ));
+            $newsMapper = new Admin_Model_NewsMapper();
+            $currentNews = $newsMapper->findById($this->getRequest()->getParam('id'));
+            $frmNews->populate($currentNews->toArray());
         }
 
         $this->view->form = $frmNews;
@@ -106,31 +105,36 @@ class Admin_NewsController extends Soulex_Controller_Abstract
         $this->view->render('news/edit.phtml');
     }
 
-    public function createAction()
-    {
+    public function createAction() {
         $frmNews = new Admin_Form_News();
 
-        if($this->getRequest()->isPost() &&
-               $frmNews->isValid($this->getRequest()->getPost()) ) {
+        if ($this->getRequest()->isPost() &&
+                $frmNews->isValid($this->getRequest()->getPost())) {
             $data = array(
                 'title' => $frmNews->getValue('title'),
-                'shortDescription' => $frmNews->getValue('short_description'),
-                'detailDescription' => $frmNews->getValue('detail_description'),
+                'short_description' => $frmNews->getValue('short_description'),
+                'detail_description' => $frmNews->getValue('detail_description'),
                 'published' => $frmNews->getValue('published'),
-                'createdAt' => date("Y-m-d H:i:s"),
-                'publishedAt' => $frmNews->getValue('published_at')
+                'created_at' => date("Y-m-d H:i:s"),
+                'published_at' => $frmNews->getValue('published_at')
             );
 
-            $newsService = new Soulex_Components_News_NewsService($data);
-            $newsService->save();
+            try {
+                $news = new Admin_Model_News($data);
+                $newsMapper = new Admin_Model_NewsMapper();
+                $newsMapper->save($news);
 
-            $this->disableContentRender();
-
-            return $this->_forward('index');
+                $this->disableContentRender();
+                return $this->_forward('index');
+            } catch (Exception $e) {
+                $this->renderSubmenu(false);
+                $this->renderError("News creation failed with the following error: "
+                        . $e->getMessage());
+            }
         }
 
         $this->view->form = $frmNews;
-        
+
         $this->renderSubmenu(false);
         $this->view->render('news/create.phtml');
     }
@@ -142,15 +146,16 @@ class Admin_NewsController extends Soulex_Controller_Abstract
         /**
          * sets default order if model does not have proper field
          */
-        if(!is_callable(array('Admin_Model_News',
-            'get' . ucfirst($order)))) {
+        if (!is_callable(array(new Admin_Model_News(),
+                    'get' . ucfirst($order)))) {
             $order = 'title';
         }
 
-        if(!in_array(strtolower($direction), array('asc', 'desc'))) {
+        if (!in_array(strtolower($direction), array('asc', 'desc'))) {
             $direction = 'desc';
         }
 
         return array('order' => $order, 'direction' => $direction);
     }
+
 }

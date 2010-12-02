@@ -131,8 +131,8 @@ class Admin_UserController extends Soulex_Controller_Abstract
 
                 } catch (Exception $e) {
                     $this->renderError(
-                            "User creation failed with the following error: "
-                            . $e->getMessage());
+                        "User creation failed with the following error: "
+                        . $e->getMessage());
                 }
 
             }

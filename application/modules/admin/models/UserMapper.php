@@ -141,10 +141,10 @@ class Admin_Model_UserMapper extends Admin_Model_DataMapper_Abstract
         if (0 == count($result)) {
             throw new UnexpectedValueException("User by id " . $id . " not found");
         }
-        $user = new Admin_Model_User();
+        $object = new Admin_Model_User();
         $row = $result->current();
-        $user->setOptions($row->toArray());
-        return $user;
+        $object->setOptions($row->toArray());
+        return $object;
     }
 
     public function updateLastVisitDate($userId)

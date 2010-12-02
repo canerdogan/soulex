@@ -1,9 +1,9 @@
 <?php
-if($this->news instanceof Soulex_Components_News_NewsModel) {
+if($this->news instanceof Admin_Model_News) {
     ?>
     <h3><?=$this->news->getTitle()?></h3>
     <?php
-    echo $this->news->getDetailDescription();
+    echo $this->news->getDetail_description();
     ?>
     <br />
     <p align="right">

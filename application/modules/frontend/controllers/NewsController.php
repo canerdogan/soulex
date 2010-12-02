@@ -18,7 +18,7 @@ class Frontend_NewsController extends Zend_Controller_Action
     public function singleAction()
     {
         $id = $this->_getParam(1);
-        $mdlNews = new Soulex_Components_News_NewsService();
+        $mdlNews = new Admin_Model_NewsMapper();
         $this->view->news = $mdlNews->findById($id);
 
         $this->view->title = $this->view->news->getTitle();
@@ -37,10 +37,10 @@ class Frontend_NewsController extends Zend_Controller_Action
         $limit = 20;
         $page = $this->_request->getParam('page', 1);
 
-        $newsService = new Soulex_Components_News_NewsService();
-        $adapter = $newsService->fetchPaginator('published = 1','published_at DESC');
+        $newsMapper = new Admin_Model_NewsMapper();
+        $paginator = $newsMapper->published(1)->order('published_at DESC')
+                ->paginate();
 
-        $paginator = new Zend_Paginator($adapter);
         $paginator->setItemCountPerPage($limit);
 
         $paginator->setCurrentPageNumber($page);
@@ -55,11 +55,10 @@ class Frontend_NewsController extends Zend_Controller_Action
 
     public function sidebarAction()
     {
-        $mdlNews = new Soulex_Components_News_NewsService();
-        $this->view->news = $mdlNews->fetchAll('published = 1', 3, 'published_at DESC');
+        $newsMapper = new Admin_Model_NewsMapper();
+        $this->view->news = $newsMapper->fetchAll('published = 1', 3, 'published_at DESC');
 
         $responseSegment = $this->_getParam('_responseSegment');
         $this->_helper->viewRenderer->setResponseSegment($responseSegment);
     }
-
 }

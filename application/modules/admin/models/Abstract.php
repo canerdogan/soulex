@@ -118,7 +118,7 @@ abstract class Admin_Model_Abstract implements ArrayAccess
      *
      * Examples:
      * <title> = setTitle()
-     * <menu_id> = setMenuId()
+     * <menu_id> = setMenu_id()
      *
      * @param array $options of object variables
      *
@@ -128,11 +128,6 @@ abstract class Admin_Model_Abstract implements ArrayAccess
     {
         $propNames = array_keys(get_class_vars(get_class($this)));
         foreach($options as $key => $value) {
-            if(false !== ($pos = strpos($key, '_'))) {
-                $underscore_left = substr($key, 0, $pos);
-                $underscore_right = ucfirst(substr($key, $pos + 1));
-                $key = $underscore_left . $underscore_right;
-            }
             $method = 'set' . ucfirst($key);
             if(in_array($key, $propNames) || is_callable(array($this, $method))) {
                 $this->$method($value);

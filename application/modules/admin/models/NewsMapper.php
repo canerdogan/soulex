@@ -19,20 +19,15 @@ class Admin_Model_NewsMapper extends Admin_Model_DataMapper_Abstract
      * @var Admin_Model_DbTable_News
      */
     protected $_dbTableClass = 'Admin_Model_DbTable_News';
-    protected function createFromArray(array $array) {
-        ;
+
+    protected function createFromArray(array $array)
+    {
+        return new Admin_Model_News($array);
     }
+
     public function save(Admin_Model_News $news)
     {
-        $data = array(
-            'title'                 => $news->getTitle(),
-            'short_description'     => $news->getShortDescription(),
-            'detail_description'    => $news->getDetailDescription(),
-            'published'             => $news->getPublished(),
-            'created_at'            => $news->getCreatedAt(),
-            'updated_at'            => $news->getUpdatedAt(),
-            'published_at'          => $news->getPublishedAt()
-        );
+        $data = $news->toArray();
 
         if (null === ($id = $news->getId())) {
             $this->getDbTable()->insert($data);
@@ -41,23 +36,27 @@ class Admin_Model_NewsMapper extends Admin_Model_DataMapper_Abstract
         } else {
             $this->getDbTable()->update($data, array('id = ?' => $id));
         }
-        return $news;
     }
-    public function find($id, Admin_Model_News $news)
+
+    /**
+     * Finds data row by id and returns new object
+     * If object was not found then we set initial null values
+     * to object
+     *
+     * @param int $id
+     * @throws UnexpectedValueException if news was not found
+     * @return Admin_Model_News
+     */
+    public function findById($id)
     {
         $result = $this->getDbTable()->find($id);
         if (0 == count($result)) {
-            throw new Zend_Exception("News by id " . $id . " not found");
+            throw new UnexpectedValueException("News by id " . $id . " not found");
         }
+        $object = new Admin_Model_News();
         $row = $result->current();
-        $news->setId($row->id)
-                  ->setTitle($row->title)
-                  ->setShortDescription($row->short_description)
-                  ->setDetailDescription($row->detail_description)
-                  ->setPublished($row->published)
-                  ->setCreatedAt($row->created_at)
-                  ->setUpdatedAt($row->updated_at)
-                  ->setPublishedAt($row->published_at);
+        $object->setOptions($row->toArray());
+        return $object;
     }
     /**
      * @param string|array|Zend_Db_Table_Select $where  OPTIONAL An SQL WHERE clause or Zend_Db_Table_Select object.
@@ -69,48 +68,65 @@ class Admin_Model_NewsMapper extends Admin_Model_DataMapper_Abstract
     public function fetchAll($where = null, $order = null, $count = null, $offset = null)
     {
         $resultSet = $this->getDbTable()->fetchAll($where, $order, $count, $offset);
-        $entries   = array();
-        foreach ($resultSet as $row) {
-            $entry = new Admin_Model_News();
-            $entry->setId($row->id)
-                  ->setTitle($row->title)
-                  ->setShortDescription($row->short_description)
-                  ->setDetailDescription($row->detail_description)
-                  ->setPublished($row->published)
-                  ->setCreatedAt($row->created_at)
-                  ->setUpdatedAt($row->updated_at)
-                  ->setPublishedAt($row->published_at)
-                  ->setMapper($this);
-            $entries[] = $entry;
-        }
-        return $entries;
+        return new Admin_Model_NewsCollection($resultSet->toArray(), $this);
     }
-
+    /**
+     * Delete news by $id
+     *
+     * @param int $id
+     * @return void
+     */
     public function delete($id)
     {
         $where = $this->getDbTable()->getDefaultAdapter()->quoteInto('id = ?', $id);
         $this->getDbTable()->delete($where);
     }
     /**
+     * Mass news deletion
+     *
+     * @param array $ids
+     */
+    public function deleteBulk($ids)
+    {
+        if(is_array($ids) && count($ids) > 0) {
+            foreach($ids as $id) {
+                $this->delete($id);
+            }
+        }
+    }
+    /**
      * Sets published in where clause
      *
      * @param int $published
-     * @return void
+     * @return Admin_Model_NewsMapper
      */
     public function published($published)
     {
-        $this->_select = $this->getSelect();
-        $this->_select->where('published = ?', $published);
+        /**
+         * isset added to prevent the clause when user is updated
+         * and $enabled value comes as null
+         */
+        if($published != '*' && isset($published)) {
+            $published = (int)$published;
+            $this->_select = $this->getSelect();
+            $this->_select->where('published = ?', $published);
+        }
+        return $this;
     }
     /**
      * Simple search by title field using like operator
      *
      * @param string $value search value
-     * @return void
+     * @return Admin_Model_NewsMapper
      */
     public function search($value)
     {
-        $this->_select = $this->getSelect();
-        $this->_select->where('title LIKE ?', '%' . $value . '%');
+        if(!empty($value)) {
+            $value = str_replace('\\', '\\\\', $value);
+            $value = addcslashes($value, '_%');
+            $this->_select = $this->getSelect();
+            $this->_select->where('title LIKE ?', '%' . $value . '%');
+        }
+        return $this;
     }
 }
