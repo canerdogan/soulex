@@ -8,31 +8,37 @@
  */
 
 /**
- * Description of MenuMapperTest
+ * Description of MenuItemMapperTest
  *
  * @author miholeus
  */
-class Admin_Model_MenuMapperTest extends ControllerTestCase
+class Admin_Model_MenuItemMapperTest extends ControllerTestCase
 {
     /**
      *
-     * @var Admin_Model_Menu
+     * @var Admin_Model_MenuItem
      */
     private $_object;
     /**
      *
-     * @var Admin_Model_MenuMapper
+     * @var Admin_Model_MenuItemMapper
      */
     private $_objectMapper;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->_object = new Admin_Model_Menu();
-        $this->_object->setTitle('test_title')
-            ->setMenutype('menuleft')
-            ->setDescription('test description');
-        $objectMapper = new Admin_Model_MenuMapper();
+        $this->_object = new Admin_Model_MenuItem();
+        $this->_object->setMenu_id(1)
+            ->setLabel('testing label')
+            ->setUri('/just-a-test.html')
+            ->setPosition(100)
+            ->setPublished(true)
+            ->setLft(1)
+            ->setRgt(2)
+            ->setParent_id(0)
+            ->setLevel(1);
+        $objectMapper = new Admin_Model_MenuItemMapper();
         $objectMapper->save($this->_object);
         $this->_objectMapper = $objectMapper;
     }
@@ -46,19 +52,19 @@ class Admin_Model_MenuMapperTest extends ControllerTestCase
 
     public function testUpdate()
     {
-        $title = 'foo';
-        $this->_object->setTitle($title);
+        $label = 'foo';
+        $this->_object->setLabel($label);
         // now we update object as object has its id
         $this->_objectMapper->save($this->_object);
         $updatedobject = $this->_objectMapper->findById($this->_object->getId());
-        $this->assertEquals($title, $updatedobject->getTitle());
+        $this->assertEquals($label, $updatedobject->getLabel());
     }
 
     public function testFetchAll()
     {
         $objects = $this->_objectMapper->fetchAll();
         $this->assertEquals(1, count($objects));
-        $this->assertType('Admin_Model_MenuCollection', $objects);
+        $this->assertType('Admin_Model_MenuItemCollection', $objects);
     }
 
     public function testFindByIdThrowsExceptionOnNotExistingObject()
@@ -77,7 +83,7 @@ class Admin_Model_MenuMapperTest extends ControllerTestCase
         $this->_objectMapper->delete(1);
         unset($this->_objectMapper);
         try {
-            $mapper = new Admin_Model_MenuMapper();
+            $mapper = new Admin_Model_MenuItemMapper();
             $mapper->findById(1);
             $this->fail('Menu with id 1 was not deleted');
         } catch (UnexpectedValueException $e) {
@@ -89,7 +95,7 @@ class Admin_Model_MenuMapperTest extends ControllerTestCase
     protected function tearDown()
     {
         parent::tearDown();
-        $objectMapper = new Admin_Model_MenuMapper();
-        $objectMapper->getDbTable()->getDefaultAdapter()->query('TRUNCATE TABLE menus');
+        $objectMapper = new Admin_Model_MenuItemMapper();
+        $objectMapper->getDbTable()->getDefaultAdapter()->query('TRUNCATE TABLE menu_items');
     }
 }

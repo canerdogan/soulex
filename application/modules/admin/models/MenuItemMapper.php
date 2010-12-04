@@ -19,35 +19,38 @@ class Admin_Model_MenuItemMapper extends Admin_Model_DataMapper_Abstract
      * @var Admin_Model_DbTable_MenuItem
      */
     protected $_dbTableClass = 'Admin_Model_DbTable_MenuItem';
-    protected function createFromArray(array $array) {
-        ;
+    protected function createFromArray(array $array)
+    {
+        return new Admin_Model_MenuItem($array);
     }
 	/**
 	 * Fetches menus
 	 *
      * @param string|array|Zend_Db_Table_Select $where  OPTIONAL An SQL WHERE clause or Zend_Db_Table_Select object.
      * @param string|array                      $order  OPTIONAL An SQL ORDER clause.
-     * @return array Admin_Model_MenuItem
-	 */
-    public function fetchAll($where, $order)
+     * @param int                               $count  OPTIONAL An SQL LIMIT count.
+     * @param int                               $offset OPTIONAL An SQL LIMIT offset.
+     * @return Admin_Model_MenuItemCollection all set
+     */
+    public function fetchAll($where = null, $order = null, $count = null, $offset = null)
     {
-        $menus = array();
-
-        $select = $this->getDbTable()->select();
-
-        if(null !== $where) {
-            $select->where($where);
+        $resultSet = $this->getDbTable()->fetchAll($where, $order, $count, $offset);
+        return new Admin_Model_MenuItemCollection($resultSet->toArray(), $this);
+    }
+    /**
+     * Fetch Menu Items groupped by parent ids
+     *
+     * @return array Admin_Model_MenuItem
+     */
+    public function fetchAllGrouppedByParentId($where = null, $order = null)
+    {
+        $menuItems = $this->fetchAll($where, $order);
+        $items = array();
+        foreach($menuItems as $item) {
+            $parentId = $item->getParent_id();
+            $items[$parentId][] = $item;
         }
-        if(null !== $order) {
-            $select->order($order);
-        }
-
-        $result = $this->getDbTable()->fetchAll($select);
-        foreach($result as $current) {
-            $menus[] = new Admin_Model_MenuItem($current->toArray());
-        }
-
-        return $menus;
+        return $items;
     }
     /**
      *
@@ -57,21 +60,18 @@ class Admin_Model_MenuItemMapper extends Admin_Model_DataMapper_Abstract
     public function save(Admin_Model_MenuItem $menu)
     {
         $data = array(
-            'menu_id'                => $menu->getMenuId(),
+            'menu_id'                => $menu->getMenu_id(),
             'label'                 => $menu->getLabel(),
             'uri'                   => $menu->getUri(),
             'position'              => $menu->getPosition(),
             'published'             => $menu->getPublished(),
-            'parent_id'             => $menu->getParentId()
+            'parent_id'             => $menu->getParent_id()
         );
 
-        
         if (null === ($id = $menu->getId())) {
             
-            if(0 != $menu->getParentId()) {
-                $parentMenuClass = get_class($menu);
-                $parentMenu = new $parentMenuClass;
-                $parentMenu->find($menu->getParentId());
+            if(0 != $menu->getParent_id()) {
+                $parentMenu = $this->findById($menu->getParent_id());
 
                 $data['level'] = $parentMenu->getLevel();
                 $data['lft'] = $parentMenu->getLft();
@@ -86,7 +86,6 @@ class Admin_Model_MenuItemMapper extends Admin_Model_DataMapper_Abstract
         } else {
             $this->getDbTable()->_update($data, array('id = ?' => $id), $rgtKey);
         }
-        return $menu;
     }
     /**
      * Find menu item by its id
@@ -95,14 +94,16 @@ class Admin_Model_MenuItemMapper extends Admin_Model_DataMapper_Abstract
      * @param Admin_Model_MenuItem $menu
      * @return Admin_Model_MenuItem $menu
      */
-    public function findById($id, Admin_Model_MenuItem $menu)
+    public function findById($id)
     {
-        $row = $this->getDbTable()->find($id)->current();
-        if(null === $row) {
-            throw new Zend_Exception('Menu with id ' . $id . ' not found!');
+        $result = $this->getDbTable()->find($id);
+        if (0 == count($result)) {
+            throw new UnexpectedValueException("MenuItem by id " . $id . " not found");
         }
-        $menu->setOptions($row->toArray());
-        return $menu;
+        $object = new Admin_Model_MenuItem();
+        $row = $result->current();
+        $object->setOptions($row->toArray());
+        return $object;
     }
     /**
      * @return int max level
@@ -124,44 +125,63 @@ class Admin_Model_MenuItemMapper extends Admin_Model_DataMapper_Abstract
     /**
      * Sets published in where clause
      * @param int $published
-     * @return void
+     * @return Admin_Model_MenuItemMapper
      */
     public function published($published)
     {
-        $this->_select = $this->getSelect();
-        $this->_select->where('published = ?', $published);
+        /**
+         * isset added to prevent the clause when user is updated
+         * and $enabled value comes as null
+         */
+        if($published != '*' && isset($published)) {
+            $published = (int)$published;
+            $this->_select = $this->getSelect();
+            $this->_select->where('published = ?', $published);
+        }
+        return $this;
     }
     /**
      * Sets Menu Id in where clause
      *
      * @param int $menuId
-     * @return void
+     * @return Admin_Model_MenuItemMapper
      */
     public function menuId($menuId)
     {
-        $this->_select = $this->getSelect();
-        $this->_select->where('menu_id = ?', $menuId);
+        if(!empty($menuId)) {
+            $this->_select = $this->getSelect();
+            $this->_select->where('menu_id = ?', $menuId);
+        }
+        return $this;
     }
     /**
      * Sets level in where clause
      *
      * @param int $lvl
-     * @return void
+     * @return Admin_Model_MenuItemMapper
      */
     public function level($lvl)
     {
-        $this->_select = $this->getSelect();
-        $this->_select->where('level = ?', $lvl);
+        if(!empty($lvl)) {
+            $this->_select = $this->getSelect();
+            $this->_select->where('level = ?', $lvl);
+        }
+        return $this;
     }
     /**
      * Simple search by firstname field using like operator
      *
      * @param string $value search value
-     * @return void
+     * @return Admin_Model_MenuItemMapper
      */
     public function search($value)
     {
-        $this->_select = $this->getSelect();
-        $this->_select->where('label LIKE ?', '%' . $value . '%');
+        if(!empty($value)) {
+            $value = str_replace('\\', '\\\\', $value);
+            $value = addcslashes($value, '_%');
+            $this->_select = $this->getSelect();
+            $this->_select->where('label LIKE ?', '%' . $value . '%');
+        }
+        return $this;
     }
 }

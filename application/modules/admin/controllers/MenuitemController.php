@@ -21,7 +21,7 @@ class Admin_MenuitemController extends Soulex_Controller_Abstract
      */
     public function indexAction()
     {
-        $mdlMenuItem = new Admin_Model_MenuItem();
+        $menuItemMapper = new Admin_Model_MenuItemMapper();
         $this->view->orderParams = $this->_getOrderParams();
         $order = join(' ', $this->view->orderParams);
         $this->view->filter = array();// view property for where statements
@@ -30,9 +30,9 @@ class Admin_MenuitemController extends Soulex_Controller_Abstract
         if($this->_request->isPost()) {
             $post = $this->_request->getPost();
 
-            $paginator = $mdlMenuItem->selectState($post['filter_state'])
-                                ->selectMenuId($post['filter_menuid'])
-                                ->selectLevel($post['filter_level'])
+            $paginator = $menuItemMapper->published($post['filter_state'])
+                                ->menuId($post['filter_menuid'])
+                                ->level($post['filter_level'])
                                 ->search($post['filter_search'])
                                 ->order($order)->paginate();
 
@@ -43,18 +43,17 @@ class Admin_MenuitemController extends Soulex_Controller_Abstract
             if(isset($post['cid'])) {
                 if(is_array($post['cid'])
                         && count($post['cid']) == $post['boxchecked']) {
-                    $mdlMenuItem->delete($post['cid']);
+                    $menuItemMapper->delete($post['cid']);
                     return $this->_redirect('/admin/menuitem');
                 } else {
                     throw new Exception('FCS  is not correct! Wrong request!');
                 }
             }
         } else {
-            $paginator = $mdlMenuItem->selectMenuId($this->_getParam('menuid'))
+            $paginator = $menuItemMapper->menuId($this->_getParam('menuid'))
                     ->order($order)->paginate();
             $this->view->filter['menuid'] = $this->_getParam('menuid');
         }
-
 
         // show items per page
         if($limit != 0) {
@@ -69,17 +68,13 @@ class Admin_MenuitemController extends Soulex_Controller_Abstract
         $this->view->paginator = $paginator;
         Zend_Registry::set('pagination_limit', $limit);
         
-        $maxMenuLevel = $mdlMenuItem->findMaxMenuLevel();
+        $maxMenuLevel = $menuItemMapper->findMaxLevel();
 
-//        $menuLevels = array();
-//        for($i = 1; $i <= $maxMenuLevel; $i++) {
-//            $menuLevels[$i] = $i;
-//        }
         $this->view->menuLevels = array_combine(array_values(range(1, $maxMenuLevel)),
                 range(1, $maxMenuLevel));
 
-        $mdlMenu = new Admin_Model_Menu();
-        $menus = $mdlMenu->fetchAll();
+        $menuMapper = new Admin_Model_MenuMapper();
+        $menus = $menuMapper->fetchAll();
 
         $view_menus = array();
         foreach($menus as $menu) {
@@ -97,24 +92,31 @@ class Admin_MenuitemController extends Soulex_Controller_Abstract
     public function createAction()
     {
         $frmMenuItem = new Admin_Form_MenuItem();
-        $mdlMenu = new Admin_Model_Menu();
-        $menus = $mdlMenu->fetchAll();
+        $menuMapper = new Admin_Model_MenuMapper();
+        $menus = $menuMapper->fetchAll();
         foreach($menus as $menu) {
-            $frmMenuItem->addElementOption('menuId', $menu->getId(), $menu->getTitle());
+            $frmMenuItem->addElementOption('menu_id', $menu->getId(), $menu->getTitle());
         }
 
         $mdlMenuItem = new Admin_Model_MenuItem();
-        $items = $mdlMenuItem->fetchAllGrouppedByParentId();
-        $mdlMenuItem->processTreeElementForm($items, $frmMenuItem, 'parentId');
+        $menuItemMapper = new Admin_Model_MenuItemMapper();
+        $items = $menuItemMapper->fetchAllGrouppedByParentId();
+        $mdlMenuItem->processTreeElementForm($items, $frmMenuItem, 'parent_id');
 
         if($this->_request->isPost() &&
                 $frmMenuItem->isValid($this->_request->getPost())) {
-                $frmMenuItem->removeElement('id');
-                $mdlMenuItem = new Admin_Model_MenuItem($frmMenuItem->getValues());
-                $mdlMenuItem->save();
-                return $this->_redirect('/admin/menuitem');
-        }
+            $frmMenuItem->removeElement('id');
 
+            try {
+                $mdlMenuItem = new Admin_Model_MenuItem($frmMenuItem->getValues());
+                $menuItemMapper->save($mdlMenuItem);
+                return $this->_redirect('/admin/menuitem');
+            } catch (Exception $e) {
+                $this->renderSubmenu(false);
+                $this->renderError("MenuItem creation failed with the following error: "
+                    . $e->getMessage());
+            }
+        }
 
         $this->view->form = $frmMenuItem;
         $this->renderSubmenu(false);
@@ -129,32 +131,39 @@ class Admin_MenuitemController extends Soulex_Controller_Abstract
     {
         $id = $this->_getParam('id');
         $frmMenuItem = new Admin_Form_MenuItem();
-        $mdlMenu = new Admin_Model_Menu();
-        $menus = $mdlMenu->fetchAll();
+        $menuMapper = new Admin_Model_MenuMapper();
+        $menus = $menuMapper->fetchAll();
         foreach($menus as $menu) {
-            $frmMenuItem->addElementOption('menuId', $menu->getId(), $menu->getTitle());
+            $frmMenuItem->addElementOption('menu_id', $menu->getId(), $menu->getTitle());
         }
 
         $mdlMenuItem = new Admin_Model_MenuItem();
-        $menuItem = $mdlMenuItem->find($id);
-        $items = $mdlMenuItem->fetchAllGrouppedByParentId();
-        $mdlMenuItem->processTreeElementForm($items, $frmMenuItem, 'parentId',
-                $menuItem->getParentId());
-        $frmMenuItem->getElement('parentId')->removeMultiOption($id);
+        $menuItemMapper = new Admin_Model_MenuItemMapper();
+        $menuItem = $menuItemMapper->findById($id);
+        $items = $menuItemMapper->fetchAllGrouppedByParentId();
+        $mdlMenuItem->processTreeElementForm($items, $frmMenuItem, 'parent_id',
+                $menuItem->getParent_id());
+        $frmMenuItem->getElement('parent_id')->removeMultiOption($id);
 
         if($this->_request->isPost() &&
                 $frmMenuItem->isValid($this->_request->getPost())) {
-            $mdlMenuItem = new Admin_Model_MenuItem($frmMenuItem->getValues());
-            $mdlMenuItem->save();
+            try {
+                $mdlMenuItem = new Admin_Model_MenuItem($frmMenuItem->getValues());
+                $menuItemMapper->save($mdlMenuItem);
 
-            return $this->_redirect('/admin/menuitem');
+                return $this->_redirect('/admin/menuitem');
+            } catch (Exception $e) {
+                $this->renderSubmenu(false);
+                $this->renderError("MenuItem update failed with the following error: "
+                    . $e->getMessage());
+            }
         }
 
         $frmMenuItem->populate(array(
             'id' => $menuItem->getId(),
             'label' => $menuItem->getLabel(),
             'uri' => $menuItem->getUri(),
-            'menuId' => $menuItem->getMenuId(),
+            'menuId' => $menuItem->getMenu_id(),
             'position' => $menuItem->getPosition(),
             'published' => $menuItem->getPublished()
         ));
@@ -169,8 +178,8 @@ class Admin_MenuitemController extends Soulex_Controller_Abstract
     public function deleteAction()
     {
         $id = $this->_getParam('id');
-        $mdlMenuItem = new Admin_Model_MenuItem();
-        $mdlMenuItem->delete($id);
+        $menuItemMapper = new Admin_Model_MenuItemMapper();
+        $menuItemMapper->delete($id);
         $this->_redirect('/admin/menuitem');
     }
 
@@ -181,7 +190,7 @@ class Admin_MenuitemController extends Soulex_Controller_Abstract
         /**
          * sets default order if model does not have proper field
          */
-        if(!is_callable(array('Admin_Model_Menuitem',
+        if(!is_callable(array(new Admin_Model_MenuItem(),
             'get' . ucfirst($order)))) {
             $order = 'lft';
         }

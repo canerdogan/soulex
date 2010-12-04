@@ -21,12 +21,12 @@ class Admin_MenuController extends Soulex_Controller_Abstract
      */
     public function indexAction()
     {
-        $mdlMenu = new Admin_Model_Menu();
+        $menuMapper = new Admin_Model_MenuMapper();
         $this->view->orderParams = $this->_getOrderParams();
         $order = join(' ', $this->view->orderParams);
         $limit = $this->_getParam('limit', 20);
 
-        $paginator = $mdlMenu->order($order)->paginate();
+        $paginator = $menuMapper->order($order)->paginate();
 
         // show items per page
         if($limit != 0) {
@@ -53,12 +53,19 @@ class Admin_MenuController extends Soulex_Controller_Abstract
                 && $frmMenu->isValid($this->_request->getPost())) {
 
             $mdlMenu = new Admin_Model_Menu();
+            $menuMapper = new Admin_Model_MenuMapper();
             $mdlMenu->setTitle($frmMenu->getValue('title'))
                     ->setMenutype($frmMenu->getValue('menutype'))
                     ->setDescription($frmMenu->getValue('description'));
-            $mdlMenu->save();
+            try {
+                $menuMapper->save($mdlMenu);
 
-            return $this->_redirect('/admin/menu');
+                return $this->_redirect('/admin/menu');
+            } catch (Exception $e) {
+                $this->renderSubmenu(false);
+                $this->renderError("Menu creation failed with the following error: "
+                        . $e->getMessage());
+            }
         }
 
         $this->view->form = $frmMenu;
@@ -79,16 +86,22 @@ class Admin_MenuController extends Soulex_Controller_Abstract
 
         if($this->_request->isPost()
                 && $frmMenu->isValid($this->_request->getPost())) {
-            $mdlMenu = new Admin_Model_Menu($this->_request->getPost());
-            $mdlMenu->save();
+            try {
+                $mdlMenu = new Admin_Model_Menu($this->_request->getPost());
+                $menuMapper = new Admin_Model_MenuMapper();
+                $menuMapper->save($mdlMenu);
 
-            $this->disableContentRender();
-
-            return $this->_forward('index');
+                $this->disableContentRender();
+                return $this->_forward('index');
+            } catch (Exception $e) {
+                $this->renderSubmenu(false);
+                $this->renderError("Menu update failed with the following error: "
+                        . $e->getMessage());
+            }
         }
 
-        $mdlMenu = new Admin_Model_Menu();
-        $this->view->menu = $mdlMenu->find($id);
+        $menuMapper = new Admin_Model_MenuMapper();
+        $this->view->menu = $menuMapper->findById($id);
 
         $frmMenu->populate(array(
             'id' => $this->view->menu->getId(),
@@ -107,10 +120,10 @@ class Admin_MenuController extends Soulex_Controller_Abstract
      */
     public function deleteAction()
     {
-        $mdlPage = new Admin_Model_Menu();
+        $menuMapper = new Admin_Model_MenuMapper();
 		$id = $this->getRequest()->getParam('id');
 
-		$mdlPage->delete($id);
+		$menuMapper->delete($id);
 		$this->_redirect('/admin/menu');
     }
 
@@ -121,7 +134,7 @@ class Admin_MenuController extends Soulex_Controller_Abstract
         /**
          * sets default order if model does not have proper field
          */
-        if(!is_callable(array('Admin_Model_Menu',
+        if(!is_callable(array(new Admin_Model_Menu(),
             'get' . ucfirst($order)))) {
             $order = 'title';
         }

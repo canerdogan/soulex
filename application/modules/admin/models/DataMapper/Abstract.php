@@ -24,6 +24,7 @@ abstract class Admin_Model_DataMapper_Abstract
     protected $_select;
     /**
      * Creates object from array
+     * 
      * @uses {createFromArray()} method
      * @param array $array
      * @return Admin_Model_Abstract

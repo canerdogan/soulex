@@ -49,12 +49,12 @@ class Admin_Form_MenuItem extends Admin_Form_Template_Simple
         $published->addMultiOption(0, 'No', array('checked' => true));
         $this->addElement($published);
         // parent Id
-        $parentId = $this->createElement('select', 'parentId');
+        $parentId = $this->createElement('select', 'parent_id');
         $parentId->setLabel('Parent Menu Item');
         $parentId->addMultiOption(0, 'Menu_Item_Root');
         $this->addElement($parentId);
         // menuId select options
-        $menuId = $this->createElement('select', 'menuId');
+        $menuId = $this->createElement('select', 'menu_id');
         $this->addElement($menuId);
         // submit button
         $submit = $this->addElement('submit', 'submit', array('label' => 'Submit'));

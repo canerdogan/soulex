@@ -19,35 +19,23 @@ class Admin_Model_MenuMapper extends Admin_Model_DataMapper_Abstract
      * @var Admin_Model_DbTable_Menu
      */
     protected $_dbTableClass = 'Admin_Model_DbTable_Menu';
-    protected function createFromArray(array $array) {
-        ;
+    protected function createFromArray(array $array)
+    {
+        return new Admin_Model_Menu($array);
     }
 	/**
 	 * Fetches menus
 	 *
      * @param string|array|Zend_Db_Table_Select $where  OPTIONAL An SQL WHERE clause or Zend_Db_Table_Select object.
      * @param string|array                      $order  OPTIONAL An SQL ORDER clause.
-     * @return array Admin_Model_Menu
-	 */
-    public function fetchAll($where, $order)
+     * @param int                               $count  OPTIONAL An SQL LIMIT count.
+     * @param int                               $offset OPTIONAL An SQL LIMIT offset.
+     * @return Admin_Model_MenuCollection all set
+     */
+    public function fetchAll($where = null, $order = null, $count = null, $offset = null)
     {
-        $menus = array();
-
-        $select = $this->getDbTable()->select();
-
-        if(null !== $where) {
-            $select->where($where);
-        }
-        if(null !== $order) {
-            $select->order($order);
-        }
-
-        $result = $this->getDbTable()->fetchAll($select);
-        foreach($result as $current) {
-            $menus[] = new Admin_Model_Menu($current->toArray());
-        }
-        
-        return $menus;
+        $resultSet = $this->getDbTable()->fetchAll($where, $order, $count, $offset);
+        return new Admin_Model_MenuCollection($resultSet->toArray(), $this);
     }
 
     public function save(Admin_Model_Menu $menu)
@@ -65,16 +53,18 @@ class Admin_Model_MenuMapper extends Admin_Model_DataMapper_Abstract
         } else {
             $this->getDbTable()->update($data, array('id = ?' => $id));
         }
-        return $menu;
     }
 
-    public function findById($id, Admin_Model_Menu $menu)
+    public function findById($id)
     {
-        $row = $this->getDbTable()->find($id)->current();
-        if(null === $row) {
-            throw new Zend_Exception('Menu with id ' . $id . ' not found!');
+        $result = $this->getDbTable()->find($id);
+        if (0 == count($result)) {
+            throw new UnexpectedValueException("Menu by id " . $id . " not found");
         }
-        return new Admin_Model_Menu($row->toArray());
+        $object = new Admin_Model_Menu();
+        $row = $result->current();
+        $object->setOptions($row->toArray());
+        return $object;
     }
     /**
      * Delete menu by id

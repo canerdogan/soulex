@@ -10,162 +10,49 @@
 /**
  * Admin_Model_MenuItem
  *
+ * @method Admin_Model_MenuItem setId(int $id)
+ * @method Admin_Model_MenuItem setMenu_id(int $id)
+ * @method Admin_Model_MenuItem setLabel(string $label)
+ * @method Admin_Model_MenuItem setUri(string $uri)
+ * @method Admin_Model_MenuItem setPosition(int $position)
+ * @method Admin_Model_MenuItem setPublished(bool $published)
+ * @method Admin_Model_MenuItem setLft(int $lft)
+ * @method Admin_Model_MenuItem setRgt(int $rgt)
+ * @method Admin_Model_MenuItem setParent_id(int $parent_id)
+ * @method Admin_Model_MenuItem setLevel(int $level)
+ *
+ * @method int getId()
+ * @method int getMenu_id()
+ * @method string getLabel()
+ * @method string getUri()
+ * @method int getPosition()
+ * @method bool getPublished()
+ * @method getLft getLft()
+ * @method int getRgt()
+ * @method int getParent_id()
+ * @method int getLevel()
+ *
  * @author miholeus
  */
 class Admin_Model_MenuItem extends Admin_Model_Abstract
 {
-    protected $_id;
-    protected $_menu_id;
-    protected $_label;
-    protected $_uri;
-    protected $_position;
-    protected $_published;
-    protected $_lft;
-    protected $_rgt;
-    protected $_parent_id;
-    protected $_level;
-
-    /**
-     *
-     * @var Admin_Model_MenuItemMapper
-     */
-    protected $_mapperClass = 'Admin_Model_MenuItemMapper';
-
-    public function getId()
-    {
-        return $this->_id;
-    }
-
+    protected $id;
+    protected $menu_id;
+    protected $label;
+    protected $uri;
+    protected $position;
+    protected $published;
+    protected $lft;
+    protected $rgt;
+    protected $parent_id;
+    protected $level;
+    
     public function setId($id)
     {
-        $this->_id = $id;
-        return $this;
-    }
-
-    public function getLabel()
-    {
-        return $this->_label;
-    }
-
-    public function setLabel($label)
-    {
-        $this->_label = $label;
-        return $this;
-    }
-
-    public function getMenuId()
-    {
-        return $this->_menu_id;
-    }
-
-    public function setMenuId($menu_id)
-    {
-        $this->_menu_id = $menu_id;
-        return $this;
-    }
-
-    public function getUri()
-    {
-        return $this->_uri;
-    }
-
-    public function setUri($uri)
-    {
-        $this->_uri = $uri;
-        return $this;
-    }
-
-    public function getPosition()
-    {
-        return $this->_position;
-    }
-
-    public function setPosition($position)
-    {
-        $this->_position = $position;
-        return $this;
-    }
-
-    public function getPublished()
-    {
-        return $this->_published;
-    }
-
-    public function setPublished($published)
-    {
-        $this->_published = $published;
-        return $this;
-    }
-
-    public function getParentId()
-    {
-        return $this->_parent_id;
-    }
-
-    public function setParentId($parentId)
-    {
-        $this->_parent_id = $parentId;
-        return $this;
-    }
-
-    public function getLft()
-    {
-        return $this->_lft;
-    }
-
-    public function setLft($lft)
-    {
-        $this->_lft = $lft;
-        return $this;
-    }
-
-    public function getRgt()
-    {
-        return $this->_rgt;
-    }
-
-    public function setRgt($rgt)
-    {
-        $this->_rgt = $rgt;
-        return $this;
-    }
-
-    public function getLevel()
-    {
-        return $this->_level;
-    }
-
-    public function setLevel($level)
-    {
-        $this->_level = $level;
-        return $this;
-    }
-
-    /**
-     * Fetch Menu Items
-     * 
-     * @param string|array|Zend_Db_Table_Select $where  OPTIONAL An SQL WHERE clause or Zend_Db_Table_Select object.
-     * @param string|array                      $order  OPTIONAL An SQL ORDER clause.
-     * @return array Admin_Model_MenuItem
-     */
-    public function fetchAll($where = null, $order = null)
-    {
-        return $this->getMapper()->fetchAll($where, $order);
-    }
-    /**
-     * Fetch Menu Items groupped by parent ids
-     *
-     * @return array Admin_Model_MenuItem
-     */
-    public function fetchAllGrouppedByParentId($where = null, $order = null)
-    {
-        $menuItems = $this->fetchAll($where, $order);
-        $items = array();
-        foreach($menuItems as $item) {
-            $parentId = $item->getParentId();
-            $items[$parentId][] = $item;
+        if(!$this->id) {
+            $this->id = $id;
         }
-        return $items;
+        return $this;
     }
     /**
      * Recursively add items to form's selectbox
@@ -194,120 +81,5 @@ class Admin_Model_MenuItem extends Admin_Model_Abstract
             }
             $this->processTreeElementForm($items, $form, $name, $parentIdSelected, $item->getId(), $lvl + 1);
         }
-    }
-	/**
-	 * Fetches paginator
-	 *
-     * @param string|array|Zend_Db_Table_Select $where  OPTIONAL An SQL WHERE clause or Zend_Db_Table_Select object.
-     * @param string|array                      $order  OPTIONAL An SQL ORDER clause.
-     * @return Zend_Paginator_Adapter_DbSelect
-	 */
-    public function fetchPaginator($where = null, $order = null)
-    {
-        $select = $this->getMapper()->getDbTable()->select();
-        if(null !== $where) {
-            $select->where($where);
-        }
-        if(null !== $order) {
-            $select->order($order);
-        }
-
-        $adapter = new Zend_Paginator_Adapter_DbSelect($select);
-        return $adapter;
-
-    }
-    /**
-     * Find Menu Item by its id
-     * 
-     * @param int $id
-     * @return Admin_Model_MenuItem
-     */
-    public function find($id)
-    {
-        return $this->getMapper()->findById($id, $this);
-    }
-    /**
-     *
-     * @return Admin_Model_MenuItem
-     */
-    public function save()
-    {
-        return $this->getMapper()->save($this);
-    }
-    /**
-     * Maximum number of menu level
-     *
-     * @return int max menu level
-     */
-    public function findMaxMenuLevel()
-    {
-        return $this->getMapper()->findMaxLevel();
-    }
-    /**
-     * Delete menu item(s) by id(s)
-     *
-     * @todo Rebuild Menu Items Nested set values
-     * @param int|array $id
-     */
-    public function delete($id)
-    {
-        if(is_array($id)) {
-            if(count($id) > 0) {
-                foreach($id as $curId) {
-                    $this->getMapper()->delete($curId);
-                }
-            }
-        } else {
-            $this->getMapper()->delete($id);
-        }
-    }
-    /**
-     * Published state
-     *
-     * @param int $state
-     * @return Admin_Model_MenuItem
-     */
-    public function selectState($state)
-    {
-        if($state != '') {
-            $this->getMapper()->published($state);
-        }
-        return $this;
-    }
-    /**
-     * Menu Item's Menu Id (menu type
-     * )
-     * @param int $id
-     * @return Admin_Model_MenuItem
-     */
-    public function selectMenuId($id)
-    {
-        if($id != '') {
-            $this->getMapper()->menuId($id);
-        }
-        return $this;
-    }
-    /**
-     * Menu Item's level (level used in nested set hierarchy)
-     *
-     * @param int $lvl
-     * @return Admin_Model_MenuItem
-     */
-    public function selectLevel($lvl)
-    {
-        if($lvl != '') {
-            $this->getMapper()->level($lvl);
-        }
-        return $this;
-    }
-
-    public function search($searchValue)
-    {
-        if(!empty($searchValue)) {
-            $searchValue = str_replace('\\', '\\\\', $searchValue);
-            $searchValue = addcslashes($searchValue, '_%');
-            $this->getMapper()->search($searchValue);
-        }
-        return $this;
     }
 }

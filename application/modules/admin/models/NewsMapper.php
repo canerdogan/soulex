@@ -63,7 +63,7 @@ class Admin_Model_NewsMapper extends Admin_Model_DataMapper_Abstract
      * @param string|array                      $order  OPTIONAL An SQL ORDER clause.
      * @param int                               $count  OPTIONAL An SQL LIMIT count.
      * @param int                               $offset OPTIONAL An SQL LIMIT offset.
-     * @return Admin_Model_News all set
+     * @return Admin_Model_NewsCollection all set
      */
     public function fetchAll($where = null, $order = null, $count = null, $offset = null)
     {

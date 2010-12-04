@@ -40,7 +40,7 @@ echo $this->partial('partials/toolbar-list-buttons.phtml', array(
             <select class="inputbox" onchange="this.form.submit()" name="filter_state">
                 <?php
                 $options = array('options' => array(
-                    '' => '- Select State -',
+                    '*' => '- Select State -',
                     '1' => 'Published',
                     '0' => 'Unpublished'
                     ), 'selected' => $this->filter['state']
