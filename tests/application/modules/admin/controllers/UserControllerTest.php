@@ -16,6 +16,25 @@ require_once dirname(__FILE__) . '/../../../ControllerTestCase.php';
 
 class Admin_Controller_UserControllerTest extends ControllerTestCase
 {
+    /**
+     *
+     * @var Admin_Model_User
+     */
+    private $_user;
+
+    protected function setUp()
+    {
+        parent::setUp();
+        Admin_Fixture_User::loadUser();
+        $this->_user = Admin_Fixture_User::getUserInstance();
+    }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+        Admin_Fixture_User::destroy();
+    }
+
     public function testUserNotLoggedIn()
     {
         $this->dispatch('/admin/');
@@ -28,8 +47,9 @@ class Admin_Controller_UserControllerTest extends ControllerTestCase
 
     public function testUserLoggedIn()
     {
-        $this->_loginUser();
-
+        $user = new Admin_Fixture_User();
+        $user->authenticate();
+        
         $this->_assertCredentials();
 
         /**
@@ -45,8 +65,8 @@ class Admin_Controller_UserControllerTest extends ControllerTestCase
     {
         $this->getRequest()->setMethod('POST')
                 ->setPost(array(
-                    "username" => "admin",
-                    "password" => "1",
+                    "username" => $this->_user->getUsername(),
+                    "password" => $this->_user->getPassword(),
                     "retpath"  => "/admin/user/login"
                 ));
 
@@ -57,13 +77,13 @@ class Admin_Controller_UserControllerTest extends ControllerTestCase
         $this->assertController('index');
         $this->assertAction('index');
     }
-    
+
     public function testUserLoggedInFromLogoutUriGoesToAdminControllerIndexAction()
     {
         $this->getRequest()->setMethod('POST')
                 ->setPost(array(
-                    "username" => "admin",
-                    "password" => "1",
+                    "username" => $this->_user->getUsername(),
+                    "password" => $this->_user->getPassword(),
                     "retpath"  => "/admin/user/logout"
                 ));
 
@@ -79,8 +99,8 @@ class Admin_Controller_UserControllerTest extends ControllerTestCase
     {
         $this->getRequest()->setMethod('POST')
                 ->setPost(array(
-                    "username" => "admin",
-                    "password" => "1",
+                    "username" => $this->_user->getUsername(),
+                    "password" => $this->_user->getPassword(),
                     "retpath"  => "/admin/user"
                 ));
         $this->dispatch('/admin/');
@@ -106,7 +126,8 @@ class Admin_Controller_UserControllerTest extends ControllerTestCase
 
     public function testUserLoggedOut()
     {
-        $this->_loginUser();
+        $user = new Admin_Fixture_User();
+        $user->authenticate();
 
         $this->dispatch('/admin/user/logout');
 
@@ -116,7 +137,9 @@ class Admin_Controller_UserControllerTest extends ControllerTestCase
 
     public function testUserCreation()
     {
-        $this->_loginUser();
+        $user = new Admin_Fixture_User();
+        $user->authenticate();
+        
         $random = rand(0, 100000);
         $newUser = array(
             "username" => "user" . $random,
@@ -138,14 +161,18 @@ class Admin_Controller_UserControllerTest extends ControllerTestCase
 
     public function testUserCreationForm()
     {
-        $this->_loginUser();
+        $user = new Admin_Fixture_User();
+        $user->authenticate();
+
         $this->dispatch('/admin/user/create');
         $this->assertQueryContentContains('h2', 'User Manager: Add New User');
     }
 
     public function testDisplayAllUsers()
     {
-        $this->_loginUser();
+        $user = new Admin_Fixture_User();
+        $user->authenticate();
+
         $this->getRequest()->setParam('limit', 0);
         $this->dispatch('/admin/user/list');
         $this->assertQueryContentContains('h2', 'User Manager: Users');
@@ -157,7 +184,7 @@ class Admin_Controller_UserControllerTest extends ControllerTestCase
         $this->dispatch('/admin/user/list');
         $this->assertQueryContentContains('li',
                 'User deletion failed with the following error: '
-                . 'User with id 0 not found');
+                . 'User by id 0 not found');
         /**
          * wrong order params
          */
@@ -167,18 +194,22 @@ class Admin_Controller_UserControllerTest extends ControllerTestCase
 
     public function testUserCanBeDeletedWithUrlParams()
     {
-        $this->_loginUser();
+        $user = new Admin_Fixture_User();
+        $user->authenticate();
+
         $this->dispatch('/admin/user/delete/id/0');
         $this->assertQueryContentContains('li',
                 'User deletion failed with the following error: '
-                . 'User with id 0 not found');
+                . 'User by id 0 not found');
     }
 
     public function testUserUpdateAction()
     {
-        $this->_loginUser();
+        $user = new Admin_Fixture_User();
+        $user->authenticate();
+
         $this->getRequest()->setMethod('GET');
-        $this->dispatch('/admin/user/update/id/2');
+        $this->dispatch('/admin/user/update/id/' . $this->_user->getId());
         $this->assertQueryContentContains('h2', 'User Manager: Update User');
         /**
          * test forwarding to list action without id
@@ -190,7 +221,9 @@ class Admin_Controller_UserControllerTest extends ControllerTestCase
 
     public function testUserMayUpdateInfo()
     {
-        $this->_loginUser();
+        $user = new Admin_Fixture_User();
+        $user->authenticate();
+
         $testUser = array(
             "username" => "admin",
             "firstname" => "admin" . $random,
@@ -206,10 +239,11 @@ class Admin_Controller_UserControllerTest extends ControllerTestCase
         $this->assertAction('list');
     }
 
-
     public function testUserNotConfirmedPassword()
     {
-        $this->_loginUser();
+        $user = new Admin_Fixture_User();
+        $user->authenticate();
+
         $testUser = array(
             "username" => "admin",
             "firstname" => "admin" . $random,
@@ -227,7 +261,9 @@ class Admin_Controller_UserControllerTest extends ControllerTestCase
 
     public function testUserUpdatedNotValidForm()
     {
-        $this->_loginUser();
+        $user = new Admin_Fixture_User();
+        $user->authenticate();
+
         $testUser = array(
             "username" => "admin",
             "firstname" => "admin" . $random,
@@ -245,18 +281,14 @@ class Admin_Controller_UserControllerTest extends ControllerTestCase
     {
         $user = Zend_Auth::getInstance()->getIdentity();
 
-        $this->assertEquals($user->username, 'admin');
-        $this->assertEquals($user->role, 'Administrator');
+        $this->assertEquals($user->username, $this->_user->getUsername());
+        $this->assertEquals($user->role, $this->_user->getRole());
     }
 
     private function _loginUser()
     {
-        $this->getRequest()->setMethod('POST')
-                ->setPost(array(
-                    "username" => "admin",
-                    "password" => "1"
-                ));
-        $this->dispatch('/admin/');
+        $user = new Admin_Fixture_User();
+        $user->authenticate();
     }
 
 //    public function testUserAlreadyLoggedIn()

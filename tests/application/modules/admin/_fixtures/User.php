@@ -17,14 +17,50 @@ require_once dirname(__FILE__) . '/../../../ControllerTestCase.php';
 
 class Admin_Fixture_User extends ControllerTestCase
 {
+    /**
+     *
+     * @var Admin_Model_User
+     */
+    private static $_userInstance = null;
+    public static function getUserInstance()
+    {
+        if(null === self::$_userInstance) {
+            self::$_userInstance = new Admin_Model_User(array(
+            'username' => 'admin',
+            'email' => 'me@miholeus.com',
+            'password' => '1',
+            'firstname' => 'miholeus',
+            'lastname' => 'unknown',
+            'enabled' => '1',
+            'role' => 'administrator'
+        ));
+        }
+        return self::$_userInstance;
+    }
+    /**
+     * Saves User in database
+     */
+    public static function loadUser()
+    {
+        $userMapper = new Admin_Model_UserMapper();
+        $userMapper->save(self::getUserInstance());
+    }
     public function authenticate()
     {
+        self::loadUser();
         $this->getRequest()->setMethod('POST')
                 ->setPost(array(
                     "username" => "admin",
                     "password" => "1"
-                ));
+        ));
         $this->dispatch('/admin/');
         $this->getRequest()->setMethod('GET');
+    }
+
+    public static function destroy()
+    {
+        $userMapper = new Admin_Model_UserMapper();
+        $userMapper->getDbTable()->getDefaultAdapter()->query('TRUNCATE TABLE users');
+        self::$_userInstance = null;
     }
 }

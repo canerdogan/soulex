@@ -31,4 +31,10 @@ class Admin_Controller_UsergroupControllerTest extends ControllerTestCase
          */
         $this->assertQueryContentContains('div.m', 'Not yet implemented :(');
     }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+        Admin_Fixture_User::destroy();
+    }
 }
