@@ -23,6 +23,12 @@ class Admin_Controller_NewsControllerTest extends ControllerTestCase
         $userFixture->authenticate();
     }
 
+    protected function tearDown()
+    {
+        parent::tearDown();
+        Admin_Fixture_User::destroy();
+    }
+
     public function testListAllNews()
     {
         $this->dispatch('/admin/news');
@@ -54,9 +60,19 @@ class Admin_Controller_NewsControllerTest extends ControllerTestCase
 
     public function testUserCanSeeEditNewsForm()
     {
-        $this->dispatch('/admin/news/edit/id/2');
+        $newsMapper = new Admin_Model_NewsMapper();
+        $mdlNews = new Admin_Model_News(array(
+            'title' => 'test title',
+            'short_description' => 'test description',
+            'detail_description' => 'detail description',
+            'published' => '1',
+            'published_at' => date("Y-m-d H:i:s")
+        ));
+        $newsMapper->save($mdlNews);
+        $this->dispatch('/admin/news/edit/id/' . $mdlNews->getId());
         $this->assertController('news');
         $this->assertAction('edit');
+        $newsMapper->delete($mdlNews->getId());
     }
 
     public function testUserCanSeeCreateNewsForm()
@@ -84,12 +100,25 @@ class Admin_Controller_NewsControllerTest extends ControllerTestCase
          * test forwarding to index action
          */
         $this->assertAction('index');
+        $newsMapper = new Admin_Model_NewsMapper();
+        $newsMapper->getDbTable()->getDefaultAdapter()->query('TRUNCATE TABLE news');
     }
 
     public function testUserCanUpdateNews()
     {
+        // create news
+        $newsMapper = new Admin_Model_NewsMapper();
+        $mdlNews = new Admin_Model_News(array(
+            'title' => 'test title',
+            'short_description' => 'test description',
+            'detail_description' => 'detail description',
+            'published' => '1',
+            'published_at' => date("Y-m-d H:i:s")
+        ));
+        $newsMapper->save($mdlNews);
+        // update news
         $testNews = array(
-            'id' => 2,
+            'id' => $mdlNews->getId(),
             'title' => 'testNews',
             'short_description' => 'testDescription',
             'detail_description' => 'testDetailedDescription',
@@ -103,5 +132,7 @@ class Admin_Controller_NewsControllerTest extends ControllerTestCase
          * test forwarding to index action
          */
         $this->assertAction('index');
+        $newsMapper = new Admin_Model_NewsMapper();
+        $newsMapper->getDbTable()->getDefaultAdapter()->query('TRUNCATE TABLE news');
     }
 }

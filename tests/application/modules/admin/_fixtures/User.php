@@ -50,10 +50,11 @@ class Admin_Fixture_User extends ControllerTestCase
         self::loadUser();
         $this->getRequest()->setMethod('POST')
                 ->setPost(array(
-                    "username" => "admin",
-                    "password" => "1"
+                    "username" => self::$_userInstance->getUsername(),
+                    "password" => self::$_userInstance->getPassword()
         ));
         $this->dispatch('/admin/');
+        $_POST = array();// @todo replace with ZF function
         $this->getRequest()->setMethod('GET');
     }
 

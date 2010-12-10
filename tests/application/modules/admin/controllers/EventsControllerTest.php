@@ -16,11 +16,20 @@ require_once dirname(__FILE__) . '/../../../ControllerTestCase.php';
 
 class Admin_Controller_EventsControllerTest extends ControllerTestCase
 {
+    protected $testData;
     protected function setUp()
     {
         parent::setUp();
         $userFixture = new Admin_Fixture_User();
         $userFixture->authenticate();
+        $this->testData = array(
+            'title' => 'testEvents',
+            'short_description' => 'testDescription',
+            'detail_description' => 'testDetailedDescription',
+            'img_preview' => '',
+            'published' => 0,
+            'published_at' => date("Y-m-d H:i:s")
+        );
     }
 
     protected function tearDown()
@@ -49,20 +58,38 @@ class Admin_Controller_EventsControllerTest extends ControllerTestCase
 
     public function testEventsCanBeDeleted()
     {
+        $events = $this->_create();
         $this->getRequest()->setMethod('POST')
                 ->setPost(array(
-                    'cid' => array(0),
+                    'cid' => array($events->getId()),
                     'boxchecked' => 1
                 ));
         $this->dispatch('/admin/events');
         $this->assertRedirectTo('/admin/events');
     }
 
+    public function testEventsThrowExceptionOnNotExistingNews()
+    {
+        $this->getRequest()->setMethod('POST')
+                ->setPost(array(
+                    'cid' => array(0),
+                    'boxchecked' => 1
+                ));
+        $this->dispatch('/admin/events');
+        $this->assertQueryContentContains('li',
+                'Events deletion failed with the following error: '
+                . 'Events by id 0 not found');
+    }
+
     public function testUserCanSeeEditEventsForm()
     {
-        $this->dispatch('/admin/events/edit/id/2');
+        $events = $this->_create();
+        $this->dispatch('/admin/events/edit/id/' . $events->getId());
         $this->assertController('events');
         $this->assertAction('edit');
+        // truncate table
+        $this->_flushTable();
+
     }
 
     public function testUserCanSeeCreateEventsForm()
@@ -75,17 +102,8 @@ class Admin_Controller_EventsControllerTest extends ControllerTestCase
 
     public function testUserCanCreateEvents()
     {
-        $testEvents = array(
-            'id' => '',
-            'title' => 'testEvents',
-            'short_description' => 'testDescription',
-            'detail_description' => 'testDetailedDescription',
-            'img_preview' => '',
-            'published' => 0,
-            'published_at' => date("Y-m-d H:i:s")
-        );
         $this->getRequest()->setMethod('POST')
-                ->setPost($testEvents);
+                ->setPost($this->testData);
         $this->dispatch('/admin/events/create');
         /*
          * test forwarding to index action
@@ -95,21 +113,35 @@ class Admin_Controller_EventsControllerTest extends ControllerTestCase
 
     public function testUserCanUpdateEvents()
     {
-        $testEvents = array(
-            'id' => 2,
-            'title' => 'testEvents',
-            'short_description' => 'testDescription',
-            'detail_description' => 'testDetailedDescription',
-            'img_preview' => '',
-            'published' => 0,
-            'published_at' => date("Y-m-d H:i:s")
-        );
+        $events = $this->_create();
+        $data = $events->toArray();
         $this->getRequest()->setMethod('POST')
-                ->setPost($testEvents);
+                ->setPost(array(
+                    'id' => $data['id'],
+                    'title' => $data['title'],
+                    'short_description' => $data['short_description'],
+                    'detail_description' => $data['detail_description'],
+                    'published' => $data['published']
+                ));
         $this->dispatch('/admin/events/edit');
         /*
          * test forwarding to index action
          */
         $this->assertAction('index');
+        $this->_flushTable();
+    }
+
+    private function _create()
+    {
+        $eventsMapper = new Admin_Model_EventsMapper();
+        $events = new Admin_Model_Events($this->testData);
+        $eventsMapper->save($events);
+        return $events;
+    }
+
+    private function _flushTable()
+    {
+        $eventsMapper = new Admin_Model_EventsMapper();
+        $eventsMapper->getDbTable()->getDefaultAdapter()->query('TRUNCATE TABLE events');
     }
 }
