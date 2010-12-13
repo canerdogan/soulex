@@ -139,11 +139,23 @@ class Admin_MenuitemController extends Soulex_Controller_Abstract
 
         $mdlMenuItem = new Admin_Model_MenuItem();
         $menuItemMapper = new Admin_Model_MenuItemMapper();
-        $menuItem = $menuItemMapper->findById($id);
-        $items = $menuItemMapper->fetchAllGrouppedByParentId();
-        $mdlMenuItem->processTreeElementForm($items, $frmMenuItem, 'parent_id',
-                $menuItem->getParent_id());
-        $frmMenuItem->getElement('parent_id')->removeMultiOption($id);
+        try {
+            $menuItem = $menuItemMapper->findById($id);
+            $items = $menuItemMapper->fetchAllGrouppedByParentId();
+            $mdlMenuItem->processTreeElementForm($items, $frmMenuItem, 'parent_id',
+                    $menuItem->getParent_id());
+            $frmMenuItem->getElement('parent_id')->removeMultiOption($id);
+            $frmMenuItem->populate(array(
+                'id' => $menuItem->getId(),
+                'label' => $menuItem->getLabel(),
+                'uri' => $menuItem->getUri(),
+                'menuId' => $menuItem->getMenu_id(),
+                'position' => $menuItem->getPosition(),
+                'published' => $menuItem->getPublished()
+            ));
+        } catch(Exception $e) {
+            $this->renderError($e->getMessage());
+        }
 
         if($this->_request->isPost() &&
                 $frmMenuItem->isValid($this->_request->getPost())) {
@@ -159,14 +171,6 @@ class Admin_MenuitemController extends Soulex_Controller_Abstract
             }
         }
 
-        $frmMenuItem->populate(array(
-            'id' => $menuItem->getId(),
-            'label' => $menuItem->getLabel(),
-            'uri' => $menuItem->getUri(),
-            'menuId' => $menuItem->getMenu_id(),
-            'position' => $menuItem->getPosition(),
-            'published' => $menuItem->getPublished()
-        ));
 
         $this->view->form = $frmMenuItem;
         $this->renderSubmenu(false);

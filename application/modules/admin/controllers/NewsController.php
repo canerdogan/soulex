@@ -15,7 +15,8 @@
  */
 class Admin_NewsController extends Soulex_Controller_Abstract {
 
-    public function indexAction() {
+    public function indexAction()
+    {
         $newsMapper = new Admin_Model_NewsMapper();
 
         $this->view->orderParams = $this->_getOrderParams();
@@ -105,7 +106,8 @@ class Admin_NewsController extends Soulex_Controller_Abstract {
         $this->view->render('news/edit.phtml');
     }
 
-    public function createAction() {
+    public function createAction()
+    {
         $frmNews = new Admin_Form_News();
 
         if ($this->getRequest()->isPost() &&

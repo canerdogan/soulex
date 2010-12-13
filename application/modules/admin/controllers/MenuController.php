@@ -87,10 +87,15 @@ class Admin_MenuController extends Soulex_Controller_Abstract
         if($this->_request->isPost()
                 && $frmMenu->isValid($this->_request->getPost())) {
             try {
-                $mdlMenu = new Admin_Model_Menu($this->_request->getPost());
+                $post = $this->_request->getPost();
+                $mdlMenu = new Admin_Model_Menu(array(
+                    'id' => $id,
+                    'title' => $post['title'],
+                    'menutype' => $post['menutype'],
+                    'description' => $post['description']
+                ));
                 $menuMapper = new Admin_Model_MenuMapper();
                 $menuMapper->save($mdlMenu);
-
                 $this->disableContentRender();
                 return $this->_forward('index');
             } catch (Exception $e) {

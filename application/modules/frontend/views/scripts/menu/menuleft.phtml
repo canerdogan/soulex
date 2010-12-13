@@ -9,8 +9,8 @@ foreach($this->menus as $menu) {
         'order' => $menu->getPosition(),
     );
 
-    if($menu->getParentId() != 0) { // somebody's child
-        $menus[$menu->getParentId()]['pages'][] = $curMenu;
+    if($menu->getParent_id() != 0) { // somebody's child
+        $menus[$menu->getParent_id()]['pages'][] = $curMenu;
     } else {
         if(isset($menus[$menu->getId()]['pages'])) {
             $pageData = $menus[$menu->getId()]['pages'];

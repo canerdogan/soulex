@@ -18,7 +18,7 @@ class Frontend_EventsController extends Zend_Controller_Action
     public function singleAction()
     {
         $id = $this->_getParam(1);
-        $mdlEvents = new Soulex_Components_Events_EventsService();
+        $mdlEvents = new Admin_Model_EventsMapper();
         $this->view->events = $mdlEvents->findById($id);
 
         $this->view->title = $this->view->events->getTitle();
@@ -37,10 +37,10 @@ class Frontend_EventsController extends Zend_Controller_Action
         $limit = 20;
         $page = $this->_request->getParam('page', 1);
 
-        $eventsService = new Soulex_Components_Events_EventsService();
-        $adapter = $eventsService->fetchPaginator('published = 1','published_at DESC');
+        $eventsService = new Admin_Model_EventsMapper();
+        $paginator = $eventsService->published('1')
+                    ->order('published_at DESC')->paginate();
 
-        $paginator = new Zend_Paginator($adapter);
         $paginator->setItemCountPerPage($limit);
 
         $paginator->setCurrentPageNumber($page);
@@ -55,8 +55,9 @@ class Frontend_EventsController extends Zend_Controller_Action
 
     public function sidebarAction()
     {
-        $mdlEvents = new Soulex_Components_Events_EventsService();
-        $this->view->events = $mdlEvents->fetchAll('published = 1', 3, 'published_at DESC');
+        $mdlEvents = new Admin_Model_EventsMapper();
+        $this->view->events = $mdlEvents->published('1')
+                ->limit(3)->order('published_at DESC')->paginate();
 
         $responseSegment = $this->_getParam('_responseSegment');
         $this->_helper->viewRenderer->setResponseSegment($responseSegment);

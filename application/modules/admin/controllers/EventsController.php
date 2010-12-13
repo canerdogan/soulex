@@ -16,7 +16,7 @@ class Admin_EventsController extends Soulex_Controller_Abstract
 {
     public function indexAction()
     {
-        $eventsService = new Soulex_Components_Events_EventsService();
+        $eventsMapper = new Admin_Model_EventsMapper();
 
         $this->view->orderParams = $this->_getOrderParams();
         $order = join(' ', $this->view->orderParams);
@@ -26,22 +26,22 @@ class Admin_EventsController extends Soulex_Controller_Abstract
         if($this->_request->isPost()) {
             $post = $this->_request->getPost();
 
-            $paginator = $eventsService->selectEnabled($post['filter_published'])
+            $paginator = $eventsMapper->published($post['filter_published'])
                                 ->search($post['filter_search'])
                                 ->order($order)->paginate();
             $this->view->filter['published'] = $post['filter_published'];
 
             try {
-                if(is_array($post['cid'])
-                        && count($post['cid']) == $post['boxchecked']) {
+                if (is_array($post['cid'])) {
+                    if(count($post['cid']) != $post['boxchecked']) {
+                        throw new LengthException("Checksum is not correct");
+                    }
                     try {
-                        $eventsService->deleteBulk($post['cid']);
+                        $eventsMapper->deleteBulk($post['cid']);
                         return $this->_redirect('/admin/events');
                     } catch (Exception $e) {
-                        throw new Exception($e->getMessage(), $e->getCode(), $e);
+                        throw new RuntimeException($e->getMessage(), $e->getCode());
                     }
-                } else {
-                    throw new Exception("Checksum is not correct");
                 }
             } catch (Exception $e) {
                 $this->renderSubmenu(false);
@@ -49,7 +49,7 @@ class Admin_EventsController extends Soulex_Controller_Abstract
                         . $e->getMessage());
             }
         } else {
-            $paginator = $eventsService->order($order)->paginate();
+            $paginator = $eventsMapper->order($order)->paginate();
         }
 
         // show items per page
@@ -69,36 +69,36 @@ class Admin_EventsController extends Soulex_Controller_Abstract
     {
         $frmEvents = new Admin_Form_Events();
 
-
         if($this->getRequest()->isPost() &&
             $frmEvents->isValid($this->getRequest()->getPost())) {
             $data = array(
                 'id' => $frmEvents->getValue('id'),
                 'title' => $frmEvents->getValue('title'),
-                'shortDescription' => $frmEvents->getValue('short_description'),
-                'detailDescription' => $frmEvents->getValue('detail_description'),
+                'short_description' => $frmEvents->getValue('short_description'),
+                'detail_description' => $frmEvents->getValue('detail_description'),
                 'img_preview' => $frmEvents->getValue('img_preview'),
                 'published' => $frmEvents->getValue('published'),
-                'updatedAt' => date("Y-m-d H:i:s"),
-                'publishedAt' => $frmEvents->getValue('published_at')
+                'updated_at' => date("Y-m-d H:i:s"),
+                'published_at' => $frmEvents->getValue('published_at')
             );
-            $eventsService = new Soulex_Components_Events_EventsService($data);
-            $eventsService->save();
+            $events = new Admin_Model_Events($data);
+            $eventsMapper = new Admin_Model_EventsMapper();
+            $eventsMapper->save($events);
 
             $this->disableContentRender();
 
             return $this->_forward('index');
         } else {
-            $eventsService = new Soulex_Components_Events_EventsService();
-            $currentEvents = $eventsService->findById($this->getRequest()->getParam('id'));
+            $eventsMapper = new Admin_Model_EventsMapper();
+            $currentEvents = $eventsMapper->findById($this->getRequest()->getParam('id'));
             $frmEvents->populate(array(
                'id' => $currentEvents->getId(),
                 'title' => $currentEvents->getTitle(),
-                'short_description' => $currentEvents->getShortDescription(),
-                'detail_description' => $currentEvents->getDetailDescription(),
-                'img_preview' => $currentEvents->getImgPreview(),
+                'short_description' => $currentEvents->getShort_description(),
+                'detail_description' => $currentEvents->getDetail_description(),
+                'img_preview' => $currentEvents->getImg_preview(),
                 'published' => $currentEvents->getPublished(),
-                'published_at' => $currentEvents->getPublishedAt()
+                'published_at' => $currentEvents->getPublished_at()
             ));
         }
 
@@ -116,16 +116,15 @@ class Admin_EventsController extends Soulex_Controller_Abstract
                $frmEvents->isValid($this->getRequest()->getPost()) ) {
             $data = array(
                 'title' => $frmEvents->getValue('title'),
-                'shortDescription' => $frmEvents->getValue('short_description'),
-                'detailDescription' => $frmEvents->getValue('detail_description'),
+                'short_description' => $frmEvents->getValue('short_description'),
+                'detail_description' => $frmEvents->getValue('detail_description'),
                 'published' => $frmEvents->getValue('published'),
                 'img_preview' => $frmEvents->getValue('img_preview'),
-                'createdAt' => date("Y-m-d H:i:s"),
-                'publishedAt' => $frmEvents->getValue('published_at')
+                'published_at' => $frmEvents->getValue('published_at')
             );
-
-            $eventsService = new Soulex_Components_Events_EventsService($data);
-            $eventsService->save();
+            $events = new Admin_Model_Events($data);
+            $eventsMapper = new Admin_Model_EventsMapper();
+            $eventsMapper->save($events);
 
             $this->disableContentRender();
 

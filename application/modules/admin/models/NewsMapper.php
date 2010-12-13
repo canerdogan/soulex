@@ -30,10 +30,12 @@ class Admin_Model_NewsMapper extends Admin_Model_DataMapper_Abstract
         $data = $news->toArray();
 
         if (null === ($id = $news->getId())) {
+            $data['created_at'] = date("Y-m-d H:i:s");
             $this->getDbTable()->insert($data);
             $insertedId = $this->getDbTable()->getDefaultAdapter()->lastInsertId();
             $news->setId($insertedId);
         } else {
+            $data['updated_at'] = date("Y-m-d H:i:s");
             $this->getDbTable()->update($data, array('id = ?' => $id));
         }
     }

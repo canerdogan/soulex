@@ -45,7 +45,6 @@ class Admin_Model_MenuMapper extends Admin_Model_DataMapper_Abstract
             'menutype'              => $menu->getMenutype(),
             'description'           => $menu->getDescription()
         );
-
         if (null === ($id = $menu->getId())) {
             $this->getDbTable()->insert($data);
             $insertedId = $this->getDbTable()->getDefaultAdapter()->lastInsertId();

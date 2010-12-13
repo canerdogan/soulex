@@ -91,6 +91,12 @@ abstract class Admin_Model_DataMapper_Abstract
         $this->_select->order($spec);
         return $this;
     }
+    public function limit($count = null, $offset = null)
+    {
+        $this->_select = $this->getSelect();
+        $this->_select->limit($count, $offset);
+        return $this;
+    }
     /**
 	 * Fetches paginator
 	 *

@@ -119,10 +119,17 @@ class Admin_UserController extends Soulex_Controller_Abstract
 
                 $userForm->removeElement('id');
                 $userForm->removeElement('retpath');
-
                 try {
-
-                    $userModel = new Admin_Model_User($userForm->getValues());
+                    $data = array(
+                        'username' => $userForm->getValue('username'),
+                        'password' => $userForm->getValue('password'),
+                        'firstname' => $userForm->getValue('firstname'),
+                        'lastname' => $userForm->getValue('lastname'),
+                        'email' => $userForm->getValue('email'),
+                        'enabled' => $userForm->getValue('enabled'),
+                        'role' => $userForm->getValue('role')
+                    );
+                    $userModel = new Admin_Model_User($data);
                     $userMapper = new Admin_Model_UserMapper();
                     $userMapper->save($userModel);
 
@@ -207,14 +214,20 @@ class Admin_UserController extends Soulex_Controller_Abstract
 
                     if(!empty ($passValue)
                             && empty($passConfirmValue)) {
-                        throw new Zend_Exception("Please confirm password");
+                        throw new LogicException("Please confirm password");
                     }
 
-                    // remove confirm password field as it doesn't exist in DB
-                    $userForm->removeElement('confirmPassword');
-                    $userForm->removeElement('retpath');
+                    $data = array(
+                        'username' => $userForm->getValue('username'),
+                        'password' => $userForm->getValue('password'),
+                        'firstname' => $userForm->getValue('firstname'),
+                        'lastname' => $userForm->getValue('lastname'),
+                        'email' => $userForm->getValue('email'),
+                        'enabled' => $userForm->getValue('enabled'),
+                        'role' => $userForm->getValue('role')
+                    );
 
-                    $userModel = new Admin_Model_User($userForm->getValues());
+                    $userModel = new Admin_Model_User($data);
                     $userMapper = new Admin_Model_UserMapper();
                     $userMapper->save($userModel);
 
