@@ -149,7 +149,7 @@ class Admin_MenuitemController extends Soulex_Controller_Abstract
                 'id' => $menuItem->getId(),
                 'label' => $menuItem->getLabel(),
                 'uri' => $menuItem->getUri(),
-                'menuId' => $menuItem->getMenu_id(),
+                'menu_id' => $menuItem->getMenu_id(),
                 'position' => $menuItem->getPosition(),
                 'published' => $menuItem->getPublished()
             ));
