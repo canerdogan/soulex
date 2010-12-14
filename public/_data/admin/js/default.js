@@ -82,8 +82,9 @@ function addNode()
         return false;
     }
     if(name != null) {
+       var pageId = $("#id").val();
        var html = "<tr id='node-" + name + "'><td><a href='javascript:void(0)' onclick='showNode(\"" +
-           name + "\")'>" +name + "</a></td><td></td><td></td></tr>";
+           name + "\",\"" + pageId + "\")'>" +name + "</a></td><td></td><td></td></tr>";
        $("#custom-nodes").append($(html));
     }
 }
@@ -221,11 +222,14 @@ function isChecked(isitchecked)
 }
 function checkAll()
 {
+    var cnt = 0;
     $("input[name=cid\[\]]").each(function(){
         if($(this).is(":checked")) {
             $(this).removeAttr("checked");
         } else {
             $(this).attr("checked", "checked");
+            cnt++;
         }
     })
+    $("#boxchecked").val(cnt);
 }

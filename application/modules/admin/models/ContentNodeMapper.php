@@ -31,6 +31,12 @@ class Admin_Model_ContentNodeMapper extends Admin_Model_DataMapper_Abstract
      */
     public function loadNodeInfo(Admin_Model_ContentNode $node)
     {
+        $pageId = $node->getPageId();
+        $nodeName = $node->getName();
+        if(empty($pageId) || empty($nodeName)) {
+            throw new InvalidArgumentException('Page id and node name are'
+                    . ' required to load node info');
+        }
         $result = $this->getDbTable()->select()
                 ->where("name = ?", $node->getName())
                 ->where("page_id = ?", $node->getPageId());
