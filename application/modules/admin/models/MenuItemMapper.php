@@ -65,22 +65,21 @@ class Admin_Model_MenuItemMapper extends Admin_Model_DataMapper_Abstract
             'uri'                   => $menu->getUri(),
             'position'              => $menu->getPosition(),
             'published'             => $menu->getPublished(),
-            'parent_id'             => $menu->getParent_id()
+            'parent_id'             => $menu->getParent_id(),
         );
 
+        if(0 != $menu->getParent_id()) {
+            $parentMenu = $this->findById($menu->getParent_id());
+
+            $data['parentLevel'] = $parentMenu->getLevel();
+            $data['lft'] = $parentMenu->getLft();
+
+            $rgtKey = $parentMenu->getRgt();
+        } else {
+            $rgtKey = 0;
+        }
+
         if (null === ($id = $menu->getId())) {
-            
-            if(0 != $menu->getParent_id()) {
-                $parentMenu = $this->findById($menu->getParent_id());
-
-                $data['level'] = $parentMenu->getLevel();
-                $data['lft'] = $parentMenu->getLft();
-
-                $rgtKey = $parentMenu->getRgt();
-            } else {
-                $rgtKey = 0;
-            }
-
             $insertedId = $this->getDbTable()->_insert($data);
             $menu->setId($insertedId);
         } else {

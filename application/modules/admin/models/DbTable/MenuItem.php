@@ -15,6 +15,65 @@
 class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
 {
     protected $_name = 'menu_items';
+
+    public function moveBranchWhenNodeGoesDown($params)
+    {
+        $this->_db->beginTransaction();
+        try {
+            $this->_db->query("UPDATE " . $this->_name . " SET right_key = right_key - ?"
+                    . " WHERE right_key > ? AND right_key <= ?", array(
+                    $params['skew_tree'],
+                    $params['right_key'],
+                    $params['right_key_near']
+            ));
+            $this->_db->query("UPDATE " . $this->_name . " SET left_key = left_key - ?"
+                    . " WHERE left_key < ? AND left_key > ?", array(
+                        $params['skew_tree'],
+                        $params['left_key'],
+                        $params['right_key_near']
+            ));
+            $this->_db->query("UPDATE " . $this->_name . " SET left_key = left_key + ?,"
+                    . "right_key = right_key + ?, level = level + ? "
+                    . " WHERE id IN (?) ", array(
+                        $params['skew_edit'],
+                        $params['skew_edit'],
+                        $params['skew_level '],
+                        implode(',', $params['id_edit'])
+           ));
+        } catch (Zend_Exception $e) {
+            $this->_db->rollBack();
+        }
+    }
+
+    public function moveBranchWhenNodeGoesUp($params)
+    {
+        $this->_db->beginTransaction();
+        try {
+            $this->_db->query("UPDATE " . $this->_name . " SET right_key = right_key + ?"
+                    . " WHERE right_key < ? AND right_key > ?", array(
+                    $params['skew_tree'],
+                    $params['left_key'],
+                    $params['right_key_near']
+            ));
+            $this->_db->query("UPDATE " . $this->_name . " SET left_key = left_key + ?"
+                    . " WHERE left_key < ? AND left_key > ?", array(
+                        $params['skew_tree'],
+                        $params['left_key'],
+                        $params['right_key_near']
+            ));
+            $this->_db->query("UPDATE " . $this->_name . " SET left_key = left_key + ?,"
+                    . "right_key = right_key + ?, level = level + ? "
+                    . " WHERE id IN (?) ", array(
+                        $params['skew_edit'],
+                        $params['skew_edit'],
+                        $params['skew_level '],
+                        implode(',', $params['id_edit'])
+           ));
+        } catch (Zend_Exception $e) {
+            $this->_db->rollBack();
+        }
+    }
+
     /**
      * Insert new row
      * 
@@ -67,43 +126,68 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
      * 
      * @param array $data
      * @param  array|string $where An SQL WHERE clause, or an array of SQL WHERE clauses.
+     * @param string $rgtKey of parent row
      */
     public function _update(array $data, $where, $rgtKey)
     {
         $row = $this->fetchRow($where);
 
+        // 1
         $level  = $row->level;
         $left_key    = $row->lft;
         $right_key    = $row->rgt;
+        // 2 level of new parent node (1 - for root)
+        $level_up = $data['parentLevel'];
 
-        // move leaf to another node
-        if($data['parent_id'] != $row->parent_id) {
-            $level_up = $data['level'];// level of new parent node
-            // right Key of node beside which we move current node
-            // parent node is changed
-            $right_key = $rgtKey - 1;
-            // @todo if parent is not changed, node is placed after another sibling
-            // we need to define $left_key
-            if(0 === $rgtKey) {// move to root node
+        // 3 right_key, left_key detection
+        if($data['parent_id'] == $row->parent_id &&
+                0 != $rgtKey) {// parent node is not changed
+            if($row->parent_id != $data['parent_id']) {
+                throw new Zend_Exception("You can't move node when parent"
+                         . " node remains unchanged");
+                $left_key_near = 1;// @todo fix it with correct value
+            }
+        } else {
+            if(0 == $rgtKey) {
+                // move node to root
                 $maxRgtKeyRow = $this->findMaxRightKey();
-                $right_key = $maxRgtKeyRow['max_right'];
+                $right_key_near = $maxRgtKeyRow['max_right'];
+            } else {
+                // simple move to another node
+                $right_key_near = $rgtKey - 1;
             }
+        }
 
-            // move node to upper level
-            if($level_up < $level) {
-                $parentRgtKeyRow = $this->findParentRightKey($row->parent_id);
-                $right_key = $parentRgtKeyRow['rgt'];
-            }
+        // moving node up level
+        $newLevel = $data['parentLevel'] + 1;
+        if($row->level > $newLevel) {
+            // right key of old parent node
+            $right_key_row = $this->findParentRightKey($row->parent_id);
+            $right_key_near = $right_key_row['rgt'];
+        }
 
-            $skew_level = $level_up - $level + 1; // moving node offset
-            $skew_tree  = $right_key - $left_key; // tree keys offset
+        $skew_level = $level_up - $level + 1; // moving node offset
+        $skew_tree  = $right_key - $left_key + 1; // tree keys offset
 
-//            var_dump($left_key);echo '<br />rgt: <br />';var_dump($right_key);echo '<br />lvl up:<br />';
-//            var_dump($level_up);echo '<br />lvl: <br />';var_dump($level);
-//
+        $id_edit = $this->getAllIdsOfMovingNodesInBranch($left_key, $right_key);
 
-            throw new Zend_Exception('You can not move nodes to another parent.'
-                    . ' This feature is not realized yet. Sorry :(');
+        $params = array(
+            'skew_tree' => $skew_tree,
+            'left_key' => $left_key,
+            'right_key_near' => $right_key_near,
+            'skew_level' => $skew_level,
+            'id_edit' => $id_edit
+        );
+
+        if($right_key_near > $right_key) {// moving node up
+            // editing node keys offset
+            $skew_edit = $right_key_near - $left_key + 1;
+            $params['skew_edit'] = $skew_edit;
+            $this->moveBranchWhenNodeGoesUp($params);
+        } else {// moving node down
+            $skew_edit = $right_key_near - $left_key + 1 - $skew_tree;
+            $params['skew_edit'] = $skew_edit;
+            $this->moveBranchWhenNodeGoesDown($params);
         }
 
         $row->setFromArray($data);
@@ -178,5 +262,28 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
                 ->from(array($this->_name), array("rgt"))
                 ->where("id = ?" , $id);
         return $this->fetchRow($select);
+    }
+    /**
+     * Select ids of all nodes that exist in branch where
+     * moving node is
+     *
+     * @param int $left_key
+     * @param int $right_key
+     * @return array
+     */
+    private function getAllIdsOfMovingNodesInBranch($left_key, $right_key)
+    {
+        $ids = array();
+        $select = $this->select()
+                ->from(array($this->_name), array("id"))
+                ->where("lft >= ?" , $left_key)
+                ->where("rgt <= ?", $right_key);
+        $rows = $this->fetchAll($select)->toArray();
+        if(is_array($rows) && count($rows) > 0) {
+            foreach($rows as $row) {
+                $ids[] = $row['id'];
+            }
+        }
+        return $ids;
     }
 }
