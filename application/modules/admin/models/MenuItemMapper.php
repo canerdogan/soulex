@@ -71,16 +71,16 @@ class Admin_Model_MenuItemMapper extends Admin_Model_DataMapper_Abstract
         if(0 != $menu->getParent_id()) {
             $parentMenu = $this->findById($menu->getParent_id());
 
-            $data['parentLevel'] = $parentMenu->getLevel();
+            $data['level'] = $parentMenu->getLevel();// parent level
             $data['lft'] = $parentMenu->getLft();
 
             $rgtKey = $parentMenu->getRgt();
         } else {
             $rgtKey = 0;
         }
-
+        
         if (null === ($id = $menu->getId())) {
-            $insertedId = $this->getDbTable()->_insert($data);
+            $insertedId = $this->getDbTable()->_insert($data, $rgtKey);
             $menu->setId($insertedId);
         } else {
             $this->getDbTable()->_update($data, array('id = ?' => $id), $rgtKey);

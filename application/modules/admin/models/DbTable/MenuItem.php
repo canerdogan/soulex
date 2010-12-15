@@ -78,11 +78,17 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
      * Insert new row
      * 
      * @param array $data
+     * @param int $rgtKey of parent node
      * @return int inserted $rowId
      */
-    public function _insert(array $data)
+    public function _insert(array $data, $rgtKey)
     {
-        $lft = 0;//top level element
+        if(0 != $rgtKey) {
+            $lft = $rgtKey;//top level element
+        } else {
+            $lft = $this->findMaxRightKey() + 1;// if node is inserted to root
+        }
+
 		$level = 0;//top level of parent
         $parent_id = 0;
         
@@ -97,26 +103,38 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
         }
 
         $tree_data = array(
-            'lft' => $lft + 1,
-            'rgt' => $lft + 2,
+            'lft' => $lft,
+            'rgt' => $lft + 1,
             'level' => $level + 1,
             'parent_id' => $parent_id
         );
         $data = array_merge($data, $tree_data);
 
-        $this->_db->beginTransaction();
+        if(0 == $rgtKey) {// if node has no parent
+            $rightKey = $this->findMaxRightKey() + 1;
+        }
         
+        $this->_db->beginTransaction();
+
         try {
-            $this->_db->query("UPDATE " . $this->_name . " SET rgt = rgt + 2 WHERE rgt > ?", $lft);
-            $this->_db->query("UPDATE " . $this->_name . " SET lft = lft + 2 WHERE lft > ?", $lft);
+            if($rgtKey > 0) {
+                $this->_db->query("UPDATE " . $this->_name . " SET lft = lft + 2,"
+                        . "rgt = rgt + 2 WHERE lft > ?", $rightKey);
+            }
+            $this->_db->query("UPDATE " . $this->_name . " SET rgt = rgt + 2"
+                    . " WHERE rgt >= ? AND lft < ?", array($rightKey, $rightKey));
 
-            $this->insert($data);
-
-            $rowId = $this->_db->lastInsertId();
+            try {
+                $this->insert($data);
+                $rowId = $this->_db->lastInsertId();
+            } catch (Zend_Exception $e) {
+                throw $e;
+            }
 
             $this->_db->commit();
         } catch (Zend_Exception $e) {
             $this->_db->rollBack();
+            throw new RuntimeException("Row insertion failed " . $e->getMessage());
         }
 
         return $rowId;
@@ -137,7 +155,7 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
         $left_key    = $row->lft;
         $right_key    = $row->rgt;
         // 2 level of new parent node (1 - for root)
-        $level_up = $data['parentLevel'];
+        $level_up = $data['level'];
 
         // 3 right_key, left_key detection
         if($data['parent_id'] == $row->parent_id &&
@@ -150,8 +168,7 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
         } else {
             if(0 == $rgtKey) {
                 // move node to root
-                $maxRgtKeyRow = $this->findMaxRightKey();
-                $right_key_near = $maxRgtKeyRow['max_right'];
+                $right_key_near = $this->findMaxRightKey();
             } else {
                 // simple move to another node
                 $right_key_near = $rgtKey - 1;
@@ -159,7 +176,7 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
         }
 
         // moving node up level
-        $newLevel = $data['parentLevel'] + 1;
+        $newLevel = $data['level'] + 1;
         if($row->level > $newLevel) {
             // right key of old parent node
             $right_key_row = $this->findParentRightKey($row->parent_id);
@@ -240,7 +257,7 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
     /**
      * Find MAX right key value of tree
      * 
-     * @return Zend_Db_Table_Row_Abstract
+     * @return int
      */
     private function findMaxRightKey()
     {
@@ -248,7 +265,8 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
             array($this->_name),
             array( 'max_right' => 'MAX(rgt)')
         );
-        return $this->fetchRow($select);
+        $row = $this->fetchRow($select);
+        return $row['max_right'];
     }
     /**
      * Find Right Key of Parent Node
