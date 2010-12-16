@@ -16,61 +16,65 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
 {
     protected $_name = 'menu_items';
 
-    public function moveBranchWhenNodeGoesDown($params)
+    private function moveBranchWhenNodeGoesDown($params)
     {
         $this->_db->beginTransaction();
         try {
-            $this->_db->query("UPDATE " . $this->_name . " SET right_key = right_key - ?"
-                    . " WHERE right_key > ? AND right_key <= ?", array(
+            $this->_db->query("UPDATE " . $this->_name . " SET rgt = rgt - ?"
+                    . " WHERE rgt > ? AND rgt <= ?", array(
                     $params['skew_tree'],
                     $params['right_key'],
                     $params['right_key_near']
             ));
-            $this->_db->query("UPDATE " . $this->_name . " SET left_key = left_key - ?"
-                    . " WHERE left_key < ? AND left_key > ?", array(
+            $this->_db->query("UPDATE " . $this->_name . " SET lft = lft - ?"
+                    . " WHERE lft < ? AND lft > ?", array(
                         $params['skew_tree'],
                         $params['left_key'],
                         $params['right_key_near']
             ));
-            $this->_db->query("UPDATE " . $this->_name . " SET left_key = left_key + ?,"
-                    . "right_key = right_key + ?, level = level + ? "
+            $this->_db->query("UPDATE " . $this->_name . " SET lft = lft + ?,"
+                    . "rgt = rgt + ?, level = level + ? "
                     . " WHERE id IN (?) ", array(
                         $params['skew_edit'],
                         $params['skew_edit'],
                         $params['skew_level '],
                         implode(',', $params['id_edit'])
            ));
+           $this->_db->commit();
         } catch (Zend_Exception $e) {
             $this->_db->rollBack();
+            throw $e;
         }
     }
 
-    public function moveBranchWhenNodeGoesUp($params)
+    private function moveBranchWhenNodeGoesUp($params)
     {
         $this->_db->beginTransaction();
         try {
-            $this->_db->query("UPDATE " . $this->_name . " SET right_key = right_key + ?"
-                    . " WHERE right_key < ? AND right_key > ?", array(
+            $this->_db->query("UPDATE " . $this->_name . " SET rgt = rgt + ?"
+                    . " WHERE rgt < ? AND rgt > ?", array(
                     $params['skew_tree'],
                     $params['left_key'],
                     $params['right_key_near']
             ));
-            $this->_db->query("UPDATE " . $this->_name . " SET left_key = left_key + ?"
-                    . " WHERE left_key < ? AND left_key > ?", array(
+            $this->_db->query("UPDATE " . $this->_name . " SET lft = lft + ?"
+                    . " WHERE lft < ? AND lft > ?", array(
                         $params['skew_tree'],
                         $params['left_key'],
                         $params['right_key_near']
             ));
-            $this->_db->query("UPDATE " . $this->_name . " SET left_key = left_key + ?,"
-                    . "right_key = right_key + ?, level = level + ? "
-                    . " WHERE id IN (?) ", array(
+            $this->_db->query("UPDATE " . $this->_name . " SET lft = lft + ?,"
+                    . "rgt = rgt + ?, level = level + ?"
+                    . " WHERE id IN (?)", array(
                         $params['skew_edit'],
                         $params['skew_edit'],
-                        $params['skew_level '],
+                        $params['skew_level'],
                         implode(',', $params['id_edit'])
            ));
+           $this->_db->commit();
         } catch (Zend_Exception $e) {
             $this->_db->rollBack();
+            throw $e;
         }
     }
 
@@ -89,7 +93,7 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
             $lft = $this->findMaxRightKey() + 1;// if node is inserted to root
         }
 
-		$level = 0;//top level of parent
+		$level = 0;// top level of parent
         $parent_id = 0;
         
         if(isset($data['parent_id'])) {
@@ -98,9 +102,9 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
         if(isset($data['level'])) {
             $level = $data['level'];
         }
-        if(isset($data['lft'])) {
-            $lft = $data['lft'];
-        }
+//        if(isset($data['lft'])) {
+//            $lft = $data['lft'];
+//        }
 
         $tree_data = array(
             'lft' => $lft,
@@ -110,13 +114,16 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
         );
         $data = array_merge($data, $tree_data);
 
-        if(0 == $rgtKey) {// if node has no parent
-            $rightKey = $this->findMaxRightKey() + 1;
-        }
-        
+//        if(0 == $rgtKey) {// if node has no parent
+//            $rightKey = $this->findMaxRightKey() + 1;
+//        }
+        $rightKey = $lft;
+//        var_dump($rightKey);
+//                var_dump($data);die();
         $this->_db->beginTransaction();
 
         try {
+
             if($rgtKey > 0) {
                 $this->_db->query("UPDATE " . $this->_name . " SET lft = lft + 2,"
                         . "rgt = rgt + 2 WHERE lft > ?", $rightKey);
@@ -155,16 +162,15 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
         $left_key    = $row->lft;
         $right_key    = $row->rgt;
         // 2 level of new parent node (1 - for root)
-        $level_up = $data['level'];
+        $level_up = isset($data['level']) ? $data['level'] : 1;
+        $data['level'] = $level_up;// in case we move to root
 
         // 3 right_key, left_key detection
         if($data['parent_id'] == $row->parent_id &&
                 0 != $rgtKey) {// parent node is not changed
-            if($row->parent_id != $data['parent_id']) {
                 throw new Zend_Exception("You can't move node when parent"
                          . " node remains unchanged");
                 $left_key_near = 1;// @todo fix it with correct value
-            }
         } else {
             if(0 == $rgtKey) {
                 // move node to root
@@ -175,13 +181,13 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
             }
         }
 
-        // moving node up level
-        $newLevel = $data['level'] + 1;
-        if($row->level > $newLevel) {
-            // right key of old parent node
-            $right_key_row = $this->findParentRightKey($row->parent_id);
-            $right_key_near = $right_key_row['rgt'];
-        }
+//        // moving node up level
+//        $newLevel = $level_up + 1;
+//        if($row->level > $newLevel) {
+//            // right key of old parent node
+//            $right_key_row = $this->findParentRightKey($row->parent_id);
+//            $right_key_near = $right_key_row['rgt'];
+//        }
 
         $skew_level = $level_up - $level + 1; // moving node offset
         $skew_tree  = $right_key - $left_key + 1; // tree keys offset
@@ -199,7 +205,14 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
         if($right_key_near > $right_key) {// moving node up
             // editing node keys offset
             $skew_edit = $right_key_near - $left_key + 1;
+//            $skew_edit = $right_key_near - $skew_edit;
             $params['skew_edit'] = $skew_edit;
+        var_dump($data);
+        print '<br />параметры дерева <br />';
+        var_dump($right_key_near, $left_key, $right_key, $params);
+        print '<br />уровень нового узла';
+        var_dump($level_up);
+        die();
             $this->moveBranchWhenNodeGoesUp($params);
         } else {// moving node down
             $skew_edit = $right_key_near - $left_key + 1 - $skew_tree;
@@ -224,7 +237,7 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
        try {
            $row = $this->find($id)->current();
            if(!$row) {
-               throw new Zend_Exception('Menu Item with ID ' . $id . ' not found!');
+               throw new InvalidArgumentException('menu item with id ' . $id . ' not found!');
            }
            
            $lft = $row->lft;
@@ -240,8 +253,9 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
 
            $this->_db->commit();
 
-       } catch (Zend_Exception $e) {
+       } catch (Exception $e) {
            $this->_db->rollBack();
+           throw new RuntimeException("Row deletion failed " . $e->getMessage());
        }
 
     }

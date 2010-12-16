@@ -72,7 +72,7 @@ class Admin_Model_MenuItemMapper extends Admin_Model_DataMapper_Abstract
             $parentMenu = $this->findById($menu->getParent_id());
 
             $data['level'] = $parentMenu->getLevel();// parent level
-            $data['lft'] = $parentMenu->getLft();
+//            $data['lft'] = $parentMenu->getLft();
 
             $rgtKey = $parentMenu->getRgt();
         } else {

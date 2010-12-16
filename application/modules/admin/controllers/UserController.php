@@ -173,6 +173,7 @@ class Admin_UserController extends Soulex_Controller_Abstract
             if(is_array($post['cid'])) {
                 try {
                     $userMapper->deleteBulk($post['cid']);
+                    return $this->_redirect('/admin/user/list');
                 } catch (Exception $e) {
                     $this->renderSubmenu(false);
                     $this->renderError("User deletion failed with the following error: "
@@ -218,6 +219,7 @@ class Admin_UserController extends Soulex_Controller_Abstract
                     }
 
                     $data = array(
+                        'id' => $userForm->getValue('id'),
                         'username' => $userForm->getValue('username'),
                         'password' => $userForm->getValue('password'),
                         'firstname' => $userForm->getValue('firstname'),
@@ -282,7 +284,7 @@ class Admin_UserController extends Soulex_Controller_Abstract
             $userMapper->delete($id);
             unset($userMapper); // only here user is deleted
             $this->disableContentRender();
-            return $this->_forward('list');
+            return $this->_redirect('/admin/user/list');
         } catch (Exception $e) {
             $this->renderSubmenu(false);
             $this->renderError("User deletion failed with the following error: "
