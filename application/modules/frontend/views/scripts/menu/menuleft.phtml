@@ -26,6 +26,10 @@ $this->navigation($container);
 $this->navigation()->menu()->setPartial('partials/_menu-left-row.phtml');
 $activeNav = $this->navigation()->findByUri($this->selectedUri);
 $activeNav->active = true;
+if(null !== $activeNav->getParent()) {
+    $activeNav->getParent()->active = true;
+    $activeNav->getParent()->setClass("active");
+}
 $activeNav->setClass("active");
 echo $this->navigation()->menu()->render();
 
