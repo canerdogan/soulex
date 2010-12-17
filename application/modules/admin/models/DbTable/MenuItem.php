@@ -166,11 +166,11 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
         $data['level'] = $level_up;// in case we move to root
 
         // 3 right_key, left_key detection
-        if($data['parent_id'] == $row->parent_id &&
-                0 != $rgtKey) {// parent node is not changed
-                throw new Zend_Exception("You can't move node when parent"
-                         . " node remains unchanged");
-                $left_key_near = 1;// @todo fix it with correct value
+        if($data['parent_id'] == $row->parent_id) {// parent node is not changed
+            unset($data['level']);
+            $row->setFromArray($data);
+            $row->save();
+            return true;
         } else {
             if(0 == $rgtKey) {
                 // move node to root
@@ -180,7 +180,7 @@ class Admin_Model_DbTable_MenuItem extends Zend_Db_Table_Abstract
                 $right_key_near = $rgtKey - 1;
             }
         }
-
+        throw new RuntimeException("you can not move one node to another, sorry :(");
 //        // moving node up level
 //        $newLevel = $level_up + 1;
 //        if($row->level > $newLevel) {

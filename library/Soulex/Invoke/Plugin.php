@@ -69,6 +69,7 @@ class Soulex_Invoke_Plugin extends Zend_Controller_Plugin_Abstract
         }
 
         $stack = $this->_getStack();
+
         if(count($this->_widgets) > 0):
             foreach ($this->_widgets as $widget) :
                 $r = new Zend_Controller_Request_Simple();

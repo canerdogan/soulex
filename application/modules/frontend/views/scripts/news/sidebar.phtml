@@ -1,16 +1,13 @@
 <?php
-if($this->news !== null) {
+if(count($this->news) > 0) {
     ?>
-    <h4>Новости</h4>
+    <h1>Новости</h1>
+    <div id="news_main">
     <?php
     $this->partialLoop()->setObjectKey('newsItem');
     echo $this->partialLoop('partials/_news-sidebar-row.phtml', $this->news);
     ?>
-    <p align="right">
-        <a href="/news.html">
-        <em>Архив новостей</em>
-        </a>
-    </p>
+    </div>
     <?php
 }
 ?>

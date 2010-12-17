@@ -77,7 +77,7 @@ function addNode()
 {
 //    alert(sender.form);
     var name = prompt("Add new node name");
-    if($("#"+name).attr("id") != null) {
+    if($("#node-"+name).attr("id") != null || name == "content") {
         alert('Такой узел страницы уже существует!');
         return false;
     }
@@ -103,11 +103,11 @@ function showNode(name, page)
 
 function loadNode(name, page, container)
 {
-    if($("#" + name).children().size() > 0) {
-        $("#" + name).css("display", "block");
+    if($("#nodeloaded-" + name).children().size() > 0) {
+        $("#nodeloaded-" + name).css("display", "block");
     } else {
         $.post("/admin/contentnode/loadnode", {'page':page, 'node':name}, function(response){
-            $(container).append($("<div id='" + name + "'>" + response + "</div>")).
+            $(container).append($("<div id='nodeloaded-" + name + "'>" + response + "</div>")).
                 css("display", "block");
         });
     }
@@ -119,7 +119,7 @@ function saveNode(node)
         "width" : "40%"
     }, 300);
 
-    $("#" + node).css("display", "none");
+    $("#nodeloaded-" + node).css("display", "none");
 
     $(".width-60").css("display", "block");
 
