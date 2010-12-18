@@ -12,7 +12,7 @@
  *
  * @author miholeus
  */
-class Admin_Model_DbTable_News extends Zend_Db_Table_Abstract
+class Admin_Model_DbTable_News extends Soulex_Model_DbTable_Abstract_PrefixedTable
 {
     protected $_name = 'news';
 }

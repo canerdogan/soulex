@@ -54,7 +54,7 @@ class Admin_UserController extends Soulex_Controller_Abstract
             // get the default db adapter
             $db = Zend_Db_Table::getDefaultAdapter();
             //create the auth adapter
-            $authAdapter = new Zend_Auth_Adapter_DbTable($db, 'users',
+            $authAdapter = new Zend_Auth_Adapter_DbTable($db, $userMapper->getDbTable()->getName(),
               'username', 'password');
             //set the username and password
             $authAdapter->setIdentity($data['username']);

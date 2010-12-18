@@ -8,7 +8,7 @@
  * @author miholeus
  */
 
-class Model_PageMapper extends Zend_Db_Table_Abstract
+class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
 {
 	protected $_name = 'pages';
 	

@@ -114,6 +114,9 @@ class Model_Page
 		}
 		
 		$this->_pageRouter->deleteRoute($uri);
+
+        $contentNode = new Model_ContentNode();
+        $contentNode->deleteNodesOnPage($id);
 		
 		return $this->_mapper->deletePage($id);
 	}
