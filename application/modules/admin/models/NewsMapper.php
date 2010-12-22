@@ -12,22 +12,33 @@
  *
  * @author miholeus
  */
-class Admin_Model_NewsMapper extends Admin_Model_DataMapper_Abstract
+class Admin_Model_NewsMapper extends Admin_Model_DataMapper_Standard
 {
     /**
      *
      * @var Admin_Model_DbTable_News
      */
     protected $_dbTableClass = 'Admin_Model_DbTable_News';
+    /**
+     *
+     * @var Admin_Model_Menu
+     */
+    protected $_object = 'Admin_Model_News';
+    /**
+     *
+     * @var Admin_Model_MenuCollection
+     */
+    protected $_collection = 'Admin_Model_NewsCollection';
 
-    protected function createFromArray(array $array)
+    protected function prepareDataForSave(Admin_Model_Abstract $object)
     {
-        return new Admin_Model_News($array);
+        return $object->toArray();
     }
+
 
     public function save(Admin_Model_News $news)
     {
-        $data = $news->toArray();
+        $data = $this->prepareDataForSave($news);
 
         if (null === ($id = $news->getId())) {
             $data['created_at'] = date("Y-m-d H:i:s");
@@ -38,50 +49,6 @@ class Admin_Model_NewsMapper extends Admin_Model_DataMapper_Abstract
             $data['updated_at'] = date("Y-m-d H:i:s");
             $this->getDbTable()->update($data, array('id = ?' => $id));
         }
-    }
-
-    /**
-     * Finds data row by id and returns new object
-     * If object was not found then we set initial null values
-     * to object
-     *
-     * @param int $id
-     * @throws UnexpectedValueException if news was not found
-     * @return Admin_Model_News
-     */
-    public function findById($id)
-    {
-        $result = $this->getDbTable()->find($id);
-        if (0 == count($result)) {
-            throw new UnexpectedValueException("News by id " . $id . " not found");
-        }
-        $object = new Admin_Model_News();
-        $row = $result->current();
-        $object->setOptions($row->toArray());
-        return $object;
-    }
-    /**
-     * @param string|array|Zend_Db_Table_Select $where  OPTIONAL An SQL WHERE clause or Zend_Db_Table_Select object.
-     * @param string|array                      $order  OPTIONAL An SQL ORDER clause.
-     * @param int                               $count  OPTIONAL An SQL LIMIT count.
-     * @param int                               $offset OPTIONAL An SQL LIMIT offset.
-     * @return Admin_Model_NewsCollection all set
-     */
-    public function fetchAll($where = null, $order = null, $count = null, $offset = null)
-    {
-        $resultSet = $this->getDbTable()->fetchAll($where, $order, $count, $offset);
-        return new Admin_Model_NewsCollection($resultSet->toArray(), $this);
-    }
-    /**
-     * Delete news by $id
-     *
-     * @param int $id
-     * @return void
-     */
-    public function delete($id)
-    {
-        $where = $this->getDbTable()->getDefaultAdapter()->quoteInto('id = ?', $id);
-        $this->getDbTable()->delete($where);
     }
     /**
      * Mass news deletion

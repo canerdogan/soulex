@@ -72,7 +72,6 @@ class Admin_MenuitemController extends Soulex_Controller_Abstract
 
         $this->view->menuLevels = array_combine(array_values(range(1, $maxMenuLevel)),
                 range(1, $maxMenuLevel));
-
         $menuMapper = new Admin_Model_MenuMapper();
         $menus = $menuMapper->fetchAll();
 
