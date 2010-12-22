@@ -1,0 +1,32 @@
+<tr class="row<?php echo $this->partialCounter % 2 == 0 ? 1 : 0?>">
+    <td class="center">
+        <input id="cb0" type="checkbox" title="Checkbox for row <?=$this->partialCounter?>" onclick="isChecked(this.checked);" value="<?=$this->id?>" name="cid[]"/>
+    </td>
+    <td>
+        <a href="/admin/insadvice/edit/id/<?=$this->id?>">
+            <?=$this->escape($this->name)?>
+        </a>
+    </td>
+    <td class="center">
+        <?=$this->escape($this->date)?>
+    </td>
+    <td class="center">
+        <?php
+        if($this->draft) {
+            $action = 'Unpublish Item';
+            $text = 'Published';
+            $state = 'publish';
+        } else {
+            $action = 'Publish Item';
+            $text = 'Unpublished';
+            $state = 'unpublish';
+        }
+        ?>
+        <a class="jgrid" title="<?=$action?>" href="javascript:void(0);">
+        <span class="state <?=$state?>">
+            <span class="text"><?=$text?></span>
+        </span>
+        </a>
+    </td>
+    <td class="center"> <?=$this->id?> </td>
+</tr>

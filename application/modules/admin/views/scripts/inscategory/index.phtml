@@ -1,0 +1,10 @@
+<?php
+echo $this->partial('partials/inspirate/category.phtml', array(
+        'paginator' => $this->paginator,
+        'section' => $this->translate('Goods Manager'),
+        'subsection' => $this->translate('Goods Categories'),
+        'itemUri' => '/admin/insgoods',
+        'catUri' => '/admin/inscategory',
+        'itemName' => $this->translate('Goods'),
+        'itemController' => 'inscategory',
+        'rowTpl' => '_goodscat-row.phtml'));
