@@ -90,6 +90,18 @@ echo $this->partial('partials/toolbar-list-buttons.phtml', array(
                     ?>
                     </a>
                 </th>
+                <th class="nowrap" width="15%">
+                    <a title="Click to sort by this column" href="<?php echo $this->getUrlReverseSorting(array(
+                    'module' => 'admin',
+                    'controller' => 'menuitem',
+                    'action' => 'index'
+                 ), 'uri');?>">
+                    Uri
+                    <?php
+                    echo $this->getSortImage('uri');
+                    ?>
+                    </a>
+                </th>
                 <th width="5%">
                     <a title="Click to sort by this column" href="<?php echo $this->getUrlReverseSorting(array(
                     'module' => 'admin',

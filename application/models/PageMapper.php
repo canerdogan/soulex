@@ -8,7 +8,7 @@
  * @author miholeus
  */
 
-class Model_PageMapper extends Zend_Db_Table_Abstract
+class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
 {
 	protected $_name = 'pages';
 	
@@ -176,9 +176,16 @@ class Model_PageMapper extends Zend_Db_Table_Abstract
 		}		
 	}
 	
-	public function findPage($id, $where)
+	public function findPage($id, $whereStatement)
 	{
-		$row = $this->find($id)->current();
+        $where = $this->getDefaultAdapter()->quoteInto('id = ?', $id);
+        if(is_array($whereStatement) && count($whereStatement) > 0) {
+            foreach($whereStatement as $key => $val) {
+                $where .= ' AND ' . $this->getDefaultAdapter()->quoteInto($key . ' = ?', $val);
+            }
+        }
+
+		$row = $this->fetchRow($where);
 
 		if($row) {
 			$pageFields = $row->toArray();

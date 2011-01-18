@@ -29,8 +29,12 @@ class Admin_ContentnodeController extends Zend_Controller_Action
             'pageId'    => $pageId,
             'name'      => $node
         ));
-        $mdlContentNodeMapper = new Admin_Model_ContentNodeMapper();
-        $mdlContentNodeMapper->loadNodeInfo($mdlContentNode);
+        try {
+            $mdlContentNodeMapper = new Admin_Model_ContentNodeMapper();
+            $mdlContentNodeMapper->loadNodeInfo($mdlContentNode);
+        } catch (Exception $e) {
+            // log error
+        }
         
         $this->view->node = $mdlContentNode;
     }
@@ -76,9 +80,9 @@ class Admin_ContentnodeController extends Zend_Controller_Action
         } else {
             $id = $post['nodeId'];
 
-            $mdlContentNode = new Admin_Model_ContentNode();
+            $contentNodeMapper = new Admin_Model_ContentNodeMapper();
             // @todo return values for delete action
-            $isSucceeded = $mdlContentNode->delete($id);
+            $isSucceeded = (bool)$contentNodeMapper->delete($id);
         }
         echo Zend_Json_Encoder::encode(array('success' => $isSucceeded));
     }

@@ -23,6 +23,12 @@ class Admin_Controller_ContentnodeControllerTest extends ControllerTestCase
         $userFixture->authenticate();
     }
 
+    protected function tearDown()
+    {
+        parent::tearDown();
+        Admin_Fixture_User::destroy();
+    }
+
     public function testNodeCanBeLoaded()
     {
         $this->getRequest()->setMethod('POST')

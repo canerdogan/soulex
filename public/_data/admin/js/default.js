@@ -77,13 +77,14 @@ function addNode()
 {
 //    alert(sender.form);
     var name = prompt("Add new node name");
-    if($("#"+name).attr("id") != null) {
+    if($("#node-"+name).attr("id") != null || name == "content") {
         alert('Такой узел страницы уже существует!');
         return false;
     }
     if(name != null) {
+       var pageId = $("#id").val();
        var html = "<tr id='node-" + name + "'><td><a href='javascript:void(0)' onclick='showNode(\"" +
-           name + "\")'>" +name + "</a></td><td></td><td></td></tr>";
+           name + "\",\"" + pageId + "\")'>" +name + "</a></td><td></td><td></td></tr>";
        $("#custom-nodes").append($(html));
     }
 }
@@ -102,11 +103,11 @@ function showNode(name, page)
 
 function loadNode(name, page, container)
 {
-    if($("#" + name).children().size() > 0) {
-        $("#" + name).css("display", "block");
+    if($("#nodeloaded-" + name).children().size() > 0) {
+        $("#nodeloaded-" + name).css("display", "block");
     } else {
         $.post("/admin/contentnode/loadnode", {'page':page, 'node':name}, function(response){
-            $(container).append($("<div id='" + name + "'>" + response + "</div>")).
+            $(container).append($("<div id='nodeloaded-" + name + "'>" + response + "</div>")).
                 css("display", "block");
         });
     }
@@ -118,7 +119,7 @@ function saveNode(node)
         "width" : "40%"
     }, 300);
 
-    $("#" + node).css("display", "none");
+    $("#nodeloaded-" + node).css("display", "none");
 
     $(".width-60").css("display", "block");
 
@@ -221,11 +222,14 @@ function isChecked(isitchecked)
 }
 function checkAll()
 {
+    var cnt = 0;
     $("input[name=cid\[\]]").each(function(){
         if($(this).is(":checked")) {
             $(this).removeAttr("checked");
         } else {
             $(this).attr("checked", "checked");
+            cnt++;
         }
     })
+    $("#boxchecked").val(cnt);
 }

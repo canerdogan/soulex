@@ -42,6 +42,7 @@ resources.db.params.host = "localhost"
 resources.db.params.username = "test"
 resources.db.params.password = "test"
 resources.db.params.dbname = "test"
+resources.db.params.prefix = "sx_"
 resources.db.isDefaultTableAdapter = true
 resources.db.params.driver_options.1002 = "SET NAMES utf8"
 ;resources.db.params.charset = "utf8"

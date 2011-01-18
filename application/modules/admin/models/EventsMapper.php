@@ -12,28 +12,40 @@
  *
  * @author miholeus
  */
-class Admin_Model_EventsMapper extends Admin_Model_DataMapper_Abstract
+class Admin_Model_EventsMapper extends Admin_Model_DataMapper_Standard
 {
     /**
      *
      * @var Admin_Model_DbTable_Events
      */
     protected $_dbTableClass = 'Admin_Model_DbTable_Events';
-    protected function createFromArray(array $array)
+    /**
+     *
+     * @var Admin_Model_Events
+     */
+    protected $_object = 'Admin_Model_Events';
+    /**
+     *
+     * @var Admin_Model_EventsCollection
+     */
+    protected $_collection = 'Admin_Model_EventsCollection';
+
+    protected function prepareDataForSave(Admin_Model_Abstract $object)
     {
-        return new Admin_Model_Events($array);
+        return array(
+            'title'                 => $object['title'],
+            'short_description'     => $$object['short_description'],
+            'detail_description'    => $object['detail_description'],
+            'img_preview'           => $object['img_preview'],
+            'published'             => $object['published'],
+            'updated_at'            => $object['updated_at'],
+            'published_at'          => $object['published_at']
+        );
     }
+
     public function save(Admin_Model_Events $Events)
     {
-        $data = array(
-            'title'                 => $Events->getTitle(),
-            'short_description'     => $Events->getShort_description(),
-            'detail_description'    => $Events->getDetail_description(),
-            'img_preview'           => $Events->getImg_preview(),
-            'published'             => $Events->getPublished(),
-            'updated_at'            => $Events->getUpdated_at(),
-            'published_at'          => $Events->getPublished_at()
-        );
+        $data = $this->prepareDataForSave($Events);
 
         if (null === ($id = $Events->getId())) {
             $data['created_at'] = date("Y-m-d H:i:s");
@@ -42,38 +54,6 @@ class Admin_Model_EventsMapper extends Admin_Model_DataMapper_Abstract
             $Events->setId($insertedId);
         } else {
             $this->getDbTable()->update($data, array('id = ?' => $id));
-        }
-    }
-    public function findById($id)
-    {
-        $result = $this->getDbTable()->find($id);
-        if (0 == count($result)) {
-            throw new UnexpectedValueException("Events by id " . $id . " not found");
-        }
-        $object = new Admin_Model_Events();
-        $row = $result->current();
-        $object->setOptions($row->toArray());
-        return $object;
-    }
-    /**
-     * @param string|array|Zend_Db_Table_Select $where  OPTIONAL An SQL WHERE clause or Zend_Db_Table_Select object.
-     * @param string|array                      $order  OPTIONAL An SQL ORDER clause.
-     * @param int                               $count  OPTIONAL An SQL LIMIT count.
-     * @param int                               $offset OPTIONAL An SQL LIMIT offset.
-     * @return Admin_Model_EventsCollection all set
-     */
-    public function fetchAll($where = null, $order = null, $count = null, $offset = null)
-    {
-        $resultSet = $this->getDbTable()->fetchAll($where, $order, $count, $offset);
-        return new Admin_Model_EventsCollection($resultSet->toArray(), $this);
-    }
-
-    public function delete($id)
-    {
-        $object = $this->findById($id);
-        if(null !== $object) {
-            $where = $this->getDbTable()->getDefaultAdapter()->quoteInto('id = ?', $id);
-            $this->getDbTable()->delete($where);
         }
     }
 

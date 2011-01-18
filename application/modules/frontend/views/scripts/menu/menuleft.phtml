@@ -23,12 +23,22 @@ foreach($this->menus as $menu) {
 
 $container = new Zend_Navigation($menus);
 $this->navigation($container);
-//$this->navigation()->menu()->setPartial('partials/_menu-left-row.phtml');
-
+$this->navigation()->menu()->setPartial('partials/_menu-left-row.phtml');
 $activeNav = $this->navigation()->findByUri($this->selectedUri);
 $activeNav->active = true;
-if(is_callable(array($activeNav, 'setClass'))) {
-    $activeNav->setClass("active");
-}
 
-echo $this->navigation()->menu();
+try {
+    $activeNav->getParent()->active = true;
+    $activeNav->getParent()->setClass("active");
+} catch (Zend_Navigation_Exception $e){}
+
+$activeNav->setClass("active");
+echo $this->navigation()->menu()->render();
+
+//$activeNav = $this->navigation()->findByUri($this->selectedUri);
+//$activeNav->active = true;
+//if(is_callable(array($activeNav, 'setClass'))) {
+//    $activeNav->setClass("active");
+//}
+//
+//echo $this->navigation()->menu();

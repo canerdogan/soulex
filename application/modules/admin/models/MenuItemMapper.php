@@ -12,31 +12,23 @@
  *
  * @author miholeus
  */
-class Admin_Model_MenuItemMapper extends Admin_Model_DataMapper_Abstract
+class Admin_Model_MenuItemMapper extends Admin_Model_DataMapper_Standard
 {
     /**
      *
      * @var Admin_Model_DbTable_MenuItem
      */
     protected $_dbTableClass = 'Admin_Model_DbTable_MenuItem';
-    protected function createFromArray(array $array)
-    {
-        return new Admin_Model_MenuItem($array);
-    }
-	/**
-	 * Fetches menus
-	 *
-     * @param string|array|Zend_Db_Table_Select $where  OPTIONAL An SQL WHERE clause or Zend_Db_Table_Select object.
-     * @param string|array                      $order  OPTIONAL An SQL ORDER clause.
-     * @param int                               $count  OPTIONAL An SQL LIMIT count.
-     * @param int                               $offset OPTIONAL An SQL LIMIT offset.
-     * @return Admin_Model_MenuItemCollection all set
+    /**
+     *
+     * @var Admin_Model_MenuItem
      */
-    public function fetchAll($where = null, $order = null, $count = null, $offset = null)
-    {
-        $resultSet = $this->getDbTable()->fetchAll($where, $order, $count, $offset);
-        return new Admin_Model_MenuItemCollection($resultSet->toArray(), $this);
-    }
+    protected $_object = 'Admin_Model_MenuItem';
+    /**
+     *
+     * @var Admin_Model_MenuItemCollection
+     */
+    protected $_collection = 'Admin_Model_MenuItemCollection';
     /**
      * Fetch Menu Items groupped by parent ids
      *
@@ -52,58 +44,45 @@ class Admin_Model_MenuItemMapper extends Admin_Model_DataMapper_Abstract
         }
         return $items;
     }
+    protected function prepareDataForSave(Admin_Model_Abstract $object)
+    {
+        return array(
+            'menu_id'               => $object['menu_id'],
+            'label'                 => $object['label'],
+            'uri'                   => $object['uri'],
+            'position'              => $object['position'],
+            'published'             => $object['published'],
+            'parent_id'             => $object['parent_id'],
+        );
+    }
+
     /**
+     * Saves menu item
      *
      * @param Admin_Model_MenuItem $menu
      * @return Admin_Model_MenuItem
      */
     public function save(Admin_Model_MenuItem $menu)
     {
-        $data = array(
-            'menu_id'                => $menu->getMenu_id(),
-            'label'                 => $menu->getLabel(),
-            'uri'                   => $menu->getUri(),
-            'position'              => $menu->getPosition(),
-            'published'             => $menu->getPublished(),
-            'parent_id'             => $menu->getParent_id()
-        );
+        $data = $this->prepareDataForSave($menu);
 
+        if(0 != $menu->getParent_id()) {
+            $parentMenu = $this->findById($menu->getParent_id());
+
+            $data['level'] = $parentMenu->getLevel();// parent level
+//            $data['lft'] = $parentMenu->getLft();
+
+            $rgtKey = $parentMenu->getRgt();
+        } else {
+            $rgtKey = 0;
+        }
+        
         if (null === ($id = $menu->getId())) {
-            
-            if(0 != $menu->getParent_id()) {
-                $parentMenu = $this->findById($menu->getParent_id());
-
-                $data['level'] = $parentMenu->getLevel();
-                $data['lft'] = $parentMenu->getLft();
-
-                $rgtKey = $parentMenu->getRgt();
-            } else {
-                $rgtKey = 0;
-            }
-
-            $insertedId = $this->getDbTable()->_insert($data);
+            $insertedId = $this->getDbTable()->_insert($data, $rgtKey);
             $menu->setId($insertedId);
         } else {
             $this->getDbTable()->_update($data, array('id = ?' => $id), $rgtKey);
         }
-    }
-    /**
-     * Find menu item by its id
-     * 
-     * @param int $id
-     * @param Admin_Model_MenuItem $menu
-     * @return Admin_Model_MenuItem $menu
-     */
-    public function findById($id)
-    {
-        $result = $this->getDbTable()->find($id);
-        if (0 == count($result)) {
-            throw new UnexpectedValueException("MenuItem by id " . $id . " not found");
-        }
-        $object = new Admin_Model_MenuItem();
-        $row = $result->current();
-        $object->setOptions($row->toArray());
-        return $object;
     }
     /**
      * @return int max level

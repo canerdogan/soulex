@@ -6,7 +6,7 @@
  * @author miholeus
  */
 
-class Model_ContentNode extends Zend_Db_Table_Abstract
+class Model_ContentNode extends Soulex_Model_DbTable_Abstract_PrefixedTable
 {
     /**
      * The default table name
@@ -14,6 +14,7 @@ class Model_ContentNode extends Zend_Db_Table_Abstract
     protected $_name = 'content_nodes';
 	
 	protected $_referenceMap = array(
+
 		'Page' => array(
 			'columns' => array('page_id'),
 			'refTableClass' => 'Model_PageMapper',
@@ -58,5 +59,11 @@ class Model_ContentNode extends Zend_Db_Table_Abstract
         $select = $this->select();
         $select->where("page_id = ?", $pageId);
         return $this->fetchAll($select);
+    }
+
+    public function deleteNodesOnPage($pageId)
+    {
+        $where = $this->getAdapter()->quoteInto('page_id = ?', $pageId);
+        return $this->delete($where);
     }
 }

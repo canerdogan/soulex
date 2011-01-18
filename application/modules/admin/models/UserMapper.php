@@ -12,11 +12,21 @@
  *
  * @author miholeus
  */
-class Admin_Model_UserMapper extends Admin_Model_DataMapper_Abstract
+class Admin_Model_UserMapper extends Admin_Model_DataMapper_Standard
 {
     const ERR_USER_EXISTS = 1;
     
     protected $_dbTableClass = 'Admin_Model_DbTable_User';
+    /**
+     *
+     * @var Admin_Model_User
+     */
+    protected $_object = 'Admin_Model_User';
+    /**
+     *
+     * @var Admin_Model_UserCollection
+     */
+    protected $_collection = 'Admin_Model_UserCollection';
     protected $markForDeletion = false;
     /**
      * Objects that were marked for deletion
@@ -25,13 +35,14 @@ class Admin_Model_UserMapper extends Admin_Model_DataMapper_Abstract
      */
     protected $deletedObjects = array();
 
-    protected function createFromArray(array $array)
+    protected function prepareDataForSave(Admin_Model_Abstract $object)
     {
-        return new Admin_Model_User($array);
+        return $object->toArray();
     }
+
     public function save(Admin_Model_User $user)
     {
-        $data = $user->toArray();
+        $data = $this->prepareDataForSave($user);
         unset($data['lastvisitDate']);
 
         if(!empty($data['password'])) {
@@ -46,7 +57,7 @@ class Admin_Model_UserMapper extends Admin_Model_DataMapper_Abstract
 
             try {
                 $this->getDbTable()->insert($data);
-                $insertedId = $this->getDbTable()->getDefaultAdapter()->lastInsertId();
+                $insertedId = $this->getDbTable()->getAdapter()->lastInsertId();
                 $user->setId($insertedId);
                 $user->setRegisterDate($data['registerDate']);
             } catch (Exception $e) {
@@ -77,18 +88,6 @@ class Admin_Model_UserMapper extends Admin_Model_DataMapper_Abstract
             }
         }
         return $user;
-    }
-    /**
-     * @param string|array|Zend_Db_Table_Select $where  OPTIONAL An SQL WHERE clause or Zend_Db_Table_Select object.
-     * @param string|array                      $order  OPTIONAL An SQL ORDER clause.
-     * @param int                               $count  OPTIONAL An SQL LIMIT count.
-     * @param int                               $offset OPTIONAL An SQL LIMIT offset.
-     * @return Admin_Model_UserCollection
-     */
-    public function fetchAll($where = null, $order = null, $count = null, $offset = null)
-    {
-        $resultSet = $this->getDbTable()->fetchAll($where, $order, $count, $offset);
-        return new Admin_Model_UserCollection($resultSet->toArray(), $this);
     }
     /**
      * Fetches users due to a select statement
@@ -125,26 +124,6 @@ class Admin_Model_UserMapper extends Admin_Model_DataMapper_Abstract
                 $this->delete($id);
             }
         }
-    }
-    /**
-     * Finds data row by id and returns new object
-     * If object was not found then we set initial null values
-     * to object
-     *
-     * @param int $id
-     * @throws UnexpectedValueException if user was not found
-     * @return Admin_Model_User
-     */
-    public function findById($id)
-    {
-        $result = $this->getDbTable()->find($id);
-        if (0 == count($result)) {
-            throw new UnexpectedValueException("User by id " . $id . " not found");
-        }
-        $object = new Admin_Model_User();
-        $row = $result->current();
-        $object->setOptions($row->toArray());
-        return $object;
     }
 
     public function updateLastVisitDate($userId)

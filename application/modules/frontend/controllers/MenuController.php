@@ -18,10 +18,11 @@ class Frontend_MenuController extends Zend_Controller_Action
     {
         $menuMapper = new Admin_Model_MenuItemMapper();
         $menuItems = $menuMapper->fetchAll('menu_id = 6 AND published = 1', 'position');
+
         $this->view->menus = $menuItems;
 
         $this->view->selectedUri = $this->_request->getPathInfo();
-        
+
         $responseSegment = $this->_getParam('_responseSegment');
         $this->_helper->viewRenderer->setResponseSegment($responseSegment);
     }

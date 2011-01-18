@@ -26,13 +26,25 @@ class Frontend_Form_Feedback extends Zend_Form
         $name->addErrorMessage('Поле Ф.И.О обязательно для заполнения!');
         $name->addFilter('StripTags');
         $this->addElement($name);
-        // contacts
-        $contacts = $this->createElement('text', 'contacts');
-        $contacts->setRequired(true);
-        $contacts->setLabel('Контактные данные (телефон, e-mail)');
-        $contacts->addErrorMessage('Поле Контактные данные обязательно для заполнения');
-        $contacts->addFilter('StripTags');
-        $this->addElement($contacts);
+        // email
+        $email = $this->createElement('text', 'email');
+        $email->setRequired(true);
+        $email->setLabel('E-mail');
+        $email->addErrorMessage('Поле E-mail обязательно для заполнения');
+        $email->addFilter('StripTags');
+        $this->addElement($email);
+        // tel
+        $tel = $this->createElement('text', 'tel');
+        $tel->setLabel('Телефон');
+        $tel->addFilter('StripTags');
+        $this->addElement($tel);
+        // theme
+        $theme = $this->createElement('text', 'theme');
+        $theme->setRequired(true);
+        $theme->setLabel('Тема вопроса');
+        $theme->addErrorMessage('Поле Тема сообщения обязательно для заполнения');
+        $theme->addFilter('StripTags');
+        $this->addElement($theme);
         // text
         $text = $this->createElement('textarea', 'text');
         $text->setRequired(true);
@@ -41,7 +53,21 @@ class Frontend_Form_Feedback extends Zend_Form
         $text->setAttrib('rows', 5);
         $text->addFilter('StripTags');
         $this->addElement($text);
+        // Add a captcha
+        $this->addElement('captcha', 'captcha', array(
+            'label'      => 'Пожалуйста, введите символы, изображенные ниже:',
+            'required'   => true,
+            'captcha'    => array(
+                'captcha' => 'Figlet',
+                'wordLen' => 5,
+                'timeout' => 300
+            )
+        ));
         // submit button
 		$this->addElement('submit', 'submit', array('label' => 'Отправить') );
+        // add some CSRF protection
+        $this->addElement('hash', 'csrf', array(
+            'ignore' => true,
+        ));
     }
 }

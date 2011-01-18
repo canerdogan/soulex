@@ -24,9 +24,14 @@ class Frontend_FeedbackController extends Zend_Controller_Action
             if(isset($options['email']) && is_array($options['email'])) {
                 if(count($options['email']) > 0) {
                     $message = 'Ф.И.О.: ' . $form->getValue('name') . "\n"
-                                . "Контактные данные: "
-                                . $form->getValue('contacts') . "\n"
+                                . "Email: "
+                                . $form->getValue('email') . "\n"
+                                . "Телефон: \n"
+                                . $form->getValue('tel') . "\n"
+                                . "Тема вопроса: "
+                                . $form->getValue('theme') . "\n"
                                 . "Сообщение: " . $form->getValue('text');
+
                     foreach($options['email'] as $email) {
                         $mail = new Zend_Mail('utf-8');
                         $mail->setBodyText($message)
@@ -41,5 +46,7 @@ class Frontend_FeedbackController extends Zend_Controller_Action
             }
         }
         $this->view->form = $form;
+        $responseSegment = $this->_getParam('_responseSegment');
+        $this->_helper->viewRenderer->setResponseSegment($responseSegment);
     }
 }
