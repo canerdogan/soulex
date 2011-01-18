@@ -79,32 +79,4 @@ abstract class Admin_Model_DataMapper_Abstract
         }
         return $this->_select;
     }
-    /**
-     * Sets ordering state
-     *
-     * @param string $spec the column and direction to sort by
-     * @return Admin_Model_DataMapper_Abstract
-     */
-    public function order($spec)
-    {
-        $this->_select = $this->getSelect();
-        $this->_select->order($spec);
-        return $this;
-    }
-    public function limit($count = null, $offset = null)
-    {
-        $this->_select = $this->getSelect();
-        $this->_select->limit($count, $offset);
-        return $this;
-    }
-    /**
-	 * Fetches paginator
-	 *
-     * @return Zend_Paginator
-	 */
-    public function paginate()
-    {
-        $adapter = new Zend_Paginator_Adapter_DbSelect($this->getSelect());
-        return new Zend_Paginator($adapter);
-    }
 }

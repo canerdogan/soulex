@@ -76,8 +76,18 @@ abstract class Admin_Model_Abstract implements ArrayAccess
 
 //        $name = $this->transformName($name);
 
+        /**
+         * Is not good code for PHP5
+         */
+        /*
         if (in_array($name,
             array_keys(get_class_vars(get_class($this))))) {
+            return $name;
+        }
+         *
+         */
+        $reflection = new ReflectionClass($this);
+        if(in_array($name, array_keys($reflection->getdefaultProperties()))) {
             return $name;
         }
         return false;
