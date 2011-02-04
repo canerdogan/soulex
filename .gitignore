@@ -17,7 +17,9 @@ application/modules/admin/views/scripts/partials/newclassic
 application/modules/admin/controllers/Nc*
 application/modules/frontend
 application/modules/admin/views/scripts/global/header.phtml
+/tests/library/NewClassic
 
 /library/Totallsocks
 application/modules/admin/views/scripts/ts*
 application/modules/admin/controllers/Ts*
+/tests/library/Totallsocks
