@@ -164,7 +164,7 @@ class Soulex_Controller_Crud_Simple extends Soulex_Controller_Abstract
         if($this->_request->isPost()
                 && $this->_form->isValid($this->_request->getPost())) {
 
-            try{
+            try {
                 $this->_model->setOptions($this->_form->getValues());
                 $this->_mapper->save($this->_model);
                 $this->disableContentRender();
