@@ -15,6 +15,16 @@
  */
 class Frontend_NewsController extends Zend_Controller_Action
 {
+    public function mainpageAction()
+    {
+        $newsMapper = new NewClassic_Model_News_Mapper();
+        $this->view->news = $newsMapper->fetchAll(null, 'date DESC', 2);
+
+        $responseSegment = $this->_getParam('_responseSegment');
+        $this->_helper->viewRenderer->setResponseSegment($responseSegment);
+        
+        echo $this->view->render('news/mainpage.phtml');
+    }
     public function singleAction()
     {
         $id = $this->_getParam(1);

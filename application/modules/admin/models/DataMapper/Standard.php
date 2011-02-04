@@ -98,7 +98,7 @@ abstract class Admin_Model_DataMapper_Standard extends Admin_Model_DataMapper_Ab
     {
         $result = $this->getDbTable()->find($id);
         if (0 == count($result)) {
-            throw new UnexpectedValueException(get_class($this->_object)
+            throw new UnexpectedValueException($this->_object
                     . " by id " . $id . " not found");
         }
         $object = new $this->_object();

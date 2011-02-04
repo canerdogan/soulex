@@ -53,6 +53,7 @@ abstract class Admin_Model_DataMapper_Collection implements Iterator
             $this->total = count($raw);
         }
         $this->mapper = $mapper;
+        $this->pointer = 0;
     }
 
     public function add(Admin_Model_Abstract $model)

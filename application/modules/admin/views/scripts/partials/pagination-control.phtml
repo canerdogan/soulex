@@ -32,6 +32,8 @@ $display_options = array(
     unset($params['module']);
     unset($params['controller']);
     unset($params['action']);
+    // remove empty params
+    $params = array_diff($params, array(''));
 ?>
 
     <!-- First page link -->

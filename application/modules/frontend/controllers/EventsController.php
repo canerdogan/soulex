@@ -15,6 +15,16 @@
  */
 class Frontend_EventsController extends Zend_Controller_Action
 {
+    public function mainpageAction()
+    {
+        $eventsMapper = new NewClassic_Model_Events_Mapper();
+        $this->view->events = $eventsMapper->fetchAll(null, 'date DESC', 3);
+
+        $responseSegment = $this->_getParam('_responseSegment');
+        $this->_helper->viewRenderer->setResponseSegment($responseSegment);
+
+        echo $this->view->render('events/mainpage.phtml');
+    }
     public function singleAction()
     {
         $id = $this->_getParam(1);

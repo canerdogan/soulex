@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Soulex\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-27 14:24+0300\n"
+"POT-Creation-Date: 2011-01-18 00:00+0300\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Олег <nigel@tatar-inform.ru>\n"
+"Last-Translator: miholeus <nigel@tatar-inform.ru>\n"
 "Language-Team: miholeus <me@miholeus.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,609 +14,1552 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-KeywordsList: translate\n"
-"X-Poedit-SearchPath-0: /var/www/danaya-clk.ru/application/modules/admin\n"
+"X-Poedit-SearchPath-0: /var/www/projects/newclassic/application/modules/admin\n"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/edit.phtml:15
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/create.phtml:15
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/index.phtml:16
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:34
-msgid "Menu Manager"
-msgstr "Управление меню"
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuserstatus/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuserstatus/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuserstatus/index.phtml:4
+msgid "Users Manager"
+msgstr "Управление пользователями"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/edit.phtml:15
-msgid "Edit Menu"
-msgstr "Редактировать меню"
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuserstatus/edit.phtml:5
+msgid "Edit Status"
+msgstr "Редактирование статуса"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/create.phtml:15
-msgid "Add New Menu"
-msgstr "Добавить новое меню"
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuserstatus/create.phtml:5
+msgid "Add New Status"
+msgstr "Добавить статус"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/index.phtml:16
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/index.phtml:23
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:32
-msgid "Menus"
-msgstr "Меню"
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuserstatus/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuserstatus/index.phtml:17
+msgid "User statuses"
+msgstr "Статусы пользователей"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menu/index.phtml:26
-msgid "Menu Items"
-msgstr "Элементы меню"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:3
-msgid "View Site"
-msgstr "Открыть сайт"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:3
-msgid "Log out"
-msgstr "Выход"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:3
-msgid "Logged-in backend"
-msgstr "авторизовался в бэкэнде"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:10
-msgid "Site"
-msgstr "Сайт"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:12
-msgid "Control Panel"
-msgstr "Панель управления"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:14
-msgid "Global Configuration"
-msgstr "Глобальная конфигурация"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:16
-msgid "System Information"
-msgstr "Системная информация"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:18
-msgid "Logout"
-msgstr "Выход"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:22
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuserstatus/index.phtml:7
 msgid "Users"
 msgstr "Пользователи"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:24
-msgid "User Manager"
-msgstr "Управление пользователями"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:26
-msgid "Add New User"
-msgstr "Добавить нового пользователя"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:27
-msgid "Add New Group"
-msgstr "Добавить новую группу"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:39
-msgid "Content"
-msgstr "Контент"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:41
-msgid "Page Manager"
-msgstr "Управление страницами"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:43
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/edit.phtml:16
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/create.phtml:16
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/index.phtml:16
-msgid "News Manager"
-msgstr "Управление новостями"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/global/header.phtml:44
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/edit.phtml:16
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/create.phtml:16
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/index.phtml:16
-msgid "Events Manager"
-msgstr "Управление событиями"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/edit.phtml:16
-msgid "Edit Events"
-msgstr "Редактирование событий"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/create.phtml:16
-msgid "Add Events"
-msgstr "Добавить событие"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/index.phtml:16
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/events/index.phtml:23
-msgid "Events"
-msgstr "События"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/edit.phtml:16
-msgid "Edit News"
-msgstr "Редактирование новости"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/create.phtml:16
-msgid "Add News"
-msgstr "Добавить новость"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/index.phtml:16
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/news/index.phtml:23
-msgid "News"
-msgstr "Новости"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menuitem/edit.phtml:15
-msgid "Edit Menu Item"
-msgstr "Редактировать элемент меню"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/menuitem/create.phtml:15
-msgid "Add New Menu Item"
-msgstr "Добавить новый элемент меню"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:11
-msgid "Administration Login"
-msgstr "Авторизация пользователя"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:31
-msgid "User Name"
-msgstr "Логин"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:34
-msgid "Password"
-msgstr "Пароль"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:37
-msgid "Language"
-msgstr "Язык"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:44
-msgid "Log in"
-msgstr "Войти"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:65
-msgid "Use a valid username and password to gain access to the administrator backend"
-msgstr "Используйте правильные логин и пароль, чтобы получить доступ к бэкэнду администратора"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:67
-msgid "Go to site home page"
-msgstr "Вернуться на главную"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/login.phtml:79
-msgid "Warning! JavaScript must be enabled for proper operation of the Administrator backend"
-msgstr "Внимание! JavaScript должен быть включен для корректного входа в бэкэнд Администратора"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/update.phtml:15
-msgid "Update User"
-msgstr "Обновить пользователя"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/list.phtml:183
-msgid "You do not have any users"
-msgstr "Нет пользователей для отображения"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/logout.phtml:1
-msgid "User Logout"
-msgstr "Выход пользователя"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/logout.phtml:2
-msgid "You have successfully logged out"
-msgstr "Вы успешно вышли"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/index.phtml:7
-msgid "My Account"
-msgstr "Мой аккаунт"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/index.phtml:14
-msgid "To log in"
-msgstr "Чтобы войти"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/index.phtml:14
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/index.phtml:17
-msgid "click here"
-msgstr "щелкните здесь"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/index.phtml:16
-msgid "Welcome back"
-msgstr "Добро пожаловать"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/index.phtml:17
-msgid "To log out"
-msgstr "Чтобы выйти"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/delete.phtml:3
-msgid "Delete"
-msgstr "Удалить"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/delete.phtml:9
-msgid "Return back to"
-msgstr "Вернитесь назад"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/user/delete.phtml:9
-msgid "Users page"
-msgstr "Страница пользователя"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/index/index.phtml:9
-msgid "Manage Pages"
-msgstr "Управление страницами"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/index/index.phtml:17
-msgid "Manage Users"
-msgstr "Управление пользователями"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/index/index.phtml:25
-msgid "Manage News"
-msgstr "Управление новостями"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/page/edit.phtml:16
-msgid "Edit Page"
-msgstr "Редактирование страницы"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/page/create.phtml:16
-msgid "Add New Page"
-msgstr "Добавить новую страницу"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/page/index.phtml:16
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/page/index.phtml:23
-msgid "Pages"
-msgstr "Страницы"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:17
-msgid "Display"
-msgstr "Отображать"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:42
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:49
-msgid "Start"
-msgstr "Начало"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:68
-msgid "Prev"
-msgstr "Пред"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:94
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:101
-msgid "Next"
-msgstr "След"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:111
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:118
-msgid "End"
-msgstr "Конец"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/pagination-control.phtml:123
-msgid "Page"
-msgstr "Страница"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:10
-msgid "Account Details"
-msgstr "Настройка учетной записи"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:20
-msgid "First Name"
-msgstr "Имя"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:26
-msgid "Last Name"
-msgstr "Фамилия"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:38
-msgid "Confirm Password"
-msgstr "Подтверждение пароля"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:48
-msgid "Block this User"
-msgstr "Блокировать этого пользователя"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:62
-msgid "Registration Date"
-msgstr "Дата регистрации"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:68
-msgid "Last visit Date"
-msgstr "Дата последнего посещения"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-form.phtml:76
-msgid "Assigned Groups"
-msgstr "Назначен к группе"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-phpsettings.phtml:4
-msgid "Relevant PHP Settings"
-msgstr "Соответствующие настройки PHP"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-phpsettings.phtml:8
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:8
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:8
-msgid "Setting"
-msgstr "Параметр"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-phpsettings.phtml:9
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:9
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:9
-msgid "Value"
-msgstr "Значение"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:20
-msgid "PHP Built On"
-msgstr "PHP собран на"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:26
-msgid "Database Version"
-msgstr "Версия базы данных"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:32
-msgid "Database Collation"
-msgstr "Кодировка базы данных"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:38
-msgid "Connection Collation"
-msgstr "Кодировка соединения"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:44
-msgid "Server Collation"
-msgstr "Кодировка сервера"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:50
-msgid "PHP Version"
-msgstr "Версия PHP"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:56
-msgid "Web Server"
-msgstr "Веб-сервер"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:62
-msgid "WebServer to PHP Interface"
-msgstr "PHP интерфейс к веб-серверу"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:68
-msgid "Version"
-msgstr "Версия"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:74
-msgid "User Agent"
-msgstr "Браузер пользователя"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:13
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:13
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:13
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menu-form.phtml:13
-msgid "Title"
-msgstr "Заголовок"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:19
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:19
-msgid "Short Description"
-msgstr "Короткое описание"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:25
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:37
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:25
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:25
-msgid "Published"
-msgstr "Опубликован"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:40
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:46
-msgid "Detail Description"
-msgstr "Детальное описание"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:48
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:77
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:54
-msgid "Toggle editor"
-msgstr "Переключить редактор"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:59
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:65
-msgid "Publishing Options"
-msgstr "Настройки размещения"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:67
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:73
-msgid "Published At"
-msgstr "Опубликован"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:79
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:158
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:85
-msgid "Metadata Options"
-msgstr "Настройки метаданных"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:87
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:166
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:93
-msgid "Meta Keywords"
-msgstr "Meta ключевики"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_news-form.phtml:93
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:172
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:99
-msgid "Meta Description"
-msgstr "Meta описание"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:9
-msgid "Details"
-msgstr "Настройки"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:13
-msgid "Label"
-msgstr "Метка"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:19
-msgid "Uri"
-msgstr "Урл"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:25
-msgid "Position"
-msgstr "Позиция"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:31
-msgid "Parent Menu Item"
-msgstr "Родительский элемент меню"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:51
-msgid "Menu Location"
-msgstr "Расположение меню"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:19
-msgid "Page Uri"
-msgstr "Uri страницы"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:42
-msgid "Node Type"
-msgstr "Тип узла"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:87
-msgid "Module"
-msgstr "Модуль"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:93
-msgid "Controller"
-msgstr "Контроллер"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:99
-msgid "Action"
-msgstr "Действие"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:113
-msgid "Content Nodes"
-msgstr "Узлы контента"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:130
-msgid "Node Name"
-msgstr "Имя узла"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form.phtml:131
-msgid "Copy"
-msgstr "Копировать"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_user-row.phtml:21
-msgid "Never"
-msgstr "Никогда"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_events-form.phtml:39
-msgid "Image Preview"
-msgstr "Предпросмотр изображения"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menu-form.phtml:9
-msgid "Menu Details"
-msgstr "Настройки меню"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menu-form.phtml:19
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menu-row.phtml:9
-msgid "Menu Type"
-msgstr "Тип меню"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_menu-form.phtml:25
-msgid "Description"
-msgstr "Описание"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:4
-msgid "Configuration File"
-msgstr "Файл конфигурации"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:19
-msgid "db adapter"
-msgstr "адаптер бд"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:23
-msgid "host"
-msgstr "хост"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:27
-msgid "user"
-msgstr "пользователь"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:31
-msgid "password"
-msgstr "пароль"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:35
-msgid "db"
-msgstr "бд"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:39
-msgid "Include paths library"
-msgstr "расположение библиотеки"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:43
-msgid "Bootstrap path"
-msgstr "Путь автозагрузчика"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:47
-msgid "Bootstrap class"
-msgstr "Класс автозагрузчика"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:51
-msgid "Controller Directory"
-msgstr "Папка контроллера"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:55
-msgid "Layout path"
-msgstr "Путь для размещения слоев"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:59
-msgid "Layout"
-msgstr "Слой"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:63
-msgid "Modules directory"
-msgstr "Папка для размещения модулей"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:67
-msgid "Front controller plugins"
-msgstr "Плагины front controller"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form-nodeslist.phtml:8
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form-nodeslist.phtml:9
-msgid "Copy Node To All Pages"
-msgstr "Копировать узлы на все страницы"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_page-form-nodeslist.phtml:14
-msgid "Delete Node"
-msgstr "Удалить узел"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/_sysinfo-phpinfo.phtml:4
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/sysinfo/index.phtml:20
-msgid "PHP Information"
-msgstr "Информация PHP"
-
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/search-filter.phtml:2
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuserstatus/index.phtml:12
+msgid "User groups"
+msgstr "Группы пользователей"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuserstatus/index.phtml:25
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncgoodscategory/index.phtml:19
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncstyle/index.phtml:14
+msgid "name"
+msgstr "имя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncgoodscategory/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncgoodscategory/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncgoodscategory/index.phtml:4
+msgid "Goods Manager"
+msgstr "Управление товарами"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncgoodscategory/edit.phtml:5
+msgid "Edit Category"
+msgstr "Редактирование категории"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncgoodscategory/create.phtml:5
+msgid "Add New Category"
+msgstr "Добавить новую категорию"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncgoodscategory/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncgoodscategory/index.phtml:7
+msgid "Category"
+msgstr "Категория"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncgoodscategory/index.phtml:12
+msgid "Goods Category"
+msgstr "Категория Товаров"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncstyle/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncstyle/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncstyle/index.phtml:4
+msgid "Styles Manager"
+msgstr "Управление стилями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncstyle/edit.phtml:5
+msgid "Edit Style"
+msgstr "Редактирование стиля"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncstyle/create.phtml:5
+msgid "Add New Style"
+msgstr "Добавить новый стиль"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncstyle/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncstyle/index.phtml:7
+msgid "Styles"
+msgstr "Стили"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmaterial/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmaterial/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmaterial/index.phtml:4
+msgid "Material Manager"
+msgstr "Управление материалами и технологиями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmaterial/edit.phtml:5
+msgid "Edit Material"
+msgstr "Редактирование материалов и технологий"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmaterial/create.phtml:5
+msgid "Add New Material"
+msgstr "Добавить новый материал и технологию"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmaterial/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmaterial/index.phtml:7
+msgid "Materials"
+msgstr "Материалы и технологии"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/search-filter.phtml:2
 msgid "Filter"
 msgstr "Фильтр"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/search-filter.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/search-filter.phtml:4
 msgid "Search"
 msgstr "Поиск"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/search-filter.phtml:5
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/search-filter.phtml:5
 msgid "Clear"
 msgstr "Очистить"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/buttons/save.phtml:4
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/contentnode/loadnode.phtml:42
-msgid "Save"
-msgstr "Сохранить"
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_user-form.phtml:10
+msgid "Account Details"
+msgstr "Настройка учетной записи"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/buttons/cancel.phtml:4
-msgid "Close"
-msgstr "Закрыть"
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_user-form.phtml:14
+msgid "User Name"
+msgstr "Логин"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/buttons/delete.phtml:3
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_user-form.phtml:20
+msgid "First Name"
+msgstr "Имя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_user-form.phtml:26
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_user-form.phtml:32
+msgid "Password"
+msgstr "Пароль"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_user-form.phtml:38
+msgid "Confirm Password"
+msgstr "Подтверждение пароля"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_user-form.phtml:48
+msgid "Block this User"
+msgstr "Блокировать этого пользователя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_user-form.phtml:62
+msgid "Registration Date"
+msgstr "Дата регистрации"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_user-form.phtml:68
+msgid "Last visit Date"
+msgstr "Дата последнего посещения"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_user-form.phtml:76
+msgid "Assigned Groups"
+msgstr "Назначен к группе"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:4
+msgid "System Information"
+msgstr "Системная информация"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:8
+msgid "Setting"
+msgstr "Параметр"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:9
+msgid "Value"
+msgstr "Значение"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:20
+msgid "PHP Built On"
+msgstr "PHP собран на"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:26
+msgid "Database Version"
+msgstr "Версия базы данных"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:32
+msgid "Database Collation"
+msgstr "Кодировка базы данных"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:38
+msgid "Connection Collation"
+msgstr "Кодировка соединения"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:44
+msgid "Server Collation"
+msgstr "Кодировка сервера"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:50
+msgid "PHP Version"
+msgstr "Версия PHP"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:56
+msgid "Web Server"
+msgstr "Веб-сервер"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:62
+msgid "WebServer to PHP Interface"
+msgstr "PHP интерфейс к веб-серверу"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:68
+msgid "Version"
+msgstr "Версия"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-pagesite.phtml:74
+msgid "User Agent"
+msgstr "Браузер пользователя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:9
+msgid "Details"
+msgstr "Настройки"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:13
+msgid "Label"
+msgstr "Метка"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:19
+msgid "Uri"
+msgstr "Урл"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:25
+msgid "Position"
+msgstr "Позиция"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:31
+msgid "Parent Menu Item"
+msgstr "Родительский элемент меню"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:37
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:25
+msgid "Published"
+msgstr "Опубликован"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:51
+msgid "Menu Location"
+msgstr "Расположение меню"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_menu-form.phtml:9
+msgid "Menu Details"
+msgstr "Настройки меню"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_menu-form.phtml:13
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:13
+msgid "Title"
+msgstr "Заголовок"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_menu-form.phtml:19
+msgid "Menu Type"
+msgstr "Тип меню"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_menu-form.phtml:25
+msgid "Description"
+msgstr "Описание"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:17
+msgid "Display"
+msgstr "Отображать"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:42
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:49
+msgid "Start"
+msgstr "Начало"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:68
+msgid "Prev"
+msgstr "Пред"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:94
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:101
+msgid "Next"
+msgstr "След"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:111
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:118
+msgid "End"
+msgstr "Конец"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:123
+msgid "Page"
+msgstr "Страница"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_user-row.phtml:21
+msgid "Never"
+msgstr "Никогда"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:9
+msgid "Edit News"
+msgstr "Редактирование новости"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:19
+msgid "Short Description"
+msgstr "Короткое описание"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:40
+msgid "Detail Description"
+msgstr "Детальное описание"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:48
+msgid "Toggle editor"
+msgstr "Переключить редактор"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:59
+msgid "Publishing Options"
+msgstr "Настройки размещения"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:67
+msgid "Published At"
+msgstr "Опубликован"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:79
+msgid "Metadata Options"
+msgstr "Настройки метаданных"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:87
+msgid "Meta Keywords"
+msgstr "Meta ключевики"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:93
+msgid "Meta Description"
+msgstr "Meta описание"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-phpsettings.phtml:4
+msgid "Relevant PHP Settings"
+msgstr "Соответствующие настройки PHP"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:4
+msgid "Configuration File"
+msgstr "Файл конфигурации"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:19
+msgid "db adapter"
+msgstr "адаптер бд"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:23
+msgid "host"
+msgstr "хост"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:27
+msgid "user"
+msgstr "пользователь"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:31
+msgid "password"
+msgstr "пароль"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:35
+msgid "db"
+msgstr "бд"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:39
+msgid "Include paths library"
+msgstr "расположение библиотеки"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:43
+msgid "Bootstrap path"
+msgstr "Путь автозагрузчика"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:47
+msgid "Bootstrap class"
+msgstr "Класс автозагрузчика"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:51
+msgid "Controller Directory"
+msgstr "Папка контроллера"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:55
+msgid "Layout path"
+msgstr "Путь для размещения слоев"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:59
+msgid "Layout"
+msgstr "Слой"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:63
+msgid "Modules directory"
+msgstr "Папка для размещения модулей"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-config.phtml:67
+msgid "Front controller plugins"
+msgstr "Плагины front controller"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:9
+msgid "Edit Page"
+msgstr "Редактирование страницы"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:19
+msgid "Page Uri"
+msgstr "Uri страницы"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:42
+msgid "Node Type"
+msgstr "Тип узла"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:69
+msgid "Content"
+msgstr "Контент"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:87
+msgid "Module"
+msgstr "Модуль"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:93
+msgid "Controller"
+msgstr "Контроллер"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:99
+msgid "Action"
+msgstr "Действие"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:113
+msgid "Content Nodes"
+msgstr "Узлы контента"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:130
+msgid "Node Name"
+msgstr "Имя узла"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:131
+msgid "Copy"
+msgstr "Копировать"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:132
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/buttons/delete.phtml:5
+msgid "Delete"
+msgstr "Удалить"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_events-form.phtml:9
+msgid "Edit Events"
+msgstr "Редактирование событий"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_events-form.phtml:39
+msgid "Image Preview"
+msgstr "Предпросмотр изображения"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form-nodeslist.phtml:8
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form-nodeslist.phtml:9
+msgid "Copy Node To All Pages"
+msgstr "Копировать узлы на все страницы"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form-nodeslist.phtml:14
+msgid "Delete Node"
+msgstr "Удалить узел"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_sysinfo-phpinfo.phtml:4
+msgid "PHP Information"
+msgstr "Информация PHP"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/buttons/delete.phtml:3
 msgid "Please first make a selection from the list"
 msgstr "Пожалуйста, сначала выделите элемент из списка"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/partials/buttons/new.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/buttons/cancel.phtml:4
+msgid "Close"
+msgstr "Закрыть"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/buttons/save.phtml:4
+msgid "Save"
+msgstr "Сохранить"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/buttons/new.phtml:4
 msgid "New"
 msgstr "Новый"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/contentnode/loadnode.phtml:6
-msgid "Node type"
-msgstr "Тип узла"
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_term-form.phtml:9
+msgid "Term Details"
+msgstr "Настройки архитектурных терминов"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/contentnode/loadnode.phtml:10
-msgid "Static"
-msgstr "Статич."
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_term-form.phtml:13
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:14
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:14
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_model-form.phtml:14
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_servicecategory-form.phtml:13
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_specialization-form.phtml:13
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_currency-form.phtml:13
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:13
+msgid "Name"
+msgstr "Имя"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/contentnode/loadnode.phtml:13
-msgid "Dynamic"
-msgstr "Динамический"
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:10
+msgid "Company Details"
+msgstr "Настройки компании"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/sysinfo/index.phtml:11
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:20
+msgid "Country"
+msgstr "Страна"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:26
+msgid "Site"
+msgstr "Сайт"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:32
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:32
+msgid "Address"
+msgstr "Адрес"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:38
+msgid "Tel"
+msgstr "Телефон"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:44
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:62
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:69
+msgid "User Created"
+msgstr "Создавший пользователь"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:50
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:68
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:75
+msgid "User Activated"
+msgstr "Активировавший пользователь"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:56
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:74
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:81
+msgid "Publish Date"
+msgstr "Опубликован"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:10
+msgid "Project Details"
+msgstr "Настройки проекта"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:20
+msgid "Type Id"
+msgstr "Тип"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:26
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:25
+msgid "Square"
+msgstr "Площадь"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:38
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:31
+msgid "Preview Photo"
+msgstr "Превью-фото"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:44
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:37
+msgid "Detail Photo"
+msgstr "Детальное фото"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:50
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:89
+msgid "Documentation"
+msgstr "Документация"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:56
+msgid "Projected in year"
+msgstr "Спроектирован в году"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_model-form.phtml:10
+msgid "Goods Details"
+msgstr "Настройки товаров"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_model-form.phtml:26
+msgid "Goods"
+msgstr "Товары"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_model-form.phtml:32
+msgid "Projects 3d"
+msgstr "Проекты 3D"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_model-form.phtml:38
+msgid "User"
+msgstr "Пользователь"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_model-form.phtml:44
+msgid "Model type"
+msgstr "Тип модели"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_model-form.phtml:50
+msgid "Format"
+msgstr "Формат"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_model-form.phtml:56
+msgid "Attachment"
+msgstr "Прикрепленный файл"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_servicecategory-form.phtml:9
+msgid "Service Category Details"
+msgstr "Настройки Категории Служб"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_specialization-form.phtml:9
+msgid "Specialization Details"
+msgstr "Настройки Специализации"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_currency-form.phtml:9
+msgid "Currency Details"
+msgstr "Настройки валюты"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_currency-form.phtml:19
+msgid "Code"
+msgstr "Код"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:9
+msgid "Object Details"
+msgstr "Настройки объекта"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:19
+msgid "Object Category"
+msgstr "Категория объекта"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:43
+msgid "Projected In Year"
+msgstr "Спроектирован в году"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:49
+msgid "Built In Year"
+msgstr "Построен в году"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:55
+msgid "Vote Active"
+msgstr "Голосование активно"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:10
+msgid "User Details"
+msgstr "Настройки пользователя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:14
+msgid "Username"
+msgstr "Логин"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:20
+msgid "Email"
+msgstr "Почта"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:32
+msgid "User Status"
+msgstr "Статус пользователя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:38
+msgid "User Group"
+msgstr "Группа пользователя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:44
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_supplier-form.phtml:26
+msgid "Photo"
+msgstr "Фото"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:51
+msgid "Image"
+msgstr "Изображение"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:58
+msgid "Delete file"
+msgstr "Удалить файл"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:64
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_supplier-form.phtml:50
+msgid "Telephone"
+msgstr "Телефон"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:84
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_supplier-form.phtml:82
+msgid "Information"
+msgstr "Информация"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:9
+msgid "Consultation Details"
+msgstr "Настройки консультации"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:13
+msgid "Question"
+msgstr "Вопрос"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:19
+msgid "User Answered"
+msgstr "Ответил пользователь"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:25
+msgid "User Asked"
+msgstr "Спросил пользователь"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:31
+msgid "Question Date"
+msgstr "Дата вопроса"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:37
+msgid "Answer"
+msgstr "Вопрос"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:43
+msgid "Answer Date"
+msgstr "Дата вопроса"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:49
+msgid "Rating From Owner"
+msgstr "Свой рейтинг"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:63
+msgid "Rating From Others"
+msgstr "Рейтинг других"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_objectcategory-form.phtml:9
+msgid "Objects Category Details"
+msgstr "Настройки Категории Объектов"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_material-form.phtml:10
+msgid "Material Details"
+msgstr "Настройки материалов и технологий"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_material-form.phtml:20
+msgid "Access"
+msgstr "Доступ"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_material-form.phtml:46
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_article-form.phtml:58
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_news-form.phtml:64
+msgid "Text"
+msgstr "Текст"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_country-form.phtml:9
+msgid "Country Details"
+msgstr "Настройки страны"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_article-form.phtml:10
+msgid "Article Details"
+msgstr "Настройки статьи"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_article-form.phtml:26
+msgid "Author"
+msgstr "Автор"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_article-form.phtml:32
+msgid "Source"
+msgstr "Источник"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_news-form.phtml:10
+msgid "News Details"
+msgstr "Настройки новости"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_news-form.phtml:20
+msgid "Date"
+msgstr "Дата"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_news-form.phtml:32
+msgid "Theme"
+msgstr "Тема"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_news-form.phtml:38
+msgid "Anonce"
+msgstr "Анонс"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_supplier-form.phtml:10
+msgid "Supplier Details"
+msgstr "Настройки поставщика"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_supplier-form.phtml:20
+msgid "Logotype"
+msgstr "Логотип"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_supplier-form.phtml:38
+msgid "Map latitude"
+msgstr "Широта"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_supplier-form.phtml:44
+msgid "Map longitude"
+msgstr "Долгота"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_library-form.phtml:9
+msgid "Item Details"
+msgstr "Настройки элемента"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_library-form.phtml:19
+msgid "Library Theme"
+msgstr "Тема энциклопедии"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_library-form.phtml:25
+msgid "Library Type"
+msgstr "Тип энциклопедии"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_library-form.phtml:31
+msgid "Year Of Publishing"
+msgstr "Год издания"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_library-form.phtml:49
+msgid "Rarity"
+msgstr "Раритет"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_library-form.phtml:69
+msgid "Annotation"
+msgstr "Аннотация"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_library-form.phtml:75
+msgid "Buy Link"
+msgstr "Ссылка для покупки"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_famousauthor-form.phtml:9
+msgid "Famous Author Details"
+msgstr "Настройки известных людей"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_famousauthor-form.phtml:13
+msgid "Firstname"
+msgstr "Имя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_famousauthor-form.phtml:19
+msgid "Lastname"
+msgstr "Фамилия"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_famousauthor-form.phtml:25
+msgid "Specialization"
+msgstr "Специализация"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_famousauthor-form.phtml:31
+msgid "Day Of Birth"
+msgstr "День рождения"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_famousauthor-form.phtml:37
+msgid "Day Of Death"
+msgstr "День смерти"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_service-form.phtml:10
+msgid "Service Details"
+msgstr "Настройки служб"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_librarytheme-form.phtml:9
+msgid "Library Theme Details"
+msgstr "Настройки темы энциклопедии"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_librarytype-form.phtml:9
+msgid "Library Type Details"
+msgstr "Настройки типа энциклопедии"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_usergroup-form.phtml:9
+msgid "User group Details"
+msgstr "Настройки групп пользователей"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_events-form.phtml:9
+msgid "Event Details"
+msgstr "Настройки событий"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_events-form.phtml:19
+msgid "Event Type"
+msgstr "Тип события"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_events-form.phtml:31
+msgid "Place"
+msgstr "Место"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_events-form.phtml:37
+msgid "startTime"
+msgstr "время начала"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/items-list.phtml:80
+msgid "Draft"
+msgstr "Черновик"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_newstheme-form.phtml:9
+msgid "News Theme Details"
+msgstr "Настройки тем новостей"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_newscategory-form.phtml:9
+msgid "News Category Details"
+msgstr "Настройки категории новостей"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_tender-form.phtml:9
+msgid "Tender Details"
+msgstr "Настройки тендера"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_tender-form.phtml:31
+msgid "Object Square"
+msgstr "Площадь объекта"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_tender-form.phtml:37
+msgid "Object Address"
+msgstr "Адрес объекта"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_tender-form.phtml:43
+msgid "budget"
+msgstr "бюджет"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_goodscategory-form.phtml:9
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_articlecategory-form.phtml:9
+msgid "Goods Category Details"
+msgstr "Настройки категории товаров"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_style-form.phtml:9
+msgid "Style Details"
+msgstr "Настройки стиля"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_goods-form.phtml:20
+msgid "Company Articul"
+msgstr "Артикул компании"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_goods-form.phtml:26
+msgid "Site Articul"
+msgstr "Артикул на сайте"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_goods-form.phtml:32
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_trademark-form.phtml:25
+msgid "Company"
+msgstr "Компания"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_goods-form.phtml:38
+msgid "Currency"
+msgstr "Валюта"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_goods-form.phtml:62
+msgid "Price"
+msgstr "Цена"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_goods-form.phtml:68
+msgid "Has Catalog"
+msgstr "Занести в каталог"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_trademark-form.phtml:9
+msgid "Trademark Details"
+msgstr "Настройки торговой марки"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_trademark-form.phtml:13
+msgid "Original Name"
+msgstr "Оригинальное название"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_trademark-form.phtml:19
+msgid "Russian Name"
+msgstr "Название на русском"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_trademark-form.phtml:43
+msgid "History"
+msgstr "История"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_userstatus-form.phtml:9
+msgid "User status Details"
+msgstr "Настройки статуса пользователя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncservicecategory/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncservicecategory/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncservicecategory/index.phtml:4
+msgid "Service Manager"
+msgstr "Управление службой"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncservicecategory/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncservicecategory/index.phtml:7
+msgid "Services"
+msgstr "Службы"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncservicecategory/index.phtml:12
+msgid "Service Category"
+msgstr "Категория службы"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncgoods/edit.phtml:5
+msgid "Edit Goods"
+msgstr "Редактирование товара"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncgoods/create.phtml:5
+msgid "Add New Goods"
+msgstr "Добавить новый товар"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncgoods/index.phtml:22
+msgid "price"
+msgstr "цена"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menu/edit.phtml:15
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menu/create.phtml:15
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menu/index.phtml:16
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menuitem/edit.phtml:15
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menuitem/create.phtml:15
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menuitem/index.phtml:16
+msgid "Menu Manager"
+msgstr "Управление меню"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menu/edit.phtml:15
+msgid "Edit Menu"
+msgstr "Редактировать меню"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menu/create.phtml:15
+msgid "Add New Menu"
+msgstr "Добавить новое меню"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menu/index.phtml:16
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menu/index.phtml:23
+msgid "Menus"
+msgstr "Меню"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menu/index.phtml:26
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menuitem/index.phtml:16
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menuitem/index.phtml:26
+msgid "Menu Items"
+msgstr "Элементы меню"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menuitem/edit.phtml:15
+msgid "Edit Menu Item"
+msgstr "Редактировать элемент меню"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/menuitem/create.phtml:15
+msgid "Add New Menu Item"
+msgstr "Добавить новый элемент меню"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncevents/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncevents/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncevents/index.phtml:4
+msgid "Events Manager"
+msgstr "Управление событиями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncevents/edit.phtml:5
+msgid "Edit Event"
+msgstr "Редактирование событий"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncevents/create.phtml:5
+msgid "Add New Event"
+msgstr "Добавить новое событие"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncevents/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncevents/index.phtml:7
+msgid "Events"
+msgstr "События"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncservice/edit.phtml:5
+msgid "Edit Service"
+msgstr "Редактирование службы"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncservice/create.phtml:5
+msgid "Add New Service"
+msgstr "Добавить новую службу"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncservice/index.phtml:4
+msgid "Serivice Manager"
+msgstr "Управление службами"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncusergroup/edit.phtml:5
+msgid "Edit Group"
+msgstr "Редактирование группы"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncusergroup/create.phtml:5
+msgid "Add New Group"
+msgstr "Добавить новую группу"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrarytype/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrarytype/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrarytype/index.phtml:4
+msgid "Library Manager"
+msgstr "Управление энциклопедией"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrarytype/edit.phtml:5
+msgid "Edit Type"
+msgstr "Редактировать типа"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrarytype/create.phtml:5
+msgid "Add New Type"
+msgstr "Добавить новый тип"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrarytype/index.phtml:7
+msgid "Library"
+msgstr "Энциклопедия"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/sysinfo/index.phtml:11
 msgid "System Info"
 msgstr "Системная информация"
 
-#: /var/www/danaya-clk.ru/application/modules/admin/views/scripts/sysinfo/index.phtml:14
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/sysinfo/index.phtml:14
 msgid "PHP Settings"
 msgstr "Настройки PHP"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/index/index.phtml:9
+msgid "Manage Pages"
+msgstr "Управление страницами"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/index/index.phtml:17
+msgid "Manage Users"
+msgstr "Управление пользователями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/index/index.phtml:25
+msgid "Manage News"
+msgstr "Управление новостями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobjectcategory/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobjectcategory/create.phtml:4
+msgid "Objects Manager"
+msgstr "Управление объектами"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobjectcategory/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobjectcategory/index.phtml:11
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobject/index.phtml:11
+msgid "Objects Category"
+msgstr "Категория объектов"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobjectcategory/index.phtml:7
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobject/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobject/index.phtml:7
+msgid "Objects"
+msgstr "Объекты"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobject/edit.phtml:5
+msgid "Edit Object"
+msgstr "Редактирование объекта"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobject/create.phtml:5
+msgid "Add New Object"
+msgstr "Добавить новый объект"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrary/edit.phtml:5
+msgid "Edit Item"
+msgstr "Редактировать элемента"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrary/create.phtml:5
+msgid "Add New Item"
+msgstr "Добавить новый элемент"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncprojects/edit.phtml:4
+msgid "Project Manager"
+msgstr "Управление проектами"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncprojects/edit.phtml:5
+msgid "Edit Project"
+msgstr "Редактирование проекта"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncprojects/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncprojects/index.phtml:4
+msgid "Projects Manager"
+msgstr "Управление проектами"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncprojects/create.phtml:5
+msgid "Add New Project"
+msgstr "Добавить новый проект"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncprojects/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncprojects/index.phtml:7
+msgid "Projects"
+msgstr "Проекты"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncarticlecategory/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncarticlecategory/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncarticlecategory/index.phtml:4
+msgid "Article Manager"
+msgstr "Управление статьями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncarticlecategory/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncarticlecategory/index.phtml:7
+msgid "Articles"
+msgstr "Статьи"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncarticlecategory/index.phtml:11
+msgid "Article Category"
+msgstr "Категория статьи"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/page/edit.phtml:16
+msgid "Page Manager"
+msgstr "Управление страницами"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/page/create.phtml:16
+msgid "Add New Page"
+msgstr "Добавить новую страницу"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/page/index.phtml:16
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/page/index.phtml:23
+msgid "Pages"
+msgstr "Страницы"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncnews/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncnews/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncnews/index.phtml:4
+msgid "News Manager"
+msgstr "Управление новостями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncnews/create.phtml:5
+msgid "Add New News"
+msgstr "Добавить новость"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncnews/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncnews/index.phtml:7
+msgid "News"
+msgstr "Новости"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncnews/index.phtml:11
+msgid "News Category"
+msgstr "Категория новостей"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncnews/index.phtml:15
+msgid "News Theme"
+msgstr "Тема новости"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/edit.phtml:4
+msgid "Company Manager"
+msgstr "Управление компаниями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/edit.phtml:5
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/edit.phtml:5
+msgid "Edit Company"
+msgstr "Редактирование компании"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/create.phtml:5
+msgid "Add New Company"
+msgstr "Добавить новую компанию"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/index.phtml:7
+msgid "Companies"
+msgstr "Компании"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/index.phtml:22
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuser/index.phtml:32
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/index.phtml:22
+msgid "site"
+msgstr "Сайт"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuser/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuser/create.phtml:4
+msgid "User Manager"
+msgstr "Управление пользователями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuser/edit.phtml:5
+msgid "Edit User"
+msgstr "Редактирование пользователя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuser/create.phtml:5
+msgid "Add New User"
+msgstr "Добавить нового пользователя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuser/index.phtml:24
+msgid "username"
+msgstr "Логин"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuser/index.phtml:28
+msgid "email"
+msgstr "почта"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/index.phtml:4
+msgid "Supplier Manager"
+msgstr "Управление поставщиками"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/create.phtml:5
+msgid "Add New Supplier"
+msgstr "Добавить нового поставщика"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/index.phtml:7
+msgid "Suppliers"
+msgstr "Поставщики"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/index.phtml:18
+msgid "tel"
+msgstr "телефон"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/contentnode/loadnode.phtml:6
+msgid "Node type"
+msgstr "Тип узла"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/contentnode/loadnode.phtml:10
+msgid "Static"
+msgstr "Статич."
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/contentnode/loadnode.phtml:13
+msgid "Dynamic"
+msgstr "Динамический"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthor/edit.phtml:4
+msgid "Famous Authors Manager"
+msgstr "Управление известными людьми"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthor/edit.phtml:5
+msgid "Edit Famous Author"
+msgstr "Редактирование известных людей"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthor/create.phtml:5
+msgid "Add New Famous Author"
+msgstr "Добавить нового известного человека"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthor/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthor/index.phtml:7
+msgid "Famous Authors"
+msgstr "Известные люди"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthor/index.phtml:14
+msgid "lastname"
+msgstr "Фамилия"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncspecialization/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncspecialization/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncspecialization/index.phtml:4
+msgid "Specialization Manager"
+msgstr "Управление специализациями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncspecialization/edit.phtml:5
+msgid "Edit Specialization"
+msgstr "Редактирование специализации"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncspecialization/create.phtml:5
+msgid "Add New Specialization"
+msgstr "Добавить новую специализацию"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmodel/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmodel/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmodel/index.phtml:4
+msgid "Model Manager"
+msgstr "Управление моделями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmodel/edit.phtml:5
+msgid "Edit Model"
+msgstr "Редактирование модели"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmodel/create.phtml:5
+msgid "Add New Model"
+msgstr "Добавить новую модель"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmodel/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmodel/index.phtml:7
+msgid "Models"
+msgstr "Модели"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nctender/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nctender/create.phtml:4
+msgid "Tender Manager"
+msgstr "Управление тендерами"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nctender/edit.phtml:5
+msgid "Edit Tender"
+msgstr "Редактирование тендера"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nctender/create.phtml:5
+msgid "Add New Tender"
+msgstr "Добавить новый тендер"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nctender/index.phtml:4
+msgid "Tenders Manager"
+msgstr "Управление тендерами"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nctender/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nctender/index.phtml:7
+msgid "Tenders"
+msgstr "Тендеры"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/events/create.phtml:16
+msgid "Add Events"
+msgstr "Добавить событие"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrarytheme/edit.phtml:5
+msgid "Edit Theme"
+msgstr "Редактировать темы"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrarytheme/create.phtml:5
+msgid "Add New Theme"
+msgstr "Добавить новую тему"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nctrademark/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nctrademark/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nctrademark/index.phtml:4
+msgid "Trademark Manager"
+msgstr "Управление торговыми марками"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nctrademark/edit.phtml:5
+msgid "Edit Trademark"
+msgstr "Редактирование торговой марки"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nctrademark/create.phtml:5
+msgid "Add New Trademark"
+msgstr "Добавить новую торговую марку"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nctrademark/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nctrademark/index.phtml:7
+msgid "Trademarks"
+msgstr "Торговые марки"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccurrency/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccurrency/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccurrency/index.phtml:4
+msgid "Currency Manager"
+msgstr "Управление валютами"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccurrency/edit.phtml:5
+msgid "Edit Currency"
+msgstr "Редактирование валюты"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccurrency/create.phtml:5
+msgid "Add New Currency"
+msgstr "Добавить новую валюту"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncarticle/edit.phtml:5
+msgid "Edit Article"
+msgstr "Редактирование статьи"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncarticle/create.phtml:5
+msgid "Add New Article"
+msgstr "Добавить новую статью"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/login.phtml:11
+msgid "Administration Login"
+msgstr "Авторизация пользователя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/login.phtml:37
+msgid "Language"
+msgstr "Язык"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/login.phtml:44
+msgid "Log in"
+msgstr "Войти"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/login.phtml:65
+msgid "Use a valid username and password to gain access to the administrator backend"
+msgstr "Используйте правильные логин и пароль, чтобы получить доступ к бэкэнду администратора"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/login.phtml:67
+msgid "Go to site home page"
+msgstr "Вернуться на главную"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/login.phtml:79
+msgid "Warning! JavaScript must be enabled for proper operation of the Administrator backend"
+msgstr "Внимание! JavaScript должен быть включен для корректного входа в бэкэнд Администратора"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/delete.phtml:9
+msgid "Return back to"
+msgstr "Вернитесь назад"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/delete.phtml:9
+msgid "Users page"
+msgstr "Страница пользователя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/logout.phtml:1
+msgid "User Logout"
+msgstr "Выход пользователя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/logout.phtml:2
+msgid "You have successfully logged out"
+msgstr "Вы успешно вышли"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/index.phtml:7
+msgid "My Account"
+msgstr "Мой аккаунт"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/index.phtml:14
+msgid "To log in"
+msgstr "Чтобы войти"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/index.phtml:14
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/index.phtml:17
+msgid "click here"
+msgstr "щелкните здесь"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/index.phtml:16
+msgid "Welcome back"
+msgstr "Добро пожаловать"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/index.phtml:17
+msgid "To log out"
+msgstr "Чтобы выйти"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/list.phtml:183
+msgid "You do not have any users"
+msgstr "Нет пользователей для отображения"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/user/update.phtml:15
+msgid "Update User"
+msgstr "Обновить пользователя"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncterm/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncterm/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncterm/index.phtml:4
+msgid "Terms Manager"
+msgstr "Управление архитектурными терминами"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncterm/edit.phtml:5
+msgid "Edit Term"
+msgstr "Редактирование термина"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncterm/create.phtml:5
+msgid "Add New Term"
+msgstr "Добавить новый термин"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncterm/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncterm/index.phtml:7
+msgid "Terms"
+msgstr "Архитектурные термины"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/news/create.phtml:16
+msgid "Add News"
+msgstr "Добавить новость"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncconsultation/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncconsultation/create.phtml:4
+msgid "Consultation Manager"
+msgstr "Управление консультациями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncconsultation/edit.phtml:5
+msgid "Edit Consultation"
+msgstr "Редактирование консультации"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncconsultation/create.phtml:5
+msgid "Add New Consultation"
+msgstr "Добавить новую консультацию"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncconsultation/index.phtml:4
+msgid "Consultations Manager"
+msgstr "Управление консультациями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncconsultation/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncconsultation/index.phtml:7
+msgid "Consultations"
+msgstr "Консультации"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncconsultation/index.phtml:14
+msgid "question"
+msgstr "вопрос"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccountry/edit.phtml:4
+msgid "Country Manager"
+msgstr "Управление странами"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccountry/edit.phtml:5
+msgid "Edit Country"
+msgstr "Редактирование страны"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccountry/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccountry/index.phtml:4
+msgid "Countries Manager"
+msgstr "Управление странами"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccountry/create.phtml:5
+msgid "Add New Country"
+msgstr "Добавить новую страну"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccountry/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccountry/index.phtml:7
+msgid "Countries"
+msgstr "Страны"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:3
+msgid "View Site"
+msgstr "Открыть сайт"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:3
+msgid "Log out"
+msgstr "Выход"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:3
+msgid "Logged-in backend"
+msgstr "авторизовался в бэкэнде"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:12
+msgid "Control Panel"
+msgstr "Панель управления"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:14
+msgid "Global Configuration"
+msgstr "Глобальная конфигурация"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:18
+msgid "Logout"
+msgstr "Выход"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:54
+msgid "Materials Manager"
+msgstr "Управление материалами и технологиями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:59
+msgid "Content cont."
+msgstr "Контент продолжение"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:62
+msgid "Style Manager"
+msgstr "Управление стилями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:63
+msgid "Term Manager"
+msgstr "Управление архитектурными терминами"
 

@@ -23,17 +23,22 @@ class Soulex_View_Helper_LoadSkin extends Zend_View_Helper_Abstract
              $skinPath = './skins/';
          }
          $skinData = new Zend_Config_Xml($skinPath . $skin . '/skin.xml');
-         $stylesheets = $skinData->stylesheets->stylesheet;
+         $stylesheets = array_pop($skinData->stylesheets->toArray());
+
          // append each stylesheet
-         if (!is_string($stylesheets)) {
-         	 $stylesheets = $stylesheets->toArray();
-             foreach ($stylesheets as $stylesheet) {
+         foreach ($stylesheets as $stylesheet) {
+             if(is_array($stylesheet)) {
+                 if(!isset($stylesheet['condition'])) {
+                     $this->view->headLink()->appendStylesheet('/skins/' . $skin .
+                         '/css/' . $stylesheet['style']);
+                 } else {
+                     $this->view->headLink()->appendStylesheet('/skins/' . $skin .
+                         '/css/' . $stylesheet['style'], 'screen', $stylesheet['condition']);
+                 }
+             } else { // string type
                  $this->view->headLink()->appendStylesheet('/skins/' . $skin .
-                     '/css/' . $stylesheet);
+                         '/css/' . $stylesheet);
              }
-         } else {
-     	    $this->view->headLink()->appendStylesheet('/skins/' . $skin .
-                '/css/' . $stylesheets);
          }
      }
 }
