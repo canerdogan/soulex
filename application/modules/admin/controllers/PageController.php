@@ -134,14 +134,7 @@ class Admin_PageController extends Soulex_Controller_Abstract
 		if($this->_request->isPost() && $frmPage->isValid($this->_request->getPost())) {
             $mdlPage = new Model_Page();
 
-            $mdlPage->create(
-                $frmPage->getValue('title'),
-                $frmPage->getValue('uri'),
-                $frmPage->getValue('meta_keywords'),
-                $frmPage->getValue('meta_description'),
-                $frmPage->getValue('published'),
-                $frmPage->getValue('content')
-            );
+            $mdlPage->create($this->_request->getPost());
 
             return $this->_redirect('/admin/page');
 		}

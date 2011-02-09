@@ -24,12 +24,13 @@ class Model_ContentNode extends Soulex_Model_DbTable_Abstract_PrefixedTable
 		)
 	);
 	
-	public function createNode($name, $value, $page_id)
+	public function createNode($pageId, $node, $value, $type = 0)
 	{
 		$row = $this->createRow();
-		$row->name = $name;
+		$row->name = $node;
 		$row->value = $value;
-		$row->page_id = $page_id;
+		$row->page_id = $pageId;
+        $row->isInvokable = $type;
 		$row->save();
 	}
 	

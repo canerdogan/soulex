@@ -66,7 +66,6 @@ class Model_Page
 	
 	public function update($id, $data)
 	{
-
 		//@todo double find action
 		$page = $this->_mapper->find($id)->current();
 
@@ -81,11 +80,11 @@ class Model_Page
 		$this->_pageRouter->updateRoute($id, $data['uri'], $uri);
 	}
 	
-	public function create($title, $uri, $meta_keywords, $meta_description, $published, $content)
+	public function create($data)
 	{
-		$pageId = $this->_mapper->createPage($title, $uri, $meta_keywords, $meta_description, $published, $content);
+		$pageId = $this->_mapper->createPage($data);
 		
-		$this->_pageRouter->createRoute($pageId, $uri);
+		$this->_pageRouter->createRoute($pageId, $data['uri']);
 		
 		return $pageId;
 	}

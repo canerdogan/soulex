@@ -29,21 +29,67 @@ class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
 		)
 	);
 	*/
+    /**
+     * Form nodes array according to page data
+     * Formed node's array look like this:
+     * array('type', 'module', 'controller', 'action', 'value')
+     * 
+     * @param array $data page's data
+     * @return array node's data information
+     */
+    protected function formNodesData($data)
+    {
+        $nodesData = array();
+        if(isset($data['nodes']) && count($data['nodes']) > 0) {
+            foreach($data['nodes'] as $nodeName => $nodeValue) {
+                $nodesData[$nodeName] = array_merge($nodeValue, array(
+                    'value' => $data[$nodeName]
+                ));
+            }
+        }
+        return $nodesData;
+    }
+    /**
+     * Save data nodes
+     *
+     * @param array $data nodes' data information
+     * @param int $pageId id of page, where node will be saved
+     * @param string $action default action set/create node
+     */
+    protected function saveNodesData(array $data, $pageId, $action = 'set')
+    {
+        if(count($data) > 0) {
+            $mdlContentNode = new Model_ContentNode();
+            foreach($data as $nodeName => $nodeData) {
+                if($nodeData['type'] == 1) {// dynamic node
+                    $_nodeData = array('module' => $nodeData['module'],
+                        'controller' => $nodeData['controller'],
+                        'action' => $nodeData['action']);
+                    $mdlContentNode->{$action . 'Node'}($pageId,
+                            $nodeName,
+                            serialize($_nodeData),
+                            $nodeData['type']
+                    );
+                } else { // static node
+                    $mdlContentNode->{$action . 'Node'}($pageId,
+                            $nodeName,
+                            $nodeData['value'],
+                            $nodeData['type']
+                    );
+                }
+            }
+        }
+    }
 	/**
 	 * Creates new page
 	 * 
 	 * @uses Model_ContentNode
 	 * 
-	 * @param string $title
-	 * @param string $uri
-	 * @param string $meta_keywords
-	 * @param string $meta_description
-     * @param int $published
-	 * @param string $content
+	 * @param array $data page's data array
+     *
 	 * @return int id of created page
 	 */
-	public function createPage($title, $uri, $meta_keywords, $meta_description,
-            $published, $content)
+	public function createPage($data)
 	{
 		$lft = 0;//top level page
 		$level = 0;//top level of parent
@@ -53,11 +99,11 @@ class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
 		$this->_db->query("UPDATE " . $this->_name . " SET lft = lft + 2 WHERE lft > ?", $lft);
 		
 		$row = $this->createRow();
-		$row->title = $title;
-		$row->uri = $uri;
-		$row->meta_keywords = $meta_keywords;
-		$row->meta_description = $meta_description;
-        $row->published = $published;
+		$row->title = $data['title'];
+		$row->uri = $data['uri'];
+		$row->meta_keywords = $data['meta_keywords'];
+		$row->meta_description = $data['meta_description'];
+        $row->published = $data['published'];
 		$row->lft = $lft + 1;
 		$row->rgt = $lft + 2;
 		$row->level = $level + 1;
@@ -67,8 +113,9 @@ class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
 		
 		$this->_db->commit();
 
-		$mdlContentNode = new Model_ContentNode();
-		$mdlContentNode->createNode('content', $content, $pageId);
+        // creating nodes data
+        $nodesData = $this->formNodesData($data);
+        $this->saveNodesData($nodesData, $pageId, 'create');
 		
 		return $pageId;
 	}
@@ -96,27 +143,8 @@ class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
 
             $mdlContentNode = new Model_ContentNode();
             // saving nodes data
-            if(isset($data['nodes']) && is_array($data['nodes'])
-                    && count($data['nodes']) > 0) {
-                foreach($data['nodes'] as $nodeName => $nodeData) {
-                    if($nodeData['type'] == 1) {// dynamic node
-                        $_nodeData = array('module' => $nodeData['module'],
-                            'controller' => $nodeData['controller'],
-                            'action' => $nodeData['action']);
-                        $mdlContentNode->setNode($pageId,
-                                $nodeName,
-                                serialize($_nodeData),
-                                $nodeData['type']
-                        );
-                    } else { // static node
-                        $mdlContentNode->setNode($pageId,
-                                $nodeName,
-                                $data[$nodeName],
-                                $nodeData['type']
-                        );
-                    }
-                }
-            }
+            $nodesData = $this->formNodesData($data);
+            $this->saveNodesData($nodesData, $pageId);
 
 
 //            $pageNodes = $mdlContentNode->getPageNodes($pageId);
