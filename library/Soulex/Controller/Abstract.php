@@ -97,7 +97,7 @@ class Soulex_Controller_Abstract extends Zend_Controller_Action
             $session->pagination = array();
         }
 
-        if(false == $session->pagination[$sessKey]) {
+        if(null === $session->pagination[$sessKey]) {
             // first time remember pagination limit
             $session->pagination[$sessKey] = 20;
         }
@@ -108,6 +108,7 @@ class Soulex_Controller_Abstract extends Zend_Controller_Action
         } else {
             $limit = $session->pagination[$sessKey];
         }
+
         return $limit;
     }
 }
