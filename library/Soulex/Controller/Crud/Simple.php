@@ -76,7 +76,7 @@ class Soulex_Controller_Crud_Simple extends Soulex_Controller_Abstract
         $this->view->orderParams = $this->_getOrderParams();
         $order = join(' ', $this->view->orderParams);
         $this->view->filter = array();// view property for where statements
-        $limit = $this->_getParam('limit', 20);
+        $limit = $this->_getLimitParam();
 
         if($this->_request->isPost()) {
             $post = $this->_request->getPost();

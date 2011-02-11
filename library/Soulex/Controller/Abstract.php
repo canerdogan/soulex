@@ -81,4 +81,33 @@ class Soulex_Controller_Abstract extends Zend_Controller_Action
     {
         $this->contentRenderingDisabled = true;
     }
+    /**
+     * Return limit param value based on controller, then
+     * save it back to session
+     *
+     * @return int pagination limit param
+     */
+    protected function _getLimitParam()
+    {
+        $session = new Zend_Session_Namespace('admin');
+        $sessKey = md5($this->getRequest()->getControllerName() .
+                $this->getRequest()->getActionName());
+
+        if(!isset($session->pagination)) {
+            $session->pagination = array();
+        }
+
+        if(false == $session->pagination[$sessKey]) {
+            // first time remember pagination limit
+            $session->pagination[$sessKey] = 20;
+        }
+
+        if(null !== $this->_getParam('limit')) {
+            $limit = $this->_getParam('limit');
+            $session->pagination[$sessKey] = $limit;
+        } else {
+            $limit = $session->pagination[$sessKey];
+        }
+        return $limit;
+    }
 }

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Soulex\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-18 00:00+0300\n"
+"POT-Creation-Date: 2011-02-10 04:25+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: miholeus <nigel@tatar-inform.ru>\n"
 "Language-Team: miholeus <me@miholeus.com>\n"
@@ -45,7 +45,6 @@ msgstr "Группы пользователей"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuserstatus/index.phtml:25
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncgoodscategory/index.phtml:19
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncstyle/index.phtml:14
 msgid "name"
 msgstr "имя"
 
@@ -73,8 +72,6 @@ msgid "Goods Category"
 msgstr "Категория Товаров"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncstyle/edit.phtml:4
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncstyle/create.phtml:4
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncstyle/index.phtml:4
 msgid "Styles Manager"
 msgstr "Управление стилями"
 
@@ -109,6 +106,10 @@ msgstr "Добавить новый материал и технологию"
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmaterial/index.phtml:7
 msgid "Materials"
 msgstr "Материалы и технологии"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmaterial/index.phtml:11
+msgid "Materials Category"
+msgstr "Категория материалов и технологий"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/search-filter.phtml:2
 msgid "Filter"
@@ -235,7 +236,6 @@ msgid "Parent Menu Item"
 msgstr "Родительский элемент меню"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_menuitem-form.phtml:37
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:25
 msgid "Published"
 msgstr "Опубликован"
 
@@ -248,7 +248,6 @@ msgid "Menu Details"
 msgstr "Настройки меню"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_menu-form.phtml:13
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:13
 msgid "Title"
 msgstr "Заголовок"
 
@@ -264,26 +263,26 @@ msgstr "Описание"
 msgid "Display"
 msgstr "Отображать"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:42
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:49
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:44
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:51
 msgid "Start"
 msgstr "Начало"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:68
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:70
 msgid "Prev"
 msgstr "Пред"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:94
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:101
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:96
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:103
 msgid "Next"
 msgstr "След"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:111
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:118
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:113
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:120
 msgid "End"
 msgstr "Конец"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:123
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/pagination-control.phtml:125
 msgid "Page"
 msgstr "Страница"
 
@@ -296,34 +295,46 @@ msgid "Edit News"
 msgstr "Редактирование новости"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:19
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_events-form.phtml:19
 msgid "Short Description"
 msgstr "Короткое описание"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:40
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_events-form.phtml:46
 msgid "Detail Description"
 msgstr "Детальное описание"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:48
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:77
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_events-form.phtml:54
 msgid "Toggle editor"
 msgstr "Переключить редактор"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:59
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_events-form.phtml:65
 msgid "Publishing Options"
 msgstr "Настройки размещения"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:67
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_events-form.phtml:73
 msgid "Published At"
 msgstr "Опубликован"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:79
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:158
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_events-form.phtml:85
 msgid "Metadata Options"
 msgstr "Настройки метаданных"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:87
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:166
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_events-form.phtml:93
 msgid "Meta Keywords"
 msgstr "Meta ключевики"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_news-form.phtml:93
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_page-form.phtml:172
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/_events-form.phtml:99
 msgid "Meta Description"
 msgstr "Meta описание"
 
@@ -475,12 +486,10 @@ msgstr "Настройки архитектурных терминов"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_term-form.phtml:13
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:14
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_offers-form.phtml:14
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:14
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_model-form.phtml:14
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_servicecategory-form.phtml:13
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_specialization-form.phtml:13
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_currency-form.phtml:13
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:13
 msgid "Name"
 msgstr "Имя"
 
@@ -493,35 +502,83 @@ msgid "Country"
 msgstr "Страна"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:26
-msgid "Site"
-msgstr "Сайт"
+msgid "Activity"
+msgstr "Направление деятельности"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:32
+msgid "Logotype"
+msgstr "Логотип"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:38
+msgid "Photo"
+msgstr "Фото"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:44
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:32
 msgid "Address"
 msgstr "Адрес"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:38
-msgid "Tel"
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:50
+msgid "Map latitude"
+msgstr "Широта"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:56
+msgid "Map longitude"
+msgstr "Долгота"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:62
+msgid "Telephone"
 msgstr "Телефон"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:44
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:68
+msgid "Site"
+msgstr "Сайт"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:74
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:62
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:69
 msgid "User Created"
 msgstr "Создавший пользователь"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:50
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:80
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:68
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:75
 msgid "User Activated"
 msgstr "Активировавший пользователь"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:56
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:86
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_offers-form.phtml:38
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:74
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:81
 msgid "Publish Date"
 msgstr "Опубликован"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_company-form.phtml:94
+msgid "Information"
+msgstr "Информация"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_offers-form.phtml:10
+msgid "Offers Details"
+msgstr "Настройки предложений"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_offers-form.phtml:20
+msgid "Anonce"
+msgstr "Анонс"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_offers-form.phtml:26
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:38
+msgid "Preview Photo"
+msgstr "Превью-фото"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_offers-form.phtml:32
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:44
+msgid "Detail Photo"
+msgstr "Детальное фото"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_offers-form.phtml:44
+msgid "Start Date"
+msgstr "Начало"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_offers-form.phtml:50
+msgid "End Date"
+msgstr "Конец"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:10
 msgid "Project Details"
@@ -532,22 +589,10 @@ msgid "Type Id"
 msgstr "Тип"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:26
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:25
 msgid "Square"
 msgstr "Площадь"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:38
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:31
-msgid "Preview Photo"
-msgstr "Превью-фото"
-
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:44
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:37
-msgid "Detail Photo"
-msgstr "Детальное фото"
-
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_project-form.phtml:50
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:89
 msgid "Documentation"
 msgstr "Документация"
 
@@ -591,11 +636,16 @@ msgstr "Настройки Категории Служб"
 msgid "Specialization Details"
 msgstr "Настройки Специализации"
 
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_specialization-form.phtml:19
+msgid "Type"
+msgstr "Тип"
+
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_currency-form.phtml:9
 msgid "Currency Details"
 msgstr "Настройки валюты"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_currency-form.phtml:19
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_country-form.phtml:19
 msgid "Code"
 msgstr "Код"
 
@@ -612,6 +662,7 @@ msgid "Projected In Year"
 msgstr "Спроектирован в году"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_object-form.phtml:49
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_famousauthorobjects-form.phtml:43
 msgid "Built In Year"
 msgstr "Построен в году"
 
@@ -640,27 +691,25 @@ msgid "User Group"
 msgstr "Группа пользователя"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:44
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_supplier-form.phtml:26
-msgid "Photo"
-msgstr "Фото"
+msgid "Specialization"
+msgstr "Специализация"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:51
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:57
 msgid "Image"
 msgstr "Изображение"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:58
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:64
 msgid "Delete file"
 msgstr "Удалить файл"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:64
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_supplier-form.phtml:50
-msgid "Telephone"
-msgstr "Телефон"
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_materialcategory-form.phtml:9
+msgid "Materials Category Details"
+msgstr "Настройки категории материалов и технологий"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_user-form.phtml:84
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_supplier-form.phtml:82
-msgid "Information"
-msgstr "Информация"
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_materialcategory-form.phtml:19
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_objectcategory-form.phtml:19
+msgid "Parent Category"
+msgstr "Родительская категория"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:9
 msgid "Consultation Details"
@@ -683,20 +732,20 @@ msgid "Question Date"
 msgstr "Дата вопроса"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:37
-msgid "Answer"
-msgstr "Вопрос"
-
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:43
 msgid "Answer Date"
 msgstr "Дата вопроса"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:49
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:43
 msgid "Rating From Owner"
 msgstr "Свой рейтинг"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:63
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:49
 msgid "Rating From Others"
 msgstr "Рейтинг других"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_consultation-form.phtml:57
+msgid "Answer"
+msgstr "Вопрос"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_objectcategory-form.phtml:9
 msgid "Objects Category Details"
@@ -706,13 +755,12 @@ msgstr "Настройки Категории Объектов"
 msgid "Material Details"
 msgstr "Настройки материалов и технологий"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_material-form.phtml:20
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_material-form.phtml:26
 msgid "Access"
 msgstr "Доступ"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_material-form.phtml:46
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_material-form.phtml:64
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_article-form.phtml:58
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_news-form.phtml:64
 msgid "Text"
 msgstr "Текст"
 
@@ -732,6 +780,18 @@ msgstr "Автор"
 msgid "Source"
 msgstr "Источник"
 
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_famousauthorobjects-form.phtml:9
+msgid "Famous Author's Object Details"
+msgstr "Настройки объектов известных людей"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_famousauthorobjects-form.phtml:25
+msgid "Object's Category"
+msgstr "Категория объектов"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_famousauthorobjects-form.phtml:31
+msgid "Famous Authors"
+msgstr "Известные люди"
+
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_news-form.phtml:10
 msgid "News Details"
 msgstr "Настройки новости"
@@ -743,26 +803,6 @@ msgstr "Дата"
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_news-form.phtml:32
 msgid "Theme"
 msgstr "Тема"
-
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_news-form.phtml:38
-msgid "Anonce"
-msgstr "Анонс"
-
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_supplier-form.phtml:10
-msgid "Supplier Details"
-msgstr "Настройки поставщика"
-
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_supplier-form.phtml:20
-msgid "Logotype"
-msgstr "Логотип"
-
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_supplier-form.phtml:38
-msgid "Map latitude"
-msgstr "Широта"
-
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_supplier-form.phtml:44
-msgid "Map longitude"
-msgstr "Долгота"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_library-form.phtml:9
 msgid "Item Details"
@@ -804,10 +844,6 @@ msgstr "Имя"
 msgid "Lastname"
 msgstr "Фамилия"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_famousauthor-form.phtml:25
-msgid "Specialization"
-msgstr "Специализация"
-
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_famousauthor-form.phtml:31
 msgid "Day Of Birth"
 msgstr "День рождения"
@@ -819,6 +855,10 @@ msgstr "День смерти"
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_service-form.phtml:10
 msgid "Service Details"
 msgstr "Настройки служб"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_service-form.phtml:26
+msgid "Area of Use"
+msgstr "Область использования"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/partials/newclassic/_librarytheme-form.phtml:9
 msgid "Library Theme Details"
@@ -1033,8 +1073,6 @@ msgid "Add New Group"
 msgstr "Добавить новую группу"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrarytype/edit.phtml:4
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrarytype/create.phtml:4
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrarytype/index.phtml:4
 msgid "Library Manager"
 msgstr "Управление энциклопедией"
 
@@ -1047,6 +1085,8 @@ msgid "Add New Type"
 msgstr "Добавить новый тип"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrarytype/index.phtml:7
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrary/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nclibrary/index.phtml:7
 msgid "Library"
 msgstr "Энциклопедия"
 
@@ -1072,6 +1112,10 @@ msgstr "Управление новостями"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobjectcategory/edit.phtml:4
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobjectcategory/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobjectcategory/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobject/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobject/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncobject/index.phtml:4
 msgid "Objects Manager"
 msgstr "Управление объектами"
 
@@ -1112,7 +1156,6 @@ msgid "Edit Project"
 msgstr "Редактирование проекта"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncprojects/create.phtml:4
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncprojects/index.phtml:4
 msgid "Projects Manager"
 msgstr "Управление проектами"
 
@@ -1124,6 +1167,25 @@ msgstr "Добавить новый проект"
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncprojects/index.phtml:7
 msgid "Projects"
 msgstr "Проекты"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncoffers/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncoffers/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncoffers/index.phtml:4
+msgid "Offers Manager"
+msgstr "Управление акциями"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncoffers/edit.phtml:5
+msgid "Edit Offer"
+msgstr "Редактирование акции"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncoffers/create.phtml:5
+msgid "Add New Offer"
+msgstr "Добавить новую акцию"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncoffers/index.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncoffers/index.phtml:7
+msgid "Offers"
+msgstr "Предложения"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncarticlecategory/edit.phtml:4
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncarticlecategory/create.phtml:4
@@ -1141,6 +1203,8 @@ msgid "Article Category"
 msgstr "Категория статьи"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/page/edit.phtml:16
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/page/create.phtml:16
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/page/index.phtml:16
 msgid "Page Manager"
 msgstr "Управление страницами"
 
@@ -1178,13 +1242,10 @@ msgstr "Тема новости"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/edit.phtml:4
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/create.phtml:4
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/index.phtml:4
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/edit.phtml:4
 msgid "Company Manager"
 msgstr "Управление компаниями"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/edit.phtml:5
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/edit.phtml:5
 msgid "Edit Company"
 msgstr "Редактирование компании"
 
@@ -1192,14 +1253,12 @@ msgstr "Редактирование компании"
 msgid "Add New Company"
 msgstr "Добавить новую компанию"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/index.phtml:4
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/index.phtml:7
-msgid "Companies"
-msgstr "Компании"
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/index.phtml:18
+msgid "tel"
+msgstr "телефон"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/nccompany/index.phtml:22
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncuser/index.phtml:32
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/index.phtml:22
 msgid "site"
 msgstr "Сайт"
 
@@ -1224,24 +1283,6 @@ msgstr "Логин"
 msgid "email"
 msgstr "почта"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/create.phtml:4
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/index.phtml:4
-msgid "Supplier Manager"
-msgstr "Управление поставщиками"
-
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/create.phtml:5
-msgid "Add New Supplier"
-msgstr "Добавить нового поставщика"
-
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/index.phtml:4
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/index.phtml:7
-msgid "Suppliers"
-msgstr "Поставщики"
-
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncsupplier/index.phtml:18
-msgid "tel"
-msgstr "телефон"
-
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/contentnode/loadnode.phtml:6
 msgid "Node type"
 msgstr "Тип узла"
@@ -1255,6 +1296,8 @@ msgid "Dynamic"
 msgstr "Динамический"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthor/edit.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthor/create.phtml:4
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthor/index.phtml:4
 msgid "Famous Authors Manager"
 msgstr "Управление известными людьми"
 
@@ -1266,12 +1309,11 @@ msgstr "Редактирование известных людей"
 msgid "Add New Famous Author"
 msgstr "Добавить нового известного человека"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthor/index.phtml:4
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthor/index.phtml:7
-msgid "Famous Authors"
-msgstr "Известные люди"
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthor/index.phtml:11
+msgid "Famous Author's Objects"
+msgstr "Объекты известных людей"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthor/index.phtml:14
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthor/index.phtml:18
 msgid "lastname"
 msgstr "Фамилия"
 
@@ -1452,6 +1494,14 @@ msgstr "Нет пользователей для отображения"
 msgid "Update User"
 msgstr "Обновить пользователя"
 
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmaterialcategory/edit.phtml:5
+msgid "Edit Material Category"
+msgstr "Редактирование категории материалов и технологий"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncmaterialcategory/create.phtml:5
+msgid "Add New Material Category"
+msgstr "Добавить новую категорию материалов и технологий"
+
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncterm/edit.phtml:4
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncterm/create.phtml:4
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncterm/index.phtml:4
@@ -1470,6 +1520,18 @@ msgstr "Добавить новый термин"
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncterm/index.phtml:7
 msgid "Terms"
 msgstr "Архитектурные термины"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthorobjects/edit.phtml:5
+msgid "Edit Famous Author's Object"
+msgstr "Редактирование объекта известных людей"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthorobjects/create.phtml:5
+msgid "Add New Famous Author's Object"
+msgstr "Добавить новый объект известного человека"
+
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/ncfamousauthorobjects/index.phtml:4
+msgid "Famous Authors's Objects"
+msgstr "Объекты известных людей"
 
 #: /var/www/projects/newclassic/application/modules/admin/views/scripts/news/create.phtml:16
 msgid "Add News"
@@ -1547,19 +1609,32 @@ msgstr "Глобальная конфигурация"
 msgid "Logout"
 msgstr "Выход"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:54
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:53
 msgid "Materials Manager"
 msgstr "Управление материалами и технологиями"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:59
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:58
 msgid "Content cont."
 msgstr "Контент продолжение"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:62
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:61
 msgid "Style Manager"
 msgstr "Управление стилями"
 
-#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:63
+#: /var/www/projects/newclassic/application/modules/admin/views/scripts/global/header.phtml:62
 msgid "Term Manager"
 msgstr "Управление архитектурными терминами"
+
+#~ msgid "Tel"
+#~ msgstr "Телефон"
+#~ msgid "Supplier Details"
+#~ msgstr "Настройки поставщика"
+#~ msgid "Companies"
+#~ msgstr "Компании"
+#~ msgid "Supplier Manager"
+#~ msgstr "Управление поставщиками"
+#~ msgid "Add New Supplier"
+#~ msgstr "Добавить нового поставщика"
+#~ msgid "Suppliers"
+#~ msgstr "Поставщики"
 
