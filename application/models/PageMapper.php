@@ -11,7 +11,7 @@
 class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
 {
 	protected $_name = 'pages';
-	
+
 	protected $_dependentTables = 'Model_ContentNode';
     /**
      *
@@ -33,7 +33,7 @@ class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
      * Form nodes array according to page data
      * Formed node's array look like this:
      * array('type', 'module', 'controller', 'action', 'value')
-     * 
+     *
      * @param array $data page's data
      * @return array node's data information
      */
@@ -82,9 +82,9 @@ class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
     }
 	/**
 	 * Creates new page
-	 * 
+	 *
 	 * @uses Model_ContentNode
-	 * 
+	 *
 	 * @param array $data page's data array
      *
 	 * @return int id of created page
@@ -93,11 +93,11 @@ class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
 	{
 		$lft = 0;//top level page
 		$level = 0;//top level of parent
-		
+
 		$this->_db->beginTransaction();
 		$this->_db->query("UPDATE " . $this->_name . " SET rgt = rgt + 2 WHERE rgt > ?", $lft);
 		$this->_db->query("UPDATE " . $this->_name . " SET lft = lft + 2 WHERE lft > ?", $lft);
-		
+
 		$row = $this->createRow();
 		$row->title = $data['title'];
 		$row->uri = $data['uri'];
@@ -107,21 +107,26 @@ class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
 		$row->lft = $lft + 1;
 		$row->rgt = $lft + 2;
 		$row->level = $level + 1;
+        if(!empty($data['layout'])) {
+            $row->layout = $data['layout'];
+        } else {
+            $row->layout = null;
+        }
 		$row->save();
-		
+
 		$pageId = $this->_db->lastInsertId();
-		
+
 		$this->_db->commit();
 
         // creating nodes data
         $nodesData = $this->formNodesData($data);
         $this->saveNodesData($nodesData, $pageId, 'create');
-		
+
 		return $pageId;
 	}
 	/**
 	 * Updates selected page
-	 * 
+	 *
 	 * @param int $pageId
 	 * @param array $data
 	 * @return void
@@ -135,8 +140,13 @@ class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
 			$row->meta_keywords = $data['meta_keywords'];
 			$row->meta_description = $data['meta_description'];
             $row->published = $data['published'];
+            if(!empty($data['layout'])) {
+                $row->layout = $data['layout'];
+            } else {
+                $row->layout = null;
+            }
 			$row->save();
-			
+
 			unset($data['title'], $data['uri'], $data['meta_keywords'],
 				$data['meta_description'], $data['published']);
             unset($data['id'], $data['submit']);// remove form id and submit button
@@ -172,7 +182,7 @@ class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
 	}
 	/**
 	 * Deletes page
-	 * 
+	 *
 	 * @param int $id of page that will be deleted
 	 * @return true if success
 	 */
@@ -184,7 +194,7 @@ class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
 			$myLeft = $row->lft;
 			$myRight = $row->rgt;
 			$myWidth = $myRight - $myLeft + 1;
-						
+
 			$this->_db->query("DELETE FROM " . $this->_name . " WHERE lft BETWEEN ? AND ?",
 					array($myLeft, $myRight)
 			);
@@ -194,16 +204,16 @@ class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
 			$this->_db->query("UPDATE " . $this->_name . " SET lft = lft - ? WHERE lft > ?",
 					array($myWidth, $myRight)
 			);
-			
+
 			$this->_db->commit();
-			
+
 			return true;
 		} else {
 			$this->_db->rollBack();
 			throw new Zend_Exception('Delete failed: no page found!');
-		}		
+		}
 	}
-	
+
 	public function findPage($id, $whereStatement)
 	{
         $where = $this->getDefaultAdapter()->quoteInto('id = ?', $id);
@@ -242,7 +252,7 @@ class Model_PageMapper extends Soulex_Model_DbTable_Abstract_PrefixedTable
     }
     /**
      * Fetch all pages
-     * 
+     *
      * @param string|array|Zend_Db_Table_Select $where  OPTIONAL An SQL WHERE clause or Zend_Db_Table_Select object.
      * @param string|array                      $order  OPTIONAL An SQL ORDER clause.
      * @return Zend_Db_Table_Rowset_Abstract
