@@ -121,6 +121,20 @@ abstract class Admin_Model_DataMapper_Standard extends Admin_Model_DataMapper_Ab
         }
     }
     /**
+     * Sets where state
+     *
+     * @param string   $cond  The WHERE condition.
+     * @param mixed    $value OPTIONAL The value to quote into the condition.
+     * @param constant $type  OPTIONAL The type of the given value
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function where($cond, $value = null, $type = null)
+    {
+        $this->_select = $this->getSelect();
+        $this->_select->where($cond, $value, $type);
+        return $this;
+    }
+    /**
      * Sets ordering state
      *
      * @param string $spec the column and direction to sort by

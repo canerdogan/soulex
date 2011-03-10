@@ -87,6 +87,11 @@ class Admin_Form_Pages extends Admin_Form_Template_Simple
             'label' => 'Action'
         ));
 
+        // layout select box
+        $layout = $this->createElement('select', 'layout');
+        $layout->addMultiOption('', 'Default');
+        $this->addElement($layout);
+
  		// submit button
 		$this->addElement('submit', 'submit', array('label' => 'Submit', 'order' => 999) );
 	}

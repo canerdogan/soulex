@@ -14,6 +14,33 @@
  */
 class Admin_PageController extends Soulex_Controller_Abstract
 {
+    /**
+     * Add layouts to form's layout element
+     * Layouts are taken from layoutPath in config file
+     *
+     * @param Zend_Form $frmPage
+     * @return void
+     */
+    protected function setFormLayout(Zend_Form $frmPage)
+    {
+        $layout = $frmPage->getElement('layout');
+
+        // setting layout options
+        $options = $this->getInvokeArg('bootstrap')->getOptions();
+        $layoutPath = $options['resources']['layout']['layoutPath'];
+        $excludeLayouts = array(
+            'default' => $options['resources']['layout']['layout'] . '.phtml',
+            'admin' => 'admin.phtml'
+        );
+        foreach (new DirectoryIterator($layoutPath) as $fileInfo) {
+            if($fileInfo->isDot()) continue;
+            if($fileInfo->isFile() && !in_array($fileInfo->getFilename(), $excludeLayouts)) {
+                $file = $fileInfo->getFilename();
+                $info = pathinfo($layoutPath . DIRECTORY_SEPARATOR . $file);
+                $layout->addMultiOption($info['filename'], $info['filename']);
+            }
+        }
+    }
     public function indexAction()
     {
         $mdlPage = new Model_Page();
@@ -69,6 +96,8 @@ class Admin_PageController extends Soulex_Controller_Abstract
 		$id = $this->getRequest()->getParam('id');
 
 		$frmPage = new Admin_Form_Pages();
+
+        $this->setFormLayout($frmPage);
 
 		if($this->_request->isPost()) {
 
@@ -130,6 +159,8 @@ class Admin_PageController extends Soulex_Controller_Abstract
         $mdlPage = new Model_Page();
 
 		$frmPage = new Admin_Form_Pages();
+        
+        $this->setFormLayout($frmPage);
 
 		if($this->_request->isPost() && $frmPage->isValid($this->_request->getPost())) {
             $mdlPage = new Model_Page();
@@ -151,7 +182,7 @@ class Admin_PageController extends Soulex_Controller_Abstract
 	{
         $mdlPage = new Model_Page();
 		$id = $this->getRequest()->getParam('id');
-        
+
 		$mdlPage->delete($id);
 		$this->_redirect('/admin/page');
 	}

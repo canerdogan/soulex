@@ -1,3 +1,8 @@
+<style type="text/css">
+    textarea{
+        position: relative;
+    }
+</style>
 <form action="<?=$this->form->getAction()?>"
       method="<?=$this->form->getMethod()?>"
       id="<?=$this->form->getAttrib('id')?>"
@@ -121,7 +126,7 @@
                                 <span id="ajax-info-img"><img src="/_data/admin/system/images/loader.gif" alt="Loading..." /></span>&nbsp;
                                 <span id="ajax-info-msg"></span>
                             </span>
-                            
+
                             <span class="content-nodes-add" onclick="addNode()">&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             <fieldset class="panelform">
                                 <table class="adminformlist" id="custom-nodes">
@@ -147,9 +152,9 @@
                         <div class="nodes-tabs-content">
 
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
             </div>
             <div class="panel">
@@ -172,6 +177,25 @@
                                     <?=$this->translate('Meta Description')?>
                                 </label>
                                 <?=$this->form->meta_description?>
+                            </li>
+                        </ul>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="panel">
+                <h3 id="template-options" class="title pane-toggler">
+                    <a href="#">
+                        <span><?=$this->translate('Template')?></span>
+                    </a>
+                </h3>
+                <div class="pane-slider content" style="border-top: medium none; border-bottom: medium none; overflow: hidden; padding-top: 0px; padding-bottom: 0px; height: 0px;">
+                    <fieldset class="panelform">
+                        <ul class="adminformlist">
+                            <li>
+                                <label id="layout-lbl" for="layout">
+                                    <?=$this->translate('Layout')?>
+                                </label>
+                                <?=$this->form->layout?>
                             </li>
                         </ul>
                     </fieldset>

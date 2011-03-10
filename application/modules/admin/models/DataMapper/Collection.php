@@ -95,7 +95,16 @@ abstract class Admin_Model_DataMapper_Collection implements Iterator
             return $this->objects[$num];
         }
     }
-
+    /**
+     * Return array data of objects
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return $this->raw;
+    }
+    
     public function rewind()
     {
         $this->pointer = 0;
