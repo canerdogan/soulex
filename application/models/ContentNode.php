@@ -53,12 +53,29 @@ class Model_ContentNode extends Soulex_Model_DbTable_Abstract_PrefixedTable
 
 	    $row->save();
 	}
-
-    public function getPageNodes($pageId)
+    /**
+     * Return all page's nodes
+     *
+     * @param int $pageId
+     * @return Zend_Db_Table_Rowset data that contains page's nodes
+     */
+    public function getPageNodes($pageId, $disabledNodes = null)
     {
         // select page nodes
         $select = $this->select();
         $select->where("page_id = ?", $pageId);
+        if(null !== $disabledNodes) {
+            if(is_array($disabledNodes)) {
+                foreach($disabledNodes as $node) {
+                    $select->where('name != ?', $node);
+                }
+            } elseif(is_string($disabledNodes)) {
+                $select->where('name != ?', $disabledNodes);
+            } else {
+                throw new Exception('To disable nodes you must specifiy a string or array, but '
+                        . gettype($disabledNodes) . ' given');
+            }
+        }
         return $this->fetchAll($select);
     }
 
