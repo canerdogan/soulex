@@ -19,19 +19,21 @@ class Frontend_PageController extends Zend_Controller_Action
 	{
         // empty action
 	}
-	
+
 	public function openAction()
 	{
-		/*
-		 * установка другого слоя
-         *
-         */
-//		$layout = $this->_helper->layout();
-//		$layout->setLayout('alternate');
         $fr = Zend_Controller_Front::getInstance();
         $invokePlugin = $fr->getPlugin('Soulex_Invoke_Plugin');
 
         $pageData = $invokePlugin->getPage();
+		/*
+		 * Setup another layout
+         */
+        if(!empty($pageData['layout'])) {
+            $layout = Zend_Layout::getMvcInstance();
+            $layout->setLayout($pageData['layout']);
+            Zend_Registry::set('layout_changed', true);
+        }
 
         if(isset($pageData['_data'])) {
             // installs static nodes on page with their values
@@ -55,15 +57,15 @@ class Frontend_PageController extends Zend_Controller_Action
 		 * установка другого скина
 		if($this->getRequest()->getParam('skin')) {
 			$view = Zend_Registry::get('view');
-			$view->skin = $this->getRequest()->getParam('skin');	
+			$view->skin = $this->getRequest()->getParam('skin');
 		}
 		*/
-		
+
 	}
 
     public function notfoundAction()
     {
         $this->getResponse()->setHttpResponseCode(404);
     }
-	
+
 }

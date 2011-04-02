@@ -1,9 +1,10 @@
-<p>
-    <?php
-    $date = strtotime($this->published_at);
-    echo date("m.d.Y", $date);
-    ?>
-    <br />
-    <a href="/news/<?=$this->id?>.html"><?=$this->escape($this->title)?></a>
-    <br />
-</p>
+<?php foreach($this->news as $singleNews):?>
+<div class="one">
+  <?php if(!empty($singleNews['previewPhoto'])):?>
+    <img alt="" src="<?=htmlspecialchars($singleNews['previewPhoto'])?>" />
+  <?endif;?>
+  <p><a href="/<?=$this->pageurl?>/id/<?=$singleNews['id']?>/"><?=$this->escape($singleNews['name'])?></a></p>
+  <p><?=$this->escape($singleNews['anonce'])?></p>
+  <p class="date"><?=$this->getLocalizedDate($singleNews['date'])?>, <?=$singleNews['city']?></p>
+</div>
+<?endforeach;?>

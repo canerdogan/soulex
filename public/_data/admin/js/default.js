@@ -1,6 +1,6 @@
-/* 
+/*
  * Default javascript admin panel functions
- * 
+ *
  */
 $(document).ready(function() {
     /**
@@ -14,7 +14,7 @@ $(document).ready(function() {
 
         $("#page-"+$(this).attr("id")).css("display", "block");
         $(this).addClass("active");
-        
+
     })
     /**
      * panel slider
@@ -188,6 +188,7 @@ function submitbutton(submitParams)
         break;
         case 'delete':
             if(confirm("Are you sure you want to delete selected items?")) {
+                $("form[name=\'adminForm\']").append("<input type='hidden' name='delete' value='1' />");
                 submitform();
             }
         break;
@@ -208,7 +209,7 @@ function submitform()
 /**
  * Increment/decrement boxcheced values
  * which is used as control sum
- * 
+ *
  * @param bool isitchecked
  * @return
  */

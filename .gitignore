@@ -23,3 +23,4 @@ application/modules/admin/views/scripts/global/header.phtml
 application/modules/admin/views/scripts/ts*
 application/modules/admin/controllers/Ts*
 /tests/library/Totallsocks
+/application/layouts/scripts/frontend/

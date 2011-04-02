@@ -1,36 +1,34 @@
-<?php if ($this->pageCount > 1){
-    // you need to add each of the request parameters to url
-    $params = Zend_Controller_Front::getInstance()->getRequest()->getParams();
-    // remove the system parameters
-    unset($params['module']);
-    unset($params['controller']);
-    unset($params['action']);
-?>
-<div class="paginationControl">
+<?php if ($this->pageCount > 1) {?>
+
+<div class="pager">
 <!-- Previous page link -->
 <?php if (isset($this->previous)){ ?>
-  <a href="<?php echo $this->url(); ?>?page=<?=$this->previous?>">
-    &lt; Предыдущая
-  </a> |
+  <div class="arr-l"><a href="<?php echo $this->pageurl; ?>?page=<?=$this->previous?>">
+    <img src="/skins/frontend/images/arr-l.png" alt="" />
+  </a></div>
 <?php } else { ?>
-  <span class="disabled">&lt; Предыдущая</span> |
-<?php } ?>
+  <div class="arr-l"><img src="/skins/frontend/images/arr-l.png" alt="" /></div>
+<?php }?>
 <!-- Numbered page links -->
 <?php foreach ($this->pagesInRange as $page){ ?>
   <?php if ($page != $this->current){ ?>
-    <a href="<?php echo $this->url(); ?>?page=<?=$page?>">
-         <?php echo $page; ?>
-    </a> |
+    <span>
+        <a href="<?php echo $this->pageurl; ?>?page=<?=$page?>">
+             <?php echo $page; ?>
+        </a>
+    </span>
   <?php } else { ?>
-    <?php echo $page; ?> |
+    <span><?php echo $page; ?></span>
   <?php }}?>
 <!-- Next page link -->
 <?php if (isset($this->next)){ ?>
-  <a href="<?php echo $this->url(); ?>?page=<?=$this->next?>">
-    Следующая &gt;
-  </a>
+  <div class="arr-r">
+    <a href="<?php echo $this->pageurl; ?>?page=<?=$this->next?>">
+        <img src="/skins/frontend/images/arr-r.png" alt="" />
+    </a>
+  </div>
 <?php } else { ?>
-  <span class="disabled">Следующая &gt;</span>
+  <div class="arr-r"><img src="/skins/frontend/images/arr-r.png" alt="" /></div>
 <?php } ?>
 </div>
 <?php } ?>

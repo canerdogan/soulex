@@ -1,7 +1,30 @@
-<h3><strong><?=$this->title?></strong></h3>
-<?php
-echo $this->partialLoop('partials/_news-row.phtml', $this->paginator);
+<h1>Новости</h1>
+<div class="filter">
+<div class="search">
+  <input type="text" value="Поиск новостей">
+  <input type="button" class="button" value="Найти">
+  <div class="clear"></div>
+</div>
+</div>
 
+<?php
+if(null === $this->paginator) {
+    return false;
+}
+?>
+
+<div class="white">
+<div id="list" class="news-list">
+    <?php
+    echo $this->partial('partials/_news-row.phtml', array(
+        'news' => $this->paginator,
+        'pageurl' => $this->pageurl
+    ));?>
+  <div class="clear"></div>
+</div>
+<?php
 echo $this->paginationControl($this->paginator,
-     'Sliding',
-     'partials/pagination-control.phtml'); ?>
+    'Sliding',
+    'partials/pagination-control.phtml');
+?>
+</div>

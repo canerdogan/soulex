@@ -15,6 +15,13 @@
  */
 class Frontend_EventsController extends Zend_Controller_Action
 {
+    public function preDispatch()
+    {
+        $this->view->pageurl = 'events';
+    }
+    /**
+     * Show events on main page
+     */
     public function mainpageAction()
     {
         $eventsMapper = new NewClassic_Model_Events_Mapper();
@@ -25,52 +32,69 @@ class Frontend_EventsController extends Zend_Controller_Action
 
         echo $this->view->render('events/mainpage.phtml');
     }
-    public function singleAction()
+    /**
+     * Show event's types as left menu on events page
+     */
+    public function menuleftAction()
     {
-        $id = $this->_getParam(1);
-        $mdlEvents = new Admin_Model_EventsMapper();
-        $this->view->events = $mdlEvents->findById($id);
+        $mapper = new NewClassic_Model_Events_TypeMapper();
+        $this->view->items = $mapper->fetchAll();
 
-        $this->view->title = $this->view->events->getTitle();
-        $this->view->headTitle($this->view->events->getTitle(), 'SET');
+        $this->view->selectedUri = $this->_request->getPathInfo();
 
-        $this->_helper->actionStack('menuleft', 'menu', 'frontend', array(
-            '_responseSegment' => 'menuleft'
-        ));
-        $this->_helper->actionStack('menutop', 'menu', 'frontend', array(
-            '_responseSegment' => 'menutop'
-        ));
+        $responseSegment = $this->_getParam('_responseSegment');
+        $this->_helper->viewRenderer->setResponseSegment($responseSegment);
 
+        echo $this->view->render('events/menuleft.phtml');
     }
+    /**
+     * Show list of events
+     */
     public function listAction()
     {
-        $limit = 20;
-        $page = $this->_request->getParam('page', 1);
-
-        $eventsService = new Admin_Model_EventsMapper();
-        $paginator = $eventsService->published('1')
-                    ->order('published_at DESC')->paginate();
-
-        $paginator->setItemCountPerPage($limit);
-
-        $paginator->setCurrentPageNumber($page);
-        // pass the paginator to the view to render
-        $this->view->paginator = $paginator;
+        $eventsMapper = new NewClassic_Model_Events_Mapper();
+        $this->view->events = $eventsMapper->fetchAll(null, 'date DESC', 5);
 
         $responseSegment = $this->_getParam('_responseSegment');
         $this->_helper->viewRenderer->setResponseSegment($responseSegment);
 
         echo $this->view->render('events/list.phtml');
     }
-
-    public function sidebarAction()
+    /**
+     * Show events by type
+     */
+    public function eventsbytypeAction()
     {
-        $mdlEvents = new Admin_Model_EventsMapper();
-        $this->view->events = $mdlEvents->published('1')
-                ->limit(3)->order('published_at DESC')->paginate();
+        $this->_loadPage();
+
+        $id = $this->_getParam('typeId');
+
+        $typesMapper = new NewClassic_Model_Events_TypeMapper();
+        try {
+            $this->view->eventType = $typesMapper->findById($id);
+        } catch (Exception $e) {
+            $this->view->eventType = null;
+        }
+
+        $eventsMapper = new NewClassic_Model_Events_Mapper();
+        $this->view->events = $eventsMapper->selectItems($id);
 
         $responseSegment = $this->_getParam('_responseSegment');
         $this->_helper->viewRenderer->setResponseSegment($responseSegment);
-    }
 
+        echo $this->view->render('events/list.phtml');
+    }
+    /**
+     * Load events page except some nodes on it
+     */
+    protected function _loadPage()
+    {
+        $layout = Zend_Layout::getMvcInstance();
+        $layout->setLayout('index');
+        Zend_Registry::set('layout_changed', true);
+
+        $pageManager = new Soulex_Helper_PageManager(135, $this->_helper);
+        $pageManager->excludeNodes('block5');
+        $pageManager->loadNodes();
+    }
 }

@@ -59,7 +59,8 @@ class Admin_PageController extends Soulex_Controller_Abstract
 
             $this->view->filter['published'] = $post['filter_published'];
 
-            if(isset($post['cid'])) {
+            if(isset($post['cid']) && isset($post['delete'])
+                    && $post['delete'] == 1) {
                 if(is_array($post['cid'])
                         && count($post['cid']) == $post['boxchecked']) {
                     $mdlPage->deleteBulk($post['cid']);
@@ -159,7 +160,7 @@ class Admin_PageController extends Soulex_Controller_Abstract
         $mdlPage = new Model_Page();
 
 		$frmPage = new Admin_Form_Pages();
-        
+
         $this->setFormLayout($frmPage);
 
 		if($this->_request->isPost() && $frmPage->isValid($this->_request->getPost())) {

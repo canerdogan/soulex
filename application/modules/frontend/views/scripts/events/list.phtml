@@ -1,7 +1,73 @@
-<h3><strong><?=$this->title?></strong></h3>
-<?php
-echo $this->partialLoop('partials/_events-row.phtml', $this->paginator);
+  <h1>Ближайшие события</h1>
+  <div class="about">
+    Это достаточно своеобразное сооружение тем не менее, несомненно, является ярким примером стиля модерн, хотя и выполнено с некоторыми нарушениями технических норм.
+    <span><a href="#">Читать дальше</a></span>
+  </div>
+  <div class="white">
 
-echo $this->paginationControl($this->paginator,
-     'Sliding',
-     'partials/pagination-control.phtml'); ?>
+    <div class="slider-event">
+      <div class="arr-l"><a href="#"><img alt="" src="/skins/<?=$this->skin?>/images/arr-l2.png"></a></div>
+      <div class="arr-r"><a href="#"><img alt="" src="/skins/<?=$this->skin?>/images/arr-r2.png"></a></div>
+
+      <div class="track">
+        <div class="track-c"></div>
+        <div style="left: 100px;" class="slider-but"></div>
+      </div>
+    </div>
+
+    <div class="event-list">
+      <div class="sh-l"><a href="#"><img alt="" src="/skins/<?=$this->skin?>/images/arr-l2.png"></a></div>
+      <div class="sh-r"><a href="#"><img alt="" src="/skins/<?=$this->skin?>/images/arr-r2.png"></a></div>
+      <div style="width: 966px;">
+        <!-- ширина - (322px x количество блоков) -->
+      <table cellspacing="0">
+        <tbody><tr>
+          <td class="month">
+            <div class="title">Март 2010</div>
+            <div class="month-list">
+              <?php foreach($this->events as $event):?>
+                  <div class="event">
+                      <div class="img"><img alt="" src="<?=htmlspecialchars($event['previewPhoto'])?>" /></div>
+                    <p><a class="fancybox" href="#event-<?=$event['id']?>"><?=$this->escape($event['name'])?></a></p>
+                    <p><?=$this->escape($event['anonce'])?></p>
+                    <!-- POPUP event -->
+                    <div style="display: none;">
+                      <div style="width: auto; height: auto; overflow: auto; position: relative;"><div id="event-<?=$event['id']?>" class="popup event-<?=$event['id']?>">
+                        <h1><?=$this->escape($event['name'])?></h1>
+                        <h3><?=$this->escape($event['anonce'])?></h3>
+                        <div class="text">
+                          <div class="description">
+                            <div class="img"><img alt="" src="<?=htmlspecialchars($event['detailPhoto'])?>" /></div>
+                            <div>
+                              <p>Местоположение: Россия, Москва</p>
+
+                              <p>Контактная информация:<br>г Москва, улица Академика Королева, дом 2 корпус 6 <span>[<a href="#">на карте</a>]</span></p>
+                              <div>
+                                <p>E-mail: <a href="#">ivan@ivan.ru</a></p>
+                                <p>Телефон: +7 495 556-75-51</p>
+                              </div>
+                            </div>
+                            <div class="clear"></div>
+                          </div>
+
+                           <?=$this->escape($event['info'])?>
+
+                        </div>
+                        <p class="info"><?=$this->getLocalizedDate($event['date'])?> : <a href="#">Константин Константинопольский</a></p>
+                      </div></div>
+                    </div>
+                    <!-- /POPUP event -->
+                  </div>
+              <?endforeach;?>
+
+            </div>
+          </td>
+
+        </tr>
+      </tbody></table>
+
+      <p class="more"></p>
+    </div>
+  </div>
+
+</div>
